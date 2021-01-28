@@ -16,7 +16,7 @@
 <script lang="ts">
 import { Vue } from "vue-class-component";
 
-export default class Control extends Vue {
+export default class Base extends Vue {
   name = "Control";
   hidden = false;
   text = "";

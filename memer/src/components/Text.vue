@@ -6,8 +6,8 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import Bottom from "./Controls/Bottom.vue";
-import Top from "./Controls/Topp.vue";
+import Bottom from "./Text/Bottom.vue";
+import Top from "./Text/Topp.vue";
 
 @Options({
   props: {
@@ -18,7 +18,7 @@ import Top from "./Controls/Topp.vue";
     Top,
   },
 })
-export default class Controls extends Vue {
+export default class Text extends Vue {
   controls = [Top, Bottom];
 }
 </script>

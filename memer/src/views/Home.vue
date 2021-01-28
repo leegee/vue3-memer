@@ -1,19 +1,19 @@
 <template>
   <div id="home">
     <DropZone msg="Drop here" />
-    <Controls />
+    <Text />
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import DropZone from "../components/DropZone.vue";
-import Controls from "../components/Controls.vue";
+import Text from "../components/Text.vue";
 
 @Options({
   components: {
     DropZone,
-    Controls,
+    Text,
   },
 })
 export default class Home extends Vue {}

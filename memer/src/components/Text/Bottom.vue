@@ -1,7 +1,7 @@
 <script lang="ts">
-import Control from "@/components/Control.vue";
+import Base from "@/components/Text/Base.vue";
 
-export default class Bottom extends Control {
+export default class Bottom extends Base {
   name = "Bottom";
   text = "Bottom text";
 }
