@@ -1,7 +1,12 @@
 <template>
-  <div id="home">
-    <DropZone msg="Drop here" />
-    <Text />
+  <div
+    id="home"
+    :style="{
+      'background-image': 'url(' + $store.state.image + ')',
+    }"
+  >
+    <DropZone msg="Drop here" v-show="!$store.state.image" />
+    <Text v-show="$store.state.image" />
   </div>
 </template>
 
@@ -17,6 +22,8 @@ import Text from "../components/Text.vue";
   },
 })
 export default class Home extends Vue {}
+
+// (this.$refs.dropzone as HTMLElement).style.backgroundImage = "url(" + src + ")";
 </script>
 
 <style scoped>

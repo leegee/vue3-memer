@@ -6,7 +6,10 @@
     @dragleave.prevent="onDragLeave"
     @drop.prevent="onDrop($event)"
   >
-    <h1>{{ msg }}</h1>
+    <h1>
+      {{ msg }}
+      <input type="file" id="file" @change="onFileChosen($event)" />
+    </h1>
   </div>
 </template>
 
@@ -24,15 +27,9 @@ export default class DropZone extends Vue {
   reader = new FileReader();
 
   mounted() {
-    this.reader.onload = (f) => {
-      if (f.target === null) return; // fuck ts
-      this.setImage(f.target.result as string);
+    this.reader.onload = (e: ProgressEvent) => {
+      this.setImage((e.target as FileReader).result as string);
     };
-  }
-
-  setImage(src: string) {
-    (this.$refs.dropzone as HTMLElement).style.backgroundImage = "url(" + src + ")";
-    this.$store.commit("changeImage", src as string);
   }
 
   onDragOver(e: Event) {
@@ -45,11 +42,23 @@ export default class DropZone extends Vue {
 
   onDrop(e: DragEvent) {
     if (e.dataTransfer !== null) {
-      const files = e.dataTransfer.files;
-      const file: File = files[0];
       (this.$refs.dropzone as HTMLElement).classList.remove("over");
+      const files = e.dataTransfer.files;
+      if (files[0].type.match(/image/)) {
+        this.reader.readAsDataURL(files[0]);
+      }
+    }
+  }
+
+  onFileChosen(e: Event) {
+    const file = (e.target! as HTMLInputElement).files![0];
+    if (file.type.match(/image/)) {
       this.reader.readAsDataURL(file);
     }
+  }
+
+  setImage(src: string) {
+    this.$store.commit("changeImage", src);
   }
 }
 </script>
