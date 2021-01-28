@@ -31,8 +31,7 @@ export default class DropZone extends Vue {
   }
 
   setImage(src: string) {
-    (this.$refs.dropzone as HTMLElement).style.backgroundImage =
-      "url(" + src + ")";
+    (this.$refs.dropzone as HTMLElement).style.backgroundImage = "url(" + src + ")";
     this.$store.commit("changeImage", src as string);
   }
 
@@ -57,23 +56,18 @@ export default class DropZone extends Vue {
 
 <style scoped lang="scss">
 #dropzone {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: calc(-0.5 * var(--meme-height));
-  margin-left: calc(-0.5 * var(--meme-height));
-  width: var(--meme-width);
-  height: var(--meme-height);
-  border: 1pt solid black;
-  filter: drop-shadow(0pt 4pt 4pt #0009);
-  background: grey;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 24pt;
+  width: 100%;
+  height: 100%;
   background-position: center;
   background-origin: center;
   background-repeat: no-repeat;
+  border: 1pt solid black;
+  filter: drop-shadow(0pt 4pt 4pt #0009);
+  background: grey;
 }
 
 #dropzone.over {

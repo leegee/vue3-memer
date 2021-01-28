@@ -1,30 +1,34 @@
 <template>
-  <div id="controls">Controls</div>
+  <div id="controls">
+    <component v-for="control in controls" :is="control" :key="control" />
+  </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import Bottom from "./Controls/Bottom.vue";
+import Top from "./Controls/Topp.vue";
 
 @Options({
   props: {
     msg: String,
   },
+  components: {
+    Bottom,
+    Top,
+  },
 })
-export default class Controls extends Vue {}
+export default class Controls extends Vue {
+  controls = [Top, Bottom];
+}
 </script>
 
 <style scoped lang="scss">
 #controls {
   position: absolute;
-  top: calc(50% + (0.5 * var(--meme-height)));
-  margin-top: 32pt;
-  text-align: center;
+  top: 0;
+  left: 0;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24pt;
-  background: black;
-  color: white;
+  height: 100%;
 }
 </style>

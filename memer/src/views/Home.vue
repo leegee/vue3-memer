@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div id="home">
     <DropZone msg="Drop here" />
     <Controls />
   </div>
@@ -18,3 +18,15 @@ import Controls from "../components/Controls.vue";
 })
 export default class Home extends Vue {}
 </script>
+
+<style scoped>
+#home {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: calc(-0.5 * var(--meme-height));
+  margin-left: calc(-0.5 * var(--meme-height));
+  width: var(--meme-width);
+  height: var(--meme-height);
+}
+</style>

@@ -10,6 +10,7 @@
 #app {
   --meme-width: 500px;
   --meme-height: 500px;
+  // box-sizing: border-box;
 
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
