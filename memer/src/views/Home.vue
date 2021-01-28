@@ -7,6 +7,7 @@
   >
     <DropZone msg="Drop here" v-show="!$store.state.image" />
     <Text v-show="$store.state.image" />
+    <Save />
   </div>
 </template>
 
@@ -14,16 +15,16 @@
 import { Options, Vue } from "vue-class-component";
 import DropZone from "../components/DropZone.vue";
 import Text from "../components/Text.vue";
+import Save from "../components/Save.vue";
 
 @Options({
   components: {
     DropZone,
     Text,
+    Save,
   },
 })
 export default class Home extends Vue {}
-
-// (this.$refs.dropzone as HTMLElement).style.backgroundImage = "url(" + src + ")";
 </script>
 
 <style scoped>

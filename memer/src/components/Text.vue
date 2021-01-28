@@ -10,9 +10,6 @@ import Bottom from "./Text/Bottom.vue";
 import Top from "./Text/Topp.vue";
 
 @Options({
-  props: {
-    msg: String,
-  },
   components: {
     Bottom,
     Top,
