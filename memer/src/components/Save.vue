@@ -28,6 +28,7 @@ export default class Home extends Vue {
     // Place text
     Object.keys(this.$store.state.text).forEach((text) => {
       console.log(
+        "text: ",
         this.$store.state.text[text].text,
         "top:",
         this.$store.state.text[text].style.top,
@@ -36,7 +37,11 @@ export default class Home extends Vue {
         "left:",
         this.$store.state.text[text].style.left,
         "right:",
-        this.$store.state.text[text].style.right
+        this.$store.state.text[text].style.right,
+        "fontFamily:",
+        this.$store.state.text[text].style.fontFamily,
+        "fontSize:",
+        this.$store.state.text[text].style.fontSize
       );
     });
 

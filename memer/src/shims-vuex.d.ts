@@ -8,14 +8,14 @@ declare module '@vue/runtime-core' {
     left: string;
     right: string;
     fontSize: string;
-    font: string;
+    fontFamily: string;
   }
 
   interface TextOverlay {
     id: string;
     hidden: boolean;
     text: string;
-    style: ComputedStyles;
+    style: ComputedStyles;// CSSStyleDeclaration 
   }
 
   interface TextOverlays {

@@ -9,7 +9,14 @@ export default createStore({
   mutations: {
     setTextStyle(state: State, { id, style }) {
       state.text[id] = state.text[id] || {};
-      state.text[id].style = style;
+      state.text[id].style = {
+        fontFamily: style["font-family"],
+        fontSize: style["font-size"],
+        left: style.left,
+        right: style.right,
+        top: style.top,
+        bottom: style.bottom,
+      };
     },
 
     changeText(state: State, { id, hidden, text }) {
