@@ -25,6 +25,8 @@ export default class Home extends Vue {
     const ctx = canvas.getContext("2d");
     ctx!.drawImage(img, 0, 0);
 
+    // Place text
+
     return canvas.toDataURL("image/png");
   }
 }

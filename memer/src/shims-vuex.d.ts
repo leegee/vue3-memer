@@ -2,12 +2,22 @@ import { ComponentCustomProperties } from 'vue'
 import { Store } from 'vuex'
 
 declare module '@vue/runtime-core' {
-  interface State {
-    image: string
+  interface TextOverlay {
+    name: string;
+    hidden: boolean;
+    text: string;
   }
 
-  // provide typings for `this.$store`
+  interface TextOverlays {
+    [text: string]: TextOverlay;
+  }
+
+  interface State {
+    image: string;
+    text: TextOverlays;
+  }
+
   interface ComponentCustomProperties {
-    $store: Store<State>
+    $store: Store<State>;
   }
 }

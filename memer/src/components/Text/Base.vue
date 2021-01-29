@@ -4,9 +4,11 @@
     <div
       class="overlay"
       :hidden="hidden"
-      :id="'overlay_' + name.toLowerCase()"
+      :id="id"
+      :ref="id"
       contentEditable="true"
       @click="click($event)"
+      @change="change($event)"
     >
       {{ text }}
     </div>
@@ -18,11 +20,20 @@ import { Vue } from "vue-class-component";
 
 export default class Base extends Vue {
   name = "Control";
+  id = "overlay_" + "control";
   hidden = false;
   text = "";
 
   click(e: Event) {
     window.getSelection()!.selectAllChildren(e.target as Node);
+  }
+
+  change() {
+    this.$store.commit("changeText", {
+      name: this.name,
+      hidden: this.hidden,
+      id: this.$refs[this.id],
+    });
   }
 }
 </script>
