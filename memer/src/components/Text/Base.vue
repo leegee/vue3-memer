@@ -8,7 +8,7 @@
       :ref="id"
       contentEditable="true"
       @click="click($event)"
-      @change="change($event)"
+      @change="changeText($event)"
     >
       {{ text }}
     </div>
@@ -20,15 +20,21 @@ import { Vue } from "vue-class-component";
 
 export default class Base extends Vue {
   name = "Control";
-  id = "overlay_" + "control";
+  id = "";
   hidden = false;
   text = "";
+
+  beforeMount() {
+    this.id = "overlay_" + this.name.toLowerCase();
+  }
 
   click(e: Event) {
     window.getSelection()!.selectAllChildren(e.target as Node);
   }
 
-  change() {
+  changeText() {
+    alert(1);
+    console.log("Change text", this.id, this.$refs[this.id]);
     this.$store.commit("changeText", {
       name: this.name,
       hidden: this.hidden,
