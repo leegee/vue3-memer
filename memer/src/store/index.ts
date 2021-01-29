@@ -7,11 +7,16 @@ export default createStore({
     text: {},
   },
   mutations: {
-    changeText(state: State, { name, hidden, text }) {
-      state.text[name] = state.text[name] || {};
-      state.text[name] = {
-        name, hidden, text
-      };
+    setTextStyle(state: State, { id, style }) {
+      state.text[id] = state.text[id] || {};
+      state.text[id].style = style;
+    },
+
+    changeText(state: State, { id, hidden, text }) {
+      state.text[id] = state.text[id] || {};
+      state.text[id].id = id;
+      state.text[id].hidden = hidden;
+      state.text[id].text = text;
     },
 
     changeImage(state: State, src: string) {

@@ -8,7 +8,7 @@
       :ref="id"
       contentEditable="true"
       @click="click($event)"
-      @change="changeText($event)"
+      @input="changeText($event.target.innerText)"
     >
       {{ text }}
     </div>
@@ -17,6 +17,7 @@
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
+import { debounce } from "debounce";
 
 export default class Base extends Vue {
   name = "Control";
@@ -24,21 +25,29 @@ export default class Base extends Vue {
   hidden = false;
   text = "";
 
+  // Set the ID used in DOM (and elsewhere) before DOM render
   beforeMount() {
     this.id = "overlay_" + this.name.toLowerCase();
+  }
+
+  // Store the CSS values for later image rendering
+  mounted() {
+    this.$store.commit("setTextStyle", {
+      id: this.id,
+      style: window.getComputedStyle(this.$refs[this.id] as HTMLElement),
+    });
   }
 
   click(e: Event) {
     window.getSelection()!.selectAllChildren(e.target as Node);
   }
 
-  changeText() {
-    alert(1);
-    console.log("Change text", this.id, this.$refs[this.id]);
+  // TODO debounce, but not really needed...
+  changeText(text: string) {
     this.$store.commit("changeText", {
-      name: this.name,
       hidden: this.hidden,
-      id: this.$refs[this.id],
+      id: this.id,
+      text,
     });
   }
 }

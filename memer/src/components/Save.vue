@@ -26,6 +26,19 @@ export default class Home extends Vue {
     ctx!.drawImage(img, 0, 0);
 
     // Place text
+    Object.keys(this.$store.state.text).forEach((text) => {
+      console.log(
+        this.$store.state.text[text].text,
+        "top:",
+        this.$store.state.text[text].style.top,
+        "bottom:",
+        this.$store.state.text[text].style.bottom,
+        "left:",
+        this.$store.state.text[text].style.left,
+        "right:",
+        this.$store.state.text[text].style.right
+      );
+    });
 
     return canvas.toDataURL("image/png");
   }
