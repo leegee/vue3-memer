@@ -2,13 +2,17 @@ import { ComponentCustomProperties } from 'vue'
 import { Store } from 'vuex'
 
 declare module '@vue/runtime-core' {
+
   interface ComputedStyles {
-    top: string;
-    bottom: string;
-    left: string;
-    right: string;
-    fontSize: string;
-    fontFamily: string;
+    [top: string]: string;
+    [bottom: string]: string;
+    [left: string]: string;
+    [right: string]: string;
+    [fontSize: string]: string;
+    [fontFamily: string]: string;
+    [color: string]: string;
+    [width: string]: string;
+    [height: string]: string;
   }
 
   interface TextOverlay {
@@ -25,6 +29,8 @@ declare module '@vue/runtime-core' {
   interface State {
     image: string;
     text: TextOverlays;
+    width: string;
+    height: string;
   }
 
   interface ComponentCustomProperties {

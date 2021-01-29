@@ -4,9 +4,16 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     image: '',
+    width: '',
+    height: '',
     text: {},
   },
   mutations: {
+    setDimensions(state: State, { width, height }) {
+      state.width = width;
+      state.height = height;
+    },
+
     setTextStyle(state: State, { id, style }) {
       state.text[id] = state.text[id] || {};
       state.text[id].style = {
@@ -16,6 +23,9 @@ export default createStore({
         right: style.right,
         top: style.top,
         bottom: style.bottom,
+        color: style.color,
+        width: style.width,
+        height: style.height,
       };
     },
 

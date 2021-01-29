@@ -36,8 +36,6 @@ export default class Base extends Vue {
       id: this.id,
       style: window.getComputedStyle(this.$refs[this.id] as HTMLElement),
     });
-
-    console.log(window.getComputedStyle(this.$refs[this.id] as HTMLElement));
   }
 
   click(e: Event) {

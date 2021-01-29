@@ -3,6 +3,8 @@
     id="home"
     :style="{
       'background-image': 'url(' + $store.state.image + ')',
+      width: $store.state.width,
+      height: $store.state.height,
     }"
   >
     <DropZone msg="Drop here" v-show="!$store.state.image" />
@@ -24,7 +26,17 @@ import Save from "../components/Save.vue";
     Save,
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  width = "500px";
+  height = "500px";
+
+  beforeMount() {
+    this.$store.commit("setDimensions", {
+      width: this.width,
+      height: this.height,
+    });
+  }
+}
 </script>
 
 <style scoped>
@@ -36,5 +48,11 @@ export default class Home extends Vue {}
   margin-left: calc(-0.5 * var(--meme-height));
   width: var(--meme-width);
   height: var(--meme-height);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1pt solid black;
+  filter: drop-shadow(0pt 4pt 4pt #0009);
 }
 </style>
