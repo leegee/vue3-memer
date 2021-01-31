@@ -5,17 +5,21 @@
 <script lang="ts">
 import { Vue } from "vue-class-component";
 
+const DEBUG = true;
+
 export default class Home extends Vue {
   async save() {
-    const img = document.createElement("img");
-    img.src = await this.composedImage();
-    document.body.appendChild(img);
-
-    // const a = document.createElement("a");
-    // a.href = await this.composedImage();
-    // a.download = "meme.png";
-    // document.body.appendChild(a);
-    // a.click();
+    if (DEBUG) {
+      const img = document.createElement("img");
+      img.src = await this.composedImage();
+      document.body.appendChild(img);
+    } else {
+      const a = document.createElement("a");
+      a.href = await this.composedImage();
+      a.download = "meme.png";
+      document.body.appendChild(a);
+      a.click();
+    }
   }
 
   composedImage() {
@@ -45,7 +49,8 @@ export default class Home extends Vue {
         " " +
         this.$store.state.text[text].style.fontFamily;
 
-      const lineHeight = parseInt(this.$store.state.text[text].style.fontSize); // and...
+      // TODO: Properly either set a value in the CSS and use here, or render to canvas a measure
+      const lineHeight = parseInt(this.$store.state.text[text].style.fontSize) * 1.2;
 
       const dims: {
         [key: string]: number | null;
@@ -70,21 +75,11 @@ export default class Home extends Vue {
         dims.top !== null ? dims.top : this.$store.state.height - dims.height!;
 
       if (text === "overlay_bottom") {
-        console.log("#", y, this.$store.state.height, dims.height, this.$store.state);
         y -= lineHeight;
       }
 
       this.$store.state.text[text].text.split(/[\n\r]/).forEach((lineOfText) => {
-        switch (text) {
-          case "overlay_top":
-            y += lineHeight;
-            console.log("add a bit");
-            break;
-          case "overlay_bottom":
-            y -= lineHeight;
-            console.log("subtract a bit", y);
-            break;
-        }
+        y += lineHeight;
 
         console.log(text, {
           color: ctx.fillStyle,
