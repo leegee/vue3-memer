@@ -27,13 +27,11 @@ import Save from "../components/Save.vue";
   },
 })
 export default class Home extends Vue {
-  width = "500px";
-  height = "500px";
-
   beforeMount() {
+    const computed = getComputedStyle(document.documentElement);
     this.$store.commit("setDimensions", {
-      width: this.width,
-      height: this.height,
+      width: parseInt(computed.getPropertyValue("--meme-width")),
+      height: parseInt(computed.getPropertyValue("--meme-height")),
     });
   }
 }
