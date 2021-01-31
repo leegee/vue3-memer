@@ -56,7 +56,7 @@ export default class Home extends Vue {
       dims.top = this.$store.state.text[text].style.top;
       dims.bottom = this.$store.state.text[text].style.bottom;
       dims.width = this.$store.state.text[text].style.width;
-      dims.width = this.$store.state.text[text].style.width;
+      dims.height = this.$store.state.text[text].style.height;
 
       const width =
         this.$store.state.text[text].style.width -
@@ -69,25 +69,32 @@ export default class Home extends Vue {
         // eslint-disable-next-line
         dims.top !== null ? dims.top : this.$store.state.height - dims.height!;
 
-      switch (text) {
-        case "overlay_top":
-          y += lineHeight / 2;
-          console.log("add a bit");
-          break;
-        case "overlay_bottom":
-          y -= lineHeight / 2;
-          console.log("subtract a bit");
-          break;
+      if (text === "overlay_bottom") {
+        console.log("#", y, this.$store.state.height, dims.height, this.$store.state);
+        y -= lineHeight;
       }
 
-      console.log(text, {
-        color: ctx.fillStyle,
-        text: this.$store.state.text[text].text,
-        x,
-        y,
-      });
+      this.$store.state.text[text].text.split(/[\n\r]/).forEach((lineOfText) => {
+        switch (text) {
+          case "overlay_top":
+            y += lineHeight;
+            console.log("add a bit");
+            break;
+          case "overlay_bottom":
+            y -= lineHeight;
+            console.log("subtract a bit", y);
+            break;
+        }
 
-      ctx.fillText(this.$store.state.text[text].text, x, y);
+        console.log(text, {
+          color: ctx.fillStyle,
+          text: this.$store.state.text[text].text,
+          x,
+          y,
+        });
+
+        ctx.fillText(lineOfText, x, y);
+      });
     });
 
     return canvas.toDataURL("image/png");

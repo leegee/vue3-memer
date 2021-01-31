@@ -30,14 +30,6 @@ export default class Base extends Vue {
     this.id = "overlay_" + this.name.toLowerCase();
   }
 
-  // Store the CSS values for later image rendering
-  mounted() {
-    this.$store.commit("setTextStyle", {
-      id: this.id,
-      style: window.getComputedStyle(this.$refs[this.id] as HTMLElement),
-    });
-  }
-
   click(e: Event) {
     const s = window.getSelection();
     if (s) {
@@ -56,6 +48,7 @@ export default class Base extends Vue {
     this.$store.commit("changeText", {
       hidden: this.hidden,
       id: this.id,
+      style: window.getComputedStyle(this.$refs[this.id] as HTMLElement),
       text,
     });
   }
