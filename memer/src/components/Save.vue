@@ -23,8 +23,8 @@ export default class Home extends Vue {
     img.src = this.$store.state.image;
 
     const canvas = document.createElement("canvas");
-    canvas.width = parseInt(this.$store.state.width);
-    canvas.height = parseInt(this.$store.state.height);
+    canvas.width = this.$store.state.width;
+    canvas.height = this.$store.state.height;
 
     const ctx = canvas.getContext("2d");
 
@@ -34,7 +34,6 @@ export default class Home extends Vue {
 
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-    // Place text
     Object.keys(this.$store.state.text).forEach((text) => {
       if (this.$store.state.text[text].text === undefined) return;
 
@@ -52,19 +51,23 @@ export default class Home extends Vue {
         [key: string]: number | null;
       } = {};
 
-      ["left", "right", "top", "bottom", "width", "height"].forEach((i) => {
-        dims[i] =
-          this.$store.state.text[text].style[i] === "auto"
-            ? null
-            : parseInt(this.$store.state.text[text].style[i]);
-      });
+      dims.left = this.$store.state.text[text].style.left;
+      dims.right = this.$store.state.text[text].style.right;
+      dims.top = this.$store.state.text[text].style.top;
+      dims.bottom = this.$store.state.text[text].style.bottom;
+      dims.width = this.$store.state.text[text].style.width;
+      dims.width = this.$store.state.text[text].style.width;
 
-      // let x = dims.left !== null ? dims.left : parseInt(this.$store.state!.width) - dims.right!;
-      const x = parseInt(this.$store.state.width) / 2;
+      const width =
+        this.$store.state.text[text].style.width -
+        (this.$store.state.text[text].style.left || 0) -
+        (this.$store.state.text[text].style.right || 0);
+
+      const x = (this.$store.state.text[text].style.left || 0) + width / 2;
 
       let y =
         // eslint-disable-next-line
-        dims.top !== null ? dims.top : parseInt(this.$store.state.height) - dims.height!;
+        dims.top !== null ? dims.top : this.$store.state.height - dims.height!;
 
       switch (text) {
         case "overlay_top":

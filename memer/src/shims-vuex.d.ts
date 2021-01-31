@@ -4,23 +4,23 @@ import { Store } from 'vuex'
 declare module '@vue/runtime-core' {
 
   interface ComputedStyles {
-    [top: string]: string;
-    [bottom: string]: string;
-    [left: string]: string;
-    [right: string]: string;
-    [fontSize: string]: string;
-    [fontFamily: string]: string;
-    [color: string]: string;
-    [width: string]: string;
-    [height: string]: string;
-    [textAlign: string]: string;
+    fontSize: string;
+    fontFamily: string;
+    textAlign: string;
+    color: string;
+    top: number | null;
+    bottom: number | null;
+    left: number | null;
+    right: number | null;
+    width: number;
+    height: number;
   }
 
   interface TextOverlay {
     id: string;
     hidden: boolean;
     text: string;
-    style: ComputedStyles;// CSSStyleDeclaration 
+    style: ComputedStyles;
   }
 
   interface TextOverlays {
@@ -30,8 +30,8 @@ declare module '@vue/runtime-core' {
   interface State {
     image: string;
     text: TextOverlays;
-    width: string;
-    height: string;
+    width: number;
+    height: number;
   }
 
   interface ComponentCustomProperties {
