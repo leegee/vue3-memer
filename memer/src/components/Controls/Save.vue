@@ -99,8 +99,6 @@ export default class Home extends Vue {
 
 <style scoped>
 #save {
-  position: absolute;
-  bottom: -5em;
   text-align: center;
   cursor: pointer;
 }

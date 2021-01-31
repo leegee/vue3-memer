@@ -9,7 +9,7 @@
   >
     <DropZone msg="Drop here" v-show="!$store.state.image" />
     <Text v-show="$store.state.image" />
-    <Save />
+    <Controls />
   </div>
 </template>
 
@@ -17,13 +17,13 @@
 import { Options, Vue } from "vue-class-component";
 import DropZone from "../components/DropZone.vue";
 import Text from "../components/Text.vue";
-import Save from "../components/Save.vue";
+import Controls from "../components/Controls.vue";
 
 @Options({
   components: {
     DropZone,
     Text,
-    Save,
+    Controls,
   },
 })
 export default class Home extends Vue {
@@ -40,9 +40,9 @@ export default class Home extends Vue {
 <style scoped>
 #home {
   position: absolute;
-  top: 50%;
+  /* top: 50%;
+  margin-top: calc(-0.5 * var(--dropzone-height)); */
   left: 50%;
-  margin-top: calc(-0.5 * var(--dropzone-height));
   margin-left: calc(-0.5 * var(--dropzone-width));
   width: var(--dropzone-width);
   height: var(--dropzone-height);
