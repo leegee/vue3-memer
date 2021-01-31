@@ -29,6 +29,7 @@ declare module '@vue/runtime-core' {
 
   interface State {
     image: string;
+    imageOriginal: string;
     text: TextOverlays;
     width: number;
     height: number;

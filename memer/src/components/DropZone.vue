@@ -59,7 +59,15 @@ export default class DropZone extends Vue {
   }
 
   setImage(src: string) {
-    this.$store.commit("changeImage", src);
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
+      this.$store.commit("setImage", {
+        src,
+        width: img.width,
+        height: img.height,
+      });
+    };
   }
 }
 </script>

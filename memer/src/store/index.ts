@@ -4,6 +4,7 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     image: "",
+    imageOriginal: "",
     width: 0,
     height: 0,
     text: {},
@@ -35,8 +36,11 @@ export default createStore({
       };
     },
 
-    changeImage(state: State, src: string) {
+    setImage(state: State, { src, width, height }) {
       state.image = src;
+      state.imageOriginal = src;
+      state.width = width;
+      state.height = height;
     },
   },
   actions: {
