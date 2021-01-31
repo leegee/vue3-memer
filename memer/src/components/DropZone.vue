@@ -28,9 +28,7 @@ export default class DropZone extends Vue {
 
   mounted() {
     this.reader.onload = (e: ProgressEvent) => {
-      if (e.type.match(/image/)) {
-        this.setImage((e.target as FileReader).result as string);
-      }
+      this.setImage((e.target as FileReader).result as string);
     };
   }
 
@@ -46,14 +44,18 @@ export default class DropZone extends Vue {
     if (e.dataTransfer !== null) {
       (this.$refs.dropzone as HTMLElement).classList.remove("over");
       const files = e.dataTransfer.files;
-      this.reader.readAsDataURL(files[0]);
+      if (files[0].type.match(/image/)) {
+        this.reader.readAsDataURL(files[0]);
+      }
     }
   }
 
   onFileChosen(e: Event) {
     // eslint-disable-next-line
     const file = (e.target! as HTMLInputElement).files![0];
-    this.reader.readAsDataURL(file);
+    if (file.type.match(/image/)) {
+      this.reader.readAsDataURL(file);
+    }
   }
 
   setImage(src: string) {
