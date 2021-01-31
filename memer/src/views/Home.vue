@@ -30,8 +30,8 @@ export default class Home extends Vue {
   beforeMount() {
     const computed = getComputedStyle(document.documentElement);
     this.$store.commit("setDimensions", {
-      width: parseInt(computed.getPropertyValue("--meme-width")),
-      height: parseInt(computed.getPropertyValue("--meme-height")),
+      width: parseInt(computed.getPropertyValue("--dropzone-width")),
+      height: parseInt(computed.getPropertyValue("--dropzone-height")),
     });
   }
 }
@@ -42,10 +42,10 @@ export default class Home extends Vue {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: calc(-0.5 * var(--meme-height));
-  margin-left: calc(-0.5 * var(--meme-height));
-  width: var(--meme-width);
-  height: var(--meme-height);
+  margin-top: calc(-0.5 * var(--dropzone-height));
+  margin-left: calc(-0.5 * var(--dropzone-width));
+  width: var(--dropzone-width);
+  height: var(--dropzone-height);
 
   background-size: cover;
   background-position: center;

@@ -62,7 +62,7 @@ export default class Base extends Vue {
 }
 .control {
   position: absolute;
-  top: calc(50% + (0.5 * var(--meme-height)));
+  top: calc(50% + (0.5 * var(--dropzone-height)));
   left: 0;
   width: 100%;
   margin-top: 32pt;
@@ -80,7 +80,7 @@ export default class Base extends Vue {
 
 .overlay {
   position: absolute;
-  width: var(--meme-width);
+  width: var(--dropzone-width);
   font-size: 48px;
   color: black;
   text-stroke-color: white;
