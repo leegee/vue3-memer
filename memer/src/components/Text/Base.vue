@@ -8,7 +8,7 @@
       :ref="id"
       contentEditable="true"
       @click="click($event)"
-      @input="changeText($event.target.innerText)"
+      @input="changeText($event.target)"
     >
       {{ text }}
     </div>
@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
-import { debounce } from "debounce";
+// import { debounce } from "debounce";
 
 export default class Base extends Vue {
   name = "Control";
@@ -39,11 +39,20 @@ export default class Base extends Vue {
   }
 
   click(e: Event) {
-    window.getSelection()!.selectAllChildren(e.target as Node);
+    const s = window.getSelection();
+    if (s) {
+      s.selectAllChildren(e.target as Node);
+    }
   }
 
   // TODO debounce, but not really needed...
-  changeText(text: string) {
+  changeText(node: HTMLElement) {
+    // const text = [...node.children].reduce((prev, curr, i) => {
+    //   return (prev || "") + (curr as HTMLElement).innerText + "\n";
+    // }, "");
+
+    const text = node.innerText;
+
     this.$store.commit("changeText", {
       hidden: this.hidden,
       id: this.id,
@@ -76,11 +85,17 @@ export default class Base extends Vue {
 
   display: none;
 }
+
 .overlay {
   position: absolute;
   width: var(--meme-width);
   background-color: #fff6;
   color: black;
   font-size: 48px;
+}
+
+.overlay > * {
+  background: pink;
+  display: inline;
 }
 </style>

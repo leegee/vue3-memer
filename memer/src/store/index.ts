@@ -3,9 +3,9 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
-    image: '',
-    width: '',
-    height: '',
+    image: "",
+    width: "",
+    height: "",
     text: {},
   },
   mutations: {
@@ -15,6 +15,7 @@ export default createStore({
     },
 
     setTextStyle(state: State, { id, style }) {
+      console.log(style);
       state.text[id] = state.text[id] || {};
       state.text[id].style = {
         fontFamily: style["font-family"],
@@ -26,6 +27,7 @@ export default createStore({
         color: style.color,
         width: style.width,
         height: style.height,
+        textAlign: style.textAlign,
       };
     },
 

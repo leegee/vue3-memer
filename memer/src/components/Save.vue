@@ -7,11 +7,15 @@ import { Vue } from "vue-class-component";
 
 export default class Home extends Vue {
   async save() {
-    const a = document.createElement("a");
-    a.href = await this.composedImage();
-    a.download = "meme.png";
-    document.body.appendChild(a);
-    a.click();
+    const img = document.createElement("img");
+    img.src = await this.composedImage();
+    document.body.appendChild(img);
+
+    // const a = document.createElement("a");
+    // a.href = await this.composedImage();
+    // a.download = "meme.png";
+    // document.body.appendChild(a);
+    // a.click();
   }
 
   composedImage() {
@@ -28,15 +32,21 @@ export default class Home extends Vue {
       throw new Error("Well, holy moly");
     }
 
-    ctx!.drawImage(img, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
     // Place text
     Object.keys(this.$store.state.text).forEach((text) => {
+      if (this.$store.state.text[text].text === undefined) return;
+
+      ctx.textBaseline = "middle";
+      ctx.textAlign = "center";
       ctx.fillStyle = this.$store.state.text[text].style.color;
       ctx.font =
         this.$store.state.text[text].style.fontSize +
         " " +
         this.$store.state.text[text].style.fontFamily;
+
+      const lineHeight = parseInt(this.$store.state.text[text].style.fontSize); // and...
 
       const dims: {
         [key: string]: number | null;
@@ -49,12 +59,30 @@ export default class Home extends Vue {
             : parseInt(this.$store.state.text[text].style[i]);
       });
 
-      const x =
-        dims.left !== null ? dims.left : parseInt(this.$store.state!.width) - dims.right!;
-      const y =
+      // let x = dims.left !== null ? dims.left : parseInt(this.$store.state!.width) - dims.right!;
+      const x = parseInt(this.$store.state.width) / 2;
+
+      let y =
+        // eslint-disable-next-line
         dims.top !== null ? dims.top : parseInt(this.$store.state.height) - dims.height!;
 
-      console.log(ctx.fillStyle, this.$store.state.text[text].text, x, y);
+      switch (text) {
+        case "overlay_top":
+          y += lineHeight / 2;
+          console.log("add a bit");
+          break;
+        case "overlay_bottom":
+          y -= lineHeight / 2;
+          console.log("subtract a bit");
+          break;
+      }
+
+      console.log(text, {
+        color: ctx.fillStyle,
+        text: this.$store.state.text[text].text,
+        x,
+        y,
+      });
 
       ctx.fillText(this.$store.state.text[text].text, x, y);
     });

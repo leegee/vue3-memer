@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
     [color: string]: string;
     [width: string]: string;
     [height: string]: string;
+    [textAlign: string]: string;
   }
 
   interface TextOverlay {
