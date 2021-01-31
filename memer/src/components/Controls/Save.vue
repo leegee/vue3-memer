@@ -101,5 +101,7 @@ export default class Home extends Vue {
 #save {
   text-align: center;
   cursor: pointer;
+  padding: 1rem;
+  font-size: 32pt;
 }
 </style>

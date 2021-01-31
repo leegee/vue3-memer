@@ -9,7 +9,7 @@
   >
     <DropZone msg="Drop here" v-show="!$store.state.image" />
     <Text v-show="$store.state.image" />
-    <Controls />
+    <Controls v-show="$store.state.image" />
   </div>
 </template>
 
@@ -46,11 +46,5 @@ export default class Home extends Vue {
   margin-left: calc(-0.5 * var(--dropzone-width));
   width: var(--dropzone-width);
   height: var(--dropzone-height);
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 1pt solid black;
-  filter: drop-shadow(0pt 4pt 4pt #0009);
 }
 </style>

@@ -2,9 +2,9 @@
 
 ## TODO
 
-* Maintain image aspect aspect ratio on save - resize image on load or use data from CSS on save
 * All user to change image size?
-* Font options
+* More font options
+* Add some web fonts
 * Different Layouts
 
 

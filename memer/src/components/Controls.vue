@@ -22,7 +22,7 @@ export default class Controls extends Vue {}
 <style scoped lang="scss">
 #controls {
   position: absolute;
-  width: var(--dropzone-width);
+  width: 100%;
   top: calc(var(--dropzone-height) + 2em);
 }
 </style>

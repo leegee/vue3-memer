@@ -3,6 +3,7 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
+    fontClass: "",
     image: "",
     imageOriginal: "",
     width: 0,
@@ -42,6 +43,10 @@ export default createStore({
       state.width = width;
       state.height = height;
     },
+
+    setFont(state: State, fontClass) {
+      state.fontClass = fontClass;
+    }
   },
   actions: {
   },
