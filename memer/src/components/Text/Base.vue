@@ -75,16 +75,19 @@ export default class Base extends Vue {
   color: white;
   font-size: 14pt;
   padding: 0.3em 0.6em;
-
   display: none;
 }
 
 .overlay {
   position: absolute;
   width: var(--meme-width);
-  background-color: #fff6;
-  color: black;
   font-size: 48px;
+  color: black;
+  text-stroke-color: white;
+  text-stroke-width: 2px;
+  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-width: 2px;
+  font-weight: bold;
 }
 
 .overlay > * {
