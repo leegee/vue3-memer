@@ -109,15 +109,6 @@ export default class Home extends Vue {
       this.$store.state.text[text].text.split(/[\n\r]/).forEach((lineOfText) => {
         y += lineHeight;
 
-        console.log(text, {
-          "left was": this.$store.state.text[text].style.left,
-          width,
-          color: ctx.fillStyle,
-          text: this.$store.state.text[text].text,
-          x,
-          y,
-        });
-
         ctx.fillText(lineOfText, Math.floor(x), Math.floor(y));
       });
     });
