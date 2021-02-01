@@ -1,6 +1,7 @@
 <template>
-  <div id="controls">
+  <div id="settings">
     <FontSelect />
+    <FontSize />
     <Save />
   </div>
 </template>
@@ -9,20 +10,20 @@
 import { Vue, Options } from "vue-class-component";
 import Save from "../components/Controls/Save.vue";
 import FontSelect from "../components/Controls/FontSelect.vue";
+import FontSize from "../components/Controls/FontSize.vue";
 
 @Options({
   components: {
     FontSelect,
+    FontSize,
     Save,
   },
 })
-export default class Controls extends Vue {}
+export default class Settings extends Vue {}
 </script>
 
 <style scoped lang="scss">
-#controls {
-  position: absolute;
+#settings {
   width: 100%;
-  top: calc(var(--dropzone-height) + 2em);
 }
 </style>

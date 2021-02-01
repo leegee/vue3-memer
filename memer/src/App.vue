@@ -1,15 +1,15 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/" v-show="$store.state.image">Meme</router-link> |
+    <router-link to="/settings" v-show="$store.state.image">Settings</router-link>
   </div>
   <router-view />
 </template>
 
 <style lang="scss">
 #app {
-  --dropzone-width: 500px;
-  --dropzone-height: 500px;
+  --meme-width: 500px;
+  --meme-height: 500px;
 
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -50,6 +50,28 @@
   text-stroke-width: 1px;
   -webkit-text-stroke-width: 1px;
   font-weight: bold;
+}
+
+.smallest {
+  font-size: 14pt;
+}
+.small {
+  font-size: 18pt;
+}
+.normal {
+  font-size: 24pt;
+}
+.medium {
+  font-size: 32pt;
+}
+.large {
+  font-size: 38pt;
+}
+.larger {
+  font-size: 48pt;
+}
+.huge {
+  font-size: 64pt;
 }
 
 #nav {

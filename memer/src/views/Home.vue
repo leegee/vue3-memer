@@ -9,7 +9,6 @@
   >
     <DropZone msg="Drop here" v-show="!$store.state.image" />
     <Text v-show="$store.state.image" />
-    <Controls v-show="$store.state.image" />
   </div>
 </template>
 
@@ -17,21 +16,19 @@
 import { Options, Vue } from "vue-class-component";
 import DropZone from "../components/DropZone.vue";
 import Text from "../components/Text.vue";
-import Controls from "../components/Controls.vue";
 
 @Options({
   components: {
     DropZone,
     Text,
-    Controls,
   },
 })
 export default class Home extends Vue {
   beforeMount() {
     const computed = getComputedStyle(document.documentElement);
     this.$store.commit("setDimensions", {
-      width: parseInt(computed.getPropertyValue("--dropzone-width")),
-      height: parseInt(computed.getPropertyValue("--dropzone-height")),
+      width: parseInt(computed.getPropertyValue("--meme-width")),
+      height: parseInt(computed.getPropertyValue("--meme-height")),
     });
   }
 }
@@ -41,10 +38,14 @@ export default class Home extends Vue {
 #home {
   position: absolute;
   /* top: 50%;
-  margin-top: calc(-0.5 * var(--dropzone-height)); */
+  margin-top: calc(-0.5 * var(--meme-height)); */
   left: 50%;
-  margin-left: calc(-0.5 * var(--dropzone-width));
-  width: var(--dropzone-width);
-  height: var(--dropzone-height);
+  margin-left: calc(-0.5 * var(--meme-width));
+  width: var(--meme-width);
+  height: var(--meme-height);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1pt solid black;
 }
 </style>

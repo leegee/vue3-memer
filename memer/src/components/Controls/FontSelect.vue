@@ -1,13 +1,13 @@
 <template>
   <div id="fonts">
-    <span
+    <div
       v-for="fontClass in fontClasses"
       :key="fontClass"
       :class="fontClass"
       @click="click(fontClass)"
     >
       {{ fontClass }}
-    </span>
+    </div>
   </div>
 </template>
 
@@ -25,14 +25,14 @@ export default class FontSelect extends Vue {
 
 <style scoped lang="scss">
 #fonts {
-  overflow: auto;
   padding: 0 1rem;
   color: black;
-  font-size: 48pt;
+  font-size: 32pt;
 }
 
-#fonts span {
+#fonts div {
   vertical-align: baseline;
   margin: 0 0.5rem;
+  cursor: pointer;
 }
 </style>

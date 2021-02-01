@@ -1,5 +1,6 @@
 {
   "name": "memer",
+  "description": "simple memer",
   "version": "0.1.0",
   "private": true,
   "scripts": {

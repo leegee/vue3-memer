@@ -1,5 +1,8 @@
 <template>
-  <div id="text-layers" :class="$store.state.fontClass">
+  <div
+    id="text-layers"
+    :class="$store.state.fontClass + ' ' + $store.state.fontSizeClass"
+  >
     <component v-for="layer in layers" :is="layer" :key="layer" />
   </div>
 </template>
@@ -27,10 +30,5 @@ export default class Text extends Vue {
   left: 0;
   width: 100%;
   height: 100%;
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 1pt solid black;
 }
 </style>
