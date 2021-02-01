@@ -8,6 +8,7 @@ export default createStore({
     fontWeightClass: "bold-weight",
     imageSaveSize: "original",
     image: "",
+    minSize: 640,
     imageOriginal: "",
     width: 0,
     height: 0,

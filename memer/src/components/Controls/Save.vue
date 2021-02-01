@@ -10,15 +10,19 @@ const DEBUG = true;
 export const imageSaveSizes = ["original", "640", "1024", "2048"];
 
 export function getScaledSize(
-  size: string,
+  size: string | number,
   width: number,
-  height: number
+  height: number,
+  minSize?: number
 ): [number, number] {
   if (size === "original") {
     return [width, height];
   }
-  const target = parseInt(size);
-  const max = width > height ? width : height;
+  const target = parseInt(size as string);
+  let max = width > height ? width : height;
+  if (minSize && max < minSize) {
+    max = minSize;
+  }
   const ratio = width / max > height / max ? width / target : height / target;
   const rwidth = width / ratio;
   const rheight = height / ratio;
@@ -58,15 +62,6 @@ export default class Home extends Vue {
       this.$store.state.height
     );
 
-    console.log(
-      "Size: ",
-      this.$store.state.imageSaveSize,
-      this.$store.state.width,
-      this.$store.state.height,
-      width,
-      height
-    );
-
     canvas.width = width;
     canvas.height = height;
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
@@ -96,7 +91,12 @@ export default class Home extends Vue {
       dims.width = this.$store.state.text[text].style.width;
       dims.height = this.$store.state.text[text].style.height;
 
-      const width = this.$store.state.text[text].style.width; //  - (this.$store.state.text[text].style.left || 0) - (this.$store.state.text[text].style.right || 0);
+      const width =
+        this.$store.state.text[text].style.width -
+        (this.$store.state.text[text].style.left || 0) -
+        (this.$store.state.text[text].style.right || 0);
+
+      console.log("Width:", width, this.$store.state.text[text].style.width);
 
       const x = (this.$store.state.text[text].style.left || 0) + width / 2;
 
