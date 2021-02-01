@@ -71,7 +71,7 @@ export default class Home extends Vue {
 
       ctx.textBaseline = "middle";
       ctx.textAlign = "center";
-      ctx.fillStyle = this.$store.state.text[text].style.color;
+      ctx.fillStyle = this.$store.state.fontColor; // text[text].style.color;
       ctx.font =
         this.$store.state.text[text].style.fontSize +
         " " +
@@ -110,6 +110,12 @@ export default class Home extends Vue {
         y += lineHeight;
 
         ctx.fillText(lineOfText, Math.floor(x), Math.floor(y));
+
+        if (this.$store.state.text[text].style.strokeWidth > 0) {
+          ctx.strokeStyle = this.$store.state.text[text].style.strokeColor;
+          ctx.lineWidth = this.$store.state.text[text].style.strokeWidth;
+          ctx.strokeText(lineOfText, Math.floor(x), Math.floor(y));
+        }
       });
     });
 

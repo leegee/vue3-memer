@@ -1,5 +1,5 @@
 <template>
-  <div class="control_container" :id="'container_' + name.toLowerCase()">
+  <div class="text_container" :id="'container_' + name.toLowerCase()">
     <div
       class="overlay"
       :hidden="hidden"
@@ -58,7 +58,7 @@ export default class Base extends Vue {
 </script>
 
 <style scoped lang="scss">
-.control_container {
+.text_container {
   width: 100%;
   height: 100%;
 }
@@ -66,10 +66,5 @@ export default class Base extends Vue {
 .overlay {
   position: absolute;
   width: var(--meme-width);
-}
-
-.overlay > * {
-  background: pink;
-  display: inline;
 }
 </style>
