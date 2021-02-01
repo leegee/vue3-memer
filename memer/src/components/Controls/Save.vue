@@ -9,6 +9,20 @@ const DEBUG = true;
 
 export const imageSaveSizes = ["original", "640", "1024", "2048"];
 
+export function getScaledSize(
+  size: string,
+  width: number,
+  height: number
+): [number, number] {
+  if (size === "original") {
+    return [width, height];
+  }
+  const target = parseInt(size);
+  const max = width > height ? width : height;
+  const ratio = width / max > height / max ? width / target : height / target;
+  return [width / ratio, height / ratio];
+}
+
 export default class Home extends Vue {
   async save() {
     if (DEBUG) {
@@ -36,10 +50,14 @@ export default class Home extends Vue {
       throw new Error("Well, holy moly");
     }
 
-    console.log("**********", this.$store.state.imageSaveSize);
+    const [width, height] = getScaledSize(
+      this.$store.state.imageSaveSize,
+      this.$store.state.width,
+      this.$store.state.height
+    );
 
-    canvas.width = this.$store.state.width;
-    canvas.height = this.$store.state.height;
+    canvas.width = width;
+    canvas.height = height;
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
     Object.keys(this.$store.state.text).forEach((text) => {
