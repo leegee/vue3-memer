@@ -2,9 +2,6 @@
 
 ## TODO
 
-* All user to change image size?
-* More font options
-* Add some web fonts
 * Different Layouts
 
 
