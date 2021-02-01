@@ -96,14 +96,6 @@ export default class Home extends Vue {
         (this.$store.state.text[text].style.left || 0) -
         (this.$store.state.text[text].style.right || 0);
 
-      console.log(
-        "Left, comp width, Width, Right",
-        this.$store.state.text[text].style.left,
-        this.$store.state.text[text].style.right,
-        width,
-        this.$store.state.text[text].style.width
-      );
-
       const x = (this.$store.state.text[text].style.left || 0) + width / 2;
 
       let y =
