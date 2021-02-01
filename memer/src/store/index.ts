@@ -7,6 +7,7 @@ export default createStore({
     fontSizeClass: "large",
     fontWeightClass: "bold-weight",
     imageSaveSize: "original",
+    fontColor: "#000000",
     image: "",
     minSize: 0,
     imageOriginal: "",
@@ -68,6 +69,10 @@ export default createStore({
 
     setFontWeightClass(state: State, fontWeightClass: string) {
       state.fontWeightClass = fontWeightClass;
+    },
+
+    setFontColor(state: State, fontColor: string) {
+      state.fontColor = fontColor;
     },
 
   },

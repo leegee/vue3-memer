@@ -35,6 +35,7 @@ declare module '@vue/runtime-core' {
     fontWeightClass: string;
     imageSaveSize: string;
     minSize: number;
+    fontColor: string;
     text: TextOverlays;
     width: number;
     height: number;

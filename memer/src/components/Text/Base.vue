@@ -66,7 +66,6 @@ export default class Base extends Vue {
 .overlay {
   position: absolute;
   width: var(--meme-width);
-  color: black;
 }
 
 .overlay > * {
