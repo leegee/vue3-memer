@@ -1,10 +1,26 @@
 <template>
-  <div id="nav">
-    <router-link to="/" v-show="$store.state.image">Meme</router-link> |
-    <router-link to="/settings" v-show="$store.state.image">Settings</router-link>
+  <div ref="app">
+    <div id="nav">
+      <router-link to="/" v-show="$store.state.image">Meme</router-link> |
+      <router-link to="/settings" v-show="$store.state.image">Settings</router-link>
+    </div>
+    <router-view />
   </div>
-  <router-view />
 </template>
+
+<script lang="ts">
+import { Vue } from "vue-class-component";
+
+export default class App extends Vue {
+  mounted() {
+    const computed = window.getComputedStyle(this.$refs.app);
+    this.$store.commit("setDimensions", {
+      width: parseInt(computed.getPropertyValue("--meme-width")),
+      height: parseInt(computed.getPropertyValue("--meme-height")),
+    });
+  }
+}
+</script>
 
 <style>
 @font-face {

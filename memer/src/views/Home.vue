@@ -3,8 +3,8 @@
     id="home"
     :style="{
       'background-image': 'url(' + $store.state.image + ')',
-      width: $store.state.width,
-      height: $store.state.height,
+      width: $store.state.width + 'px',
+      height: $store.state.height + 'px',
     }"
   >
     <DropZone msg="Drop here" v-show="!$store.state.image" />
@@ -23,15 +23,7 @@ import Text from "../components/Text.vue";
     Text,
   },
 })
-export default class Home extends Vue {
-  beforeMount() {
-    const computed = getComputedStyle(document.documentElement);
-    this.$store.commit("setDimensions", {
-      width: parseInt(computed.getPropertyValue("--meme-width")),
-      height: parseInt(computed.getPropertyValue("--meme-height")),
-    });
-  }
-}
+export default class Home extends Vue {}
 </script>
 
 <style scoped>

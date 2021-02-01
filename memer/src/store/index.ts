@@ -15,8 +15,9 @@ export default createStore({
   },
   mutations: {
     setDimensions(state: State, { width, height }) {
-      state.width = parseInt(width);
-      state.height = parseInt(height);
+      console.log('setDimensions', width, height);
+      state.width = width;
+      state.height = height;
     },
 
     changeText(state: State, { id, hidden, style, text }) {
@@ -48,6 +49,7 @@ export default createStore({
     },
 
     setImage(state: State, { src, width, height }) {
+      console.log('setImage', width, height);
       state.image = src;
       state.imageOriginal = src;
       state.width = width;

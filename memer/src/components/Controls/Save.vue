@@ -58,6 +58,15 @@ export default class Home extends Vue {
       this.$store.state.height
     );
 
+    console.log(
+      "Size: ",
+      this.$store.state.imageSaveSize,
+      this.$store.state.width,
+      this.$store.state.height,
+      width,
+      height
+    );
+
     canvas.width = width;
     canvas.height = height;
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
