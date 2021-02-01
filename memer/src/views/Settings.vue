@@ -3,6 +3,7 @@
     <FontSelect />
     <FontSize />
     <FontWeight />
+    <ImageSize />
     <Save />
   </div>
 </template>
@@ -13,12 +14,14 @@ import Save from "../components/Controls/Save.vue";
 import FontSelect from "../components/Controls/FontSelect.vue";
 import FontSize from "../components/Controls/FontSize.vue";
 import FontWeight from "../components/Controls/FontWeight.vue";
+import ImageSize from "../components/Controls/ImageSize.vue";
 
 @Options({
   components: {
     FontSelect,
     FontSize,
     FontWeight,
+    ImageSize,
     Save,
   },
 })

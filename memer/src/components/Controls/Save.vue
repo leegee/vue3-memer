@@ -7,6 +7,8 @@ import { Vue } from "vue-class-component";
 
 const DEBUG = true;
 
+export const imageSaveSizes = ["original", "640", "1024", "2048"];
+
 export default class Home extends Vue {
   async save() {
     if (DEBUG) {

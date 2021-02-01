@@ -19,7 +19,6 @@ export default class FontSize extends Vue {
   fontSizeClasses = ["smallest", "small", "normal", "medium", "large", "larger", "huge"];
 
   change(fontSizeClass: string) {
-    console.log("change ", fontSizeClass);
     this.$store.commit("setFontSizeClass", fontSizeClass);
   }
 }

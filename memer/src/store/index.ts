@@ -6,6 +6,7 @@ export default createStore({
     fontClass: "impact",
     fontSizeClass: "large",
     fontWeightClass: "bold-weight",
+    imageSaveSize: "original",
     image: "",
     imageOriginal: "",
     width: 0,
@@ -37,6 +38,10 @@ export default createStore({
         width: parseInt(style.width),
         height: parseInt(style.height),
       };
+    },
+
+    setImageSaveSize(state: State, imageSaveSize: string) {
+      state.imageSaveSize = imageSaveSize;
     },
 
     setImage(state: State, { src, width, height }) {
