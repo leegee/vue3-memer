@@ -8,7 +8,7 @@ export default createStore({
     fontWeightClass: "bold-weight",
     imageSaveSize: "original",
     image: "",
-    minSize: 640,
+    minSize: 0,
     imageOriginal: "",
     width: 0,
     height: 0,
@@ -19,6 +19,7 @@ export default createStore({
       console.log('setDimensions', width, height);
       state.width = width;
       state.height = height;
+      state.minSize = width > height ? width : height;
     },
 
     changeText(state: State, { id, hidden, style, text }) {

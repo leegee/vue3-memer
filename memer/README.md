@@ -2,8 +2,9 @@
 
 ## TODO
 
+* Fix centering in readiness for ....
 * Different Layouts
-
+* Move resize from Save to lib
 
 ## Project setup
 ```
