@@ -5,7 +5,7 @@
 <script lang="ts">
 import { Vue } from "vue-class-component";
 
-const DEBUG = true;
+const DEBUG = false;
 
 export const imageSaveSizes = ["original", "640", "1024", "2048"];
 

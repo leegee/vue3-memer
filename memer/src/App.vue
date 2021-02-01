@@ -29,7 +29,6 @@
   -webkit-text-stroke-color: white;
   text-stroke-width: 1px;
   -webkit-text-stroke-width: 1px;
-  font-weight: bold;
 }
 .times {
   font-family: "Times New Roman", Times, serif;
@@ -37,7 +36,6 @@
   -webkit-text-stroke-color: white;
   text-stroke-width: 1px;
   -webkit-text-stroke-width: 1px;
-  font-weight: bold;
 }
 .impact {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -45,7 +43,6 @@
   -webkit-text-stroke-color: white;
   text-stroke-width: 3px;
   -webkit-text-stroke-width: 3px;
-  font-weight: bold;
 }
 .system {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
@@ -54,7 +51,13 @@
   -webkit-text-stroke-color: white;
   text-stroke-width: 1px;
   -webkit-text-stroke-width: 1px;
-  font-weight: bold;
+}
+.comic {
+  font-family: "Comic Sans MS", "Comic Sans MS", cursive;
+  text-stroke-color: white;
+  -webkit-text-stroke-color: white;
+  text-stroke-width: 1px;
+  -webkit-text-stroke-width: 1px;
 }
 
 .tf2 {
@@ -63,7 +66,6 @@
   -webkit-text-stroke-color: white;
   text-stroke-width: 1px;
   -webkit-text-stroke-width: 1px;
-  font-weight: bold;
 }
 
 .smallest {
@@ -103,14 +105,13 @@
 
 #nav {
   padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+}
+#nav a {
+  text-decoration: none;
+  color: navy;
+}
+#nav a.router-link-exact-active {
+  font-weight: bold;
+  color: blue;
 }
 </style>
