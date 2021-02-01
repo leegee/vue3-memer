@@ -8,8 +8,8 @@
 
 <style>
 @font-face {
-  font-family: "TF2"; /*a name to be used later*/
-  src: url("./assets/tf2build.ttf"); /*URL to font*/
+  font-family: "TF2";
+  src: url("./assets/tf2build.ttf");
 }
 
 #app {
