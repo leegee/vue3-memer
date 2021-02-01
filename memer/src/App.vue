@@ -13,7 +13,7 @@ import { Vue } from "vue-class-component";
 
 export default class App extends Vue {
   mounted() {
-    const computed = window.getComputedStyle(this.$refs.app);
+    const computed = window.getComputedStyle(this.$refs.app as Element);
     this.$store.commit("setDimensions", {
       width: parseInt(computed.getPropertyValue("--meme-width")),
       height: parseInt(computed.getPropertyValue("--meme-height")),
