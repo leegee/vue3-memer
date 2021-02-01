@@ -1,6 +1,5 @@
 <template>
   <div class="control_container" :id="'container_' + name.toLowerCase()">
-    <div class="control" :id="'control_' + name.toLowerCase()">{{ name }}</div>
     <div
       class="overlay"
       :hidden="hidden"
@@ -17,7 +16,6 @@
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
-// import { debounce } from "debounce";
 
 export default class Base extends Vue {
   name = "Control";
@@ -28,6 +26,9 @@ export default class Base extends Vue {
   // Set the ID used in DOM (and elsewhere) before DOM render
   beforeMount() {
     this.id = "overlay_" + this.name.toLowerCase();
+    this.text = this.$store.state.text[this.id]
+      ? this.$store.state.text[this.id].text
+      : this.text;
   }
 
   click(e: Event) {
@@ -45,6 +46,7 @@ export default class Base extends Vue {
 
     const text = node.innerText;
 
+    console.log("Base.changeText commit", this.id, text);
     this.$store.commit("changeText", {
       hidden: this.hidden,
       id: this.id,
@@ -59,23 +61,6 @@ export default class Base extends Vue {
 .control_container {
   width: 100%;
   height: 100%;
-}
-.control {
-  position: absolute;
-  top: calc(50% + (0.5 * var(--meme-height)));
-  left: 0;
-  width: 100%;
-  margin-top: 32pt;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24pt;
-  background: black;
-  color: white;
-  font-size: 14pt;
-  padding: 0.3em 0.6em;
-  display: none;
 }
 
 .overlay {

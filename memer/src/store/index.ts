@@ -20,12 +20,14 @@ export default createStore({
     },
 
     changeText(state: State, { id, hidden, style, text }) {
+      console.log('store.changeText', id, text);
       state.text[id] = state.text[id] || {};
       state.text[id].id = id;
       state.text[id].hidden = hidden;
       state.text[id].text = text;
 
-      console.log("set text style for id %s", id, style);
+      // console.log("set text style for id %s", id, style);
+
       state.text[id].style = {
         color: style.color,
         textAlign: style.textAlign,
@@ -42,6 +44,7 @@ export default createStore({
 
     setImageSaveSize(state: State, imageSaveSize: string) {
       state.imageSaveSize = imageSaveSize;
+      console.log('store.setImageSize', imageSaveSize);
     },
 
     setImage(state: State, { src, width, height }) {

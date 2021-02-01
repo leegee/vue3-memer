@@ -5,7 +5,7 @@
 <script lang="ts">
 import { Vue } from "vue-class-component";
 
-const DEBUG = false;
+const DEBUG = true;
 
 export const imageSaveSizes = ["original", "640", "1024", "2048"];
 
@@ -20,7 +20,9 @@ export function getScaledSize(
   const target = parseInt(size);
   const max = width > height ? width : height;
   const ratio = width / max > height / max ? width / target : height / target;
-  return [width / ratio, height / ratio];
+  const rwidth = width / ratio;
+  const rheight = height / ratio;
+  return [rwidth, rheight];
 }
 
 export default class Home extends Vue {
@@ -85,10 +87,7 @@ export default class Home extends Vue {
       dims.width = this.$store.state.text[text].style.width;
       dims.height = this.$store.state.text[text].style.height;
 
-      const width =
-        this.$store.state.text[text].style.width -
-        (this.$store.state.text[text].style.left || 0) -
-        (this.$store.state.text[text].style.right || 0);
+      const width = this.$store.state.text[text].style.width; //  - (this.$store.state.text[text].style.left || 0) - (this.$store.state.text[text].style.right || 0);
 
       const x = (this.$store.state.text[text].style.left || 0) + width / 2;
 
@@ -104,13 +103,15 @@ export default class Home extends Vue {
         y += lineHeight;
 
         console.log(text, {
+          "left was": this.$store.state.text[text].style.left,
+          width,
           color: ctx.fillStyle,
           text: this.$store.state.text[text].text,
           x,
           y,
         });
 
-        ctx.fillText(lineOfText, x, y);
+        ctx.fillText(lineOfText, Math.floor(x), Math.floor(y));
       });
     });
 
