@@ -29,8 +29,6 @@ export default class Home extends Vue {
     img.src = this.$store.state.image;
 
     const canvas = document.createElement("canvas");
-    canvas.width = this.$store.state.width;
-    canvas.height = this.$store.state.height;
 
     const ctx = canvas.getContext("2d");
 
@@ -38,6 +36,10 @@ export default class Home extends Vue {
       throw new Error("Well, holy moly");
     }
 
+    console.log("**********", this.$store.state.imageSaveSize);
+
+    canvas.width = this.$store.state.width;
+    canvas.height = this.$store.state.height;
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
     Object.keys(this.$store.state.text).forEach((text) => {

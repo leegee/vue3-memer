@@ -15,7 +15,7 @@
 import { Vue } from "vue-class-component";
 
 export default class FontSelect extends Vue {
-  fontClasses = ["impact", "times", "courier", "system"];
+  fontClasses = ["impact", "tf2", "times", "courier", "system"];
 
   click(fontClass: string) {
     this.$store.commit("setFont", fontClass);

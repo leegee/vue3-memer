@@ -6,7 +6,12 @@
   <router-view />
 </template>
 
-<style lang="scss">
+<style>
+@font-face {
+  font-family: "TF2"; /*a name to be used later*/
+  src: url("./assets/tf2build.ttf"); /*URL to font*/
+}
+
 #app {
   --meme-width: 500px;
   --meme-height: 500px;
@@ -45,6 +50,15 @@
 .system {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
     Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  text-stroke-color: white;
+  -webkit-text-stroke-color: white;
+  text-stroke-width: 1px;
+  -webkit-text-stroke-width: 1px;
+  font-weight: bold;
+}
+
+.tf2 {
+  font-family: TF2;
   text-stroke-color: white;
   -webkit-text-stroke-color: white;
   text-stroke-width: 1px;
