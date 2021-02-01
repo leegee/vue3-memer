@@ -74,6 +74,19 @@
   font-size: 64pt;
 }
 
+.light-weight {
+  font-weight: light;
+}
+.normal-weight {
+  font-weight: normal;
+}
+.bold-weight {
+  font-weight: bold;
+}
+.boldest-weight {
+  font-weight: boldest;
+}
+
 #nav {
   padding: 30px;
 

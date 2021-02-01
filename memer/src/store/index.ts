@@ -3,8 +3,9 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
-    fontClass: "",
-    fontSizeClass: "",
+    fontClass: "impact",
+    fontSizeClass: "large",
+    fontWeightClass: "bold-weight",
     image: "",
     imageOriginal: "",
     width: 0,
@@ -51,8 +52,12 @@ export default createStore({
 
     setFontSizeClass(state: State, fontSizeClass: string) {
       state.fontSizeClass = fontSizeClass;
-      console.log('set fontSizeClass:', state.fontSizeClass);
     },
+
+    setFontWeightClass(state: State, fontWeightClass: string) {
+      state.fontWeightClass = fontWeightClass;
+    },
+
   },
   actions: {
   },

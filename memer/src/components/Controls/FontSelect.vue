@@ -3,7 +3,7 @@
     <div
       v-for="fontClass in fontClasses"
       :key="fontClass"
-      :class="fontClass"
+      :class="fontClass + ' ' + (fontClass === $store.state.fontClass ? 'selected' : '')"
       @click="click(fontClass)"
     >
       {{ fontClass }}
