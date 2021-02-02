@@ -22,7 +22,7 @@ import TopRight from "./Text/Quarter/TopRight.vue";
 import BottomLeft from "./Text/Quarter/BottomLeft.vue";
 import BottomRight from "./Text/Quarter/BottomRight.vue";
 
-const Layers = [
+const Layouts = [
   [Left, Right],
   [TopLeft, TopRight, BottomLeft, BottomRight],
   [Top, Bottom],
@@ -41,7 +41,7 @@ const Layers = [
   },
 })
 export default class Text extends Vue {
-  chosenLayers = Layers[0];
+  chosenLayers = Layouts[0];
 }
 </script>
 
