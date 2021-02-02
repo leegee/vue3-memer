@@ -13,5 +13,8 @@ export default class BottomRight extends Base {
   left: 50%;
   width: 50%;
   height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

@@ -13,5 +13,8 @@ export default class BottomLeft extends Base {
   left: 1px;
   width: 50%;
   height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
