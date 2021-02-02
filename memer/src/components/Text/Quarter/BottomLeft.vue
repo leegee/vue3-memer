@@ -10,7 +10,7 @@ export default class BottomLeft extends Base {
 <style>
 #bottom_left {
   top: 50%;
-  left: 0;
+  left: 1px;
   width: 50%;
   height: 50%;
 }

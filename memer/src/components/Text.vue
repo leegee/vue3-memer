@@ -23,8 +23,8 @@ import BottomLeft from "./Text/Quarter/BottomLeft.vue";
 import BottomRight from "./Text/Quarter/BottomRight.vue";
 
 const Layouts = [
-  [Left, Right],
   [TopLeft, TopRight, BottomLeft, BottomRight],
+  [Left, Right],
   [Top, Bottom],
 ];
 
