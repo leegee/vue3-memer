@@ -41,6 +41,7 @@ declare module '@vue/runtime-core' {
     text: TextOverlays;
     width: number;
     height: number;
+    chosenLayout: string;
   }
 
   interface ComponentCustomProperties {

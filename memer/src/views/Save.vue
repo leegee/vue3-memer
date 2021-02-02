@@ -12,11 +12,9 @@
 <script lang="ts">
 import { Vue } from "vue-class-component";
 
-const DEBUG = true;
-
 export default class Home extends Vue {
   async mounted() {
-    this.$refs.export.src = await this.composedImage();
+    (this.$refs.export as HTMLImageElement).src = await this.composedImage();
   }
 
   async save() {
@@ -55,10 +53,6 @@ export default class Home extends Vue {
 
       // TODO: Properly either set a value in the CSS and use here, or render to canvas a measure
       const lineHeight = parseInt(this.$store.state.text[text].style.fontSize) * 1.2;
-
-      const dims: {
-        [key: string]: number | null;
-      } = {};
 
       const x =
         (this.$store.state.text[text].style.left || 0) +
