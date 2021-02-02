@@ -62,7 +62,7 @@ export default class Home extends Vue {
       let y =
         // eslint-disable-next-line
         this.$store.state.text[text].style.top !== null
-          ? this.$store.state.text[text].style.top
+          ? this.$store.state.text[text].style.top || 0
           : this.$store.state.height - this.$store.state.text[text].style.height!;
 
       if (text === "overlay_bottom") {
