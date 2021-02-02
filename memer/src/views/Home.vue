@@ -1,6 +1,6 @@
 <template>
   <div
-    id="home"
+    id="drop-zone"
     :style="{
       'background-image': 'url(' + $store.state.image + ')',
       width: $store.state.width + 'px',
@@ -27,11 +27,10 @@ export default class Home extends Vue {}
 </script>
 
 <style scoped>
-#home {
-  position: absolute;
-  /* top: 50%;
-  margin-top: calc(-0.5 * var(--meme-height)); */
+#drop-zone {
+  position: relative;
   left: 50%;
+  margin: 1rem;
   margin-left: calc(-0.5 * var(--meme-width));
   width: var(--meme-width);
   height: var(--meme-height);

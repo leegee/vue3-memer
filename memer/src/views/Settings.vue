@@ -4,13 +4,11 @@
     <FontColor />
     <FontSize />
     <FontWeight />
-    <Save />
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Options } from "vue-class-component";
-import Save from "../components/Controls/Save.vue";
 import FontSelect from "../components/Controls/FontSelect.vue";
 import FontSize from "../components/Controls/FontSize.vue";
 import FontColor from "../components/Controls/FontColor.vue";
@@ -22,7 +20,6 @@ import FontWeight from "../components/Controls/FontWeight.vue";
     FontSize,
     FontWeight,
     FontColor,
-    Save,
   },
 })
 export default class Settings extends Vue {}

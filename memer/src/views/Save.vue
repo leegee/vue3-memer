@@ -1,5 +1,12 @@
 <template>
-  <button id="save" v-show="$store.state.image" @click="save()">Save</button>
+  <div id="save">
+    <div>
+      <img id="export" ref="export" />
+    </div>
+    <div>
+      <button id="save-button" v-show="$store.state.image" @click="save()">Save</button>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -8,18 +15,16 @@ import { Vue } from "vue-class-component";
 const DEBUG = true;
 
 export default class Home extends Vue {
+  async mounted() {
+    this.$refs.export.src = await this.composedImage();
+  }
+
   async save() {
-    if (DEBUG) {
-      const img = document.createElement("img");
-      img.src = await this.composedImage();
-      document.body.appendChild(img);
-    } else {
-      const a = document.createElement("a");
-      a.href = await this.composedImage();
-      a.download = "meme.png";
-      document.body.appendChild(a);
-      a.click();
-    }
+    const a = document.createElement("a");
+    a.href = await this.composedImage();
+    a.download = "meme.png";
+    document.body.appendChild(a);
+    a.click();
   }
 
   composedImage() {
@@ -91,6 +96,13 @@ export default class Home extends Vue {
 
 <style scoped>
 #save {
+  width: 100%;
+  text-align: center;
+}
+#export {
+  margin: 1rem;
+}
+#save-button {
   text-align: center;
   cursor: pointer;
   padding: 1rem;

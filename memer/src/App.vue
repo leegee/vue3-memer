@@ -2,7 +2,9 @@
   <main ref="app">
     <nav id="nav">
       <router-link to="/" v-show="$store.state.image">Edit</router-link> |
-      <router-link to="/settings" v-show="$store.state.image">Customise</router-link>
+      <router-link to="/layouts" v-show="$store.state.image">Layouts</router-link> |
+      <router-link to="/settings" v-show="$store.state.image">Customise</router-link> |
+      <router-link to="/save" v-show="$store.state.image">Save</router-link>
     </nav>
     <router-view />
   </main>
