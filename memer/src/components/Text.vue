@@ -16,7 +16,7 @@ import Bottom from "./Text/Full/Bottom.vue";
 import Top from "./Text/Full/Top.vue";
 import Left from "./Text/Full/Left.vue";
 import Right from "./Text/Full/Right.vue";
-
+import Whole from "./Text/Whole.vue";
 import TopLeft from "./Text/Quarter/TopLeft.vue";
 import TopRight from "./Text/Quarter/TopRight.vue";
 import BottomLeft from "./Text/Quarter/BottomLeft.vue";
@@ -33,12 +33,16 @@ export const Layouts: { [key: string]: LayoutOption } = {
     components: [Top, Bottom],
   },
   quarters: {
-    label: "Four quarters",
+    label: "Four corners",
     components: [TopLeft, TopRight, BottomLeft, BottomRight],
   },
   leftRight: {
     label: "Left and right",
     components: [Left, Right],
+  },
+  whole: {
+    label: "Whole",
+    components: [Whole],
   },
 };
 
@@ -52,6 +56,7 @@ export const Layouts: { [key: string]: LayoutOption } = {
     TopRight,
     BottomLeft,
     BottomRight,
+    Whole,
   },
 })
 export default class Text extends Vue {
