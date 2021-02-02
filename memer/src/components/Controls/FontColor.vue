@@ -3,7 +3,7 @@
     id="font-color"
     type="color"
     @change="change($event.target.value)"
-    value="$store.state.color"
+    value="$store.state.fontColor"
   />
 </template>
 
