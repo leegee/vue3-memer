@@ -4,7 +4,6 @@
     <FontColor />
     <FontSize />
     <FontWeight />
-    <ImageSize />
     <Save />
   </div>
 </template>
@@ -16,7 +15,6 @@ import FontSelect from "../components/Controls/FontSelect.vue";
 import FontSize from "../components/Controls/FontSize.vue";
 import FontColor from "../components/Controls/FontColor.vue";
 import FontWeight from "../components/Controls/FontWeight.vue";
-import ImageSize from "../components/Controls/ImageSize.vue";
 
 @Options({
   components: {
@@ -24,7 +22,6 @@ import ImageSize from "../components/Controls/ImageSize.vue";
     FontSize,
     FontWeight,
     FontColor,
-    ImageSize,
     Save,
   },
 })

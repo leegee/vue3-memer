@@ -15,7 +15,6 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import { getScaledSize } from "./Controls/Save.vue";
 
 @Options({
   props: {
@@ -63,17 +62,14 @@ export default class DropZone extends Vue {
     const img = new Image();
     img.src = src;
     img.onload = () => {
-      if (
-        img.width < this.$store.state.minSize ||
-        img.height < this.$store.state.minSize
-      ) {
-        [img.width, img.height] = getScaledSize(
-          this.$store.state.minSize,
-          img.width,
-          img.height,
-          this.$store.state.minSize
-        );
-      }
+      const ratio =
+        img.width / this.$store.state.minSize > img.height / this.$store.state.minSize
+          ? img.width / this.$store.state.minSize
+          : img.height / this.$store.state.minSize;
+
+      img.width = img.width / ratio;
+      img.height = img.height / ratio;
+
       this.$store.commit("setImage", {
         src,
         width: img.width,

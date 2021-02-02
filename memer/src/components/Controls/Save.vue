@@ -7,28 +7,6 @@ import { Vue } from "vue-class-component";
 
 const DEBUG = true;
 
-export const imageSaveSizes = ["original", "640", "1024", "2048"];
-
-export function getScaledSize(
-  size: string | number,
-  width: number,
-  height: number,
-  minSize?: number
-): [number, number] {
-  if (size === "original") {
-    return [width, height];
-  }
-  const target = parseInt(size as string);
-  let max = width > height ? width : height;
-  if (minSize && max < minSize) {
-    max = minSize;
-  }
-  const ratio = width / max > height / max ? width / target : height / target;
-  const rwidth = width / ratio;
-  const rheight = height / ratio;
-  return [rwidth, rheight];
-}
-
 export default class Home extends Vue {
   async save() {
     if (DEBUG) {
@@ -49,21 +27,14 @@ export default class Home extends Vue {
     img.src = this.$store.state.image;
 
     const canvas = document.createElement("canvas");
-
     const ctx = canvas.getContext("2d");
 
     if (ctx === null) {
       throw new Error("Well, holy moly");
     }
 
-    const [width, height] = getScaledSize(
-      this.$store.state.imageSaveSize,
-      this.$store.state.width,
-      this.$store.state.height
-    );
-
-    canvas.width = width;
-    canvas.height = height;
+    canvas.width = this.$store.state.width;
+    canvas.height = this.$store.state.height;
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
     Object.keys(this.$store.state.text).forEach((text) => {

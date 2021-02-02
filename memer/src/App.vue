@@ -1,8 +1,8 @@
 <template>
   <div ref="app">
     <div id="nav">
-      <router-link to="/" v-show="$store.state.image">Meme</router-link> |
-      <router-link to="/settings" v-show="$store.state.image">Settings</router-link>
+      <router-link to="/" v-show="$store.state.image">Edit</router-link> |
+      <router-link to="/settings" v-show="$store.state.image">Customise</router-link>
     </div>
     <router-view />
   </div>

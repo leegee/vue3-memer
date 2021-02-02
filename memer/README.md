@@ -2,6 +2,8 @@
 
 ## TODO
 
+* Resize editing image when settings change
+* Use relative font sizes
 * Fix centering in readiness for ....
 * Different Layouts
 * Move resize from Save to lib

@@ -13,6 +13,8 @@
 </template>
 
 <script lang="ts">
+/*
+
 import { Vue } from "vue-class-component";
 import { imageSaveSizes as _imageSaveSizes } from "./Save.vue";
 
@@ -22,6 +24,7 @@ export default class ImageSize extends Vue {
     this.$store.commit("setImageSaveSize", imageSize);
   }
 }
+*/
 </script>
 
 <style scoped>
