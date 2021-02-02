@@ -5,7 +5,6 @@
       'background-image': 'url(' + $store.state.image + ')',
       width: $store.state.width + 'px',
       height: $store.state.height + 'px',
-      color: $store.state.fontColor,
     }"
   >
     <DropZone msg="Drop here" v-show="!$store.state.image" />

@@ -2,15 +2,16 @@
 import Base from "@/components/Text/Base.vue";
 
 export default class Bottom extends Base {
-  name = "Bottom";
-  text = "Bottom text";
+  id = "full_bottom";
+  defaultText = "Bottom text";
 }
 </script>
 
 <style>
-#overlay_bottom {
+#full_bottom {
   bottom: 0;
   left: 1pt;
   min-height: 1em;
+  width: 100%;
 }
 </style>

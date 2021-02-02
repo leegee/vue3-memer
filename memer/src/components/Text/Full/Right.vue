@@ -1,16 +1,16 @@
 <script lang="ts">
 import Base from "@/components/Text/Base.vue";
 
-export default class Left extends Base {
-  name = "Left";
-  text = "Left text";
+export default class Right extends Base {
+  id = "full_right";
+  defaultText = "Right text";
 }
 </script>
 
 <style>
-#overlay_left {
+#full_right {
   top: 1pt;
-  left: 1pt;
+  right: 1pt;
   height: 100%;
   width: 33%;
 }

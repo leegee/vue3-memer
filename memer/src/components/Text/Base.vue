@@ -1,16 +1,13 @@
 <template>
-  <div class="text_container" :id="'container_' + name.toLowerCase()">
-    <div
-      class="overlay"
-      :hidden="hidden"
-      :id="id"
-      :ref="id"
-      contentEditable="true"
-      @click="click($event)"
-      @input="changeText($event.target)"
-    >
-      {{ text }}
-    </div>
+  <div
+    class="overlay"
+    :id="id"
+    :ref="id"
+    contentEditable="true"
+    @click="click($event)"
+    @input="changeText($event.target.innerText)"
+  >
+    {{ $store.state.text[id] ? $store.state.text[id].text : defaultText }}
   </div>
 </template>
 
@@ -18,18 +15,8 @@
 import { Vue } from "vue-class-component";
 
 export default class Base extends Vue {
-  name = "Control";
-  id = "";
-  hidden = false;
-  text = "";
-
-  // Set the ID used in DOM (and elsewhere) before DOM render
-  beforeMount() {
-    this.id = "overlay_" + this.name.toLowerCase();
-    this.text = this.$store.state.text[this.id]
-      ? this.$store.state.text[this.id].text
-      : this.text;
-  }
+  id = "control_id";
+  defaultText = "Default Text";
 
   click(e: Event) {
     const s = window.getSelection();
@@ -39,16 +26,9 @@ export default class Base extends Vue {
   }
 
   // TODO debounce, but not really needed...
-  changeText(node: HTMLElement) {
-    // const text = [...node.children].reduce((prev, curr, i) => {
-    //   return (prev || "") + (curr as HTMLElement).innerText + "\n";
-    // }, "");
-
-    const text = node.innerText;
-
+  changeText(text: string) {
     console.log("Base.changeText commit", this.id, text);
     this.$store.commit("changeText", {
-      hidden: this.hidden,
       id: this.id,
       style: window.getComputedStyle(this.$refs[this.id] as HTMLElement),
       text,
@@ -58,14 +38,8 @@ export default class Base extends Vue {
 </script>
 
 <style scoped lang="scss">
-.text_container {
-  width: 100%;
-  height: 100%;
-  border: 1px dotted red;
-}
-
 .overlay {
+  border: 1px dotted red;
   position: absolute;
-  width: var(--meme-width);
 }
 </style>
