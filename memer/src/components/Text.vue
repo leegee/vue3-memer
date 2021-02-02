@@ -3,7 +3,7 @@
     id="text-layers"
     :class="$store.state.fontClass + ' ' + $store.state.fontSizeClass"
   >
-    <component v-for="layer in layers" :is="layer" :key="layer" />
+    <component v-for="layer in chosenLayers" :is="layer" :key="layer" />
   </div>
 </template>
 
@@ -14,6 +14,11 @@ import Top from "./Text/Topp.vue";
 import Left from "./Text/Left.vue";
 import Right from "./Text/Right.vue";
 
+const Layers = [
+  [Top, Bottom],
+  [Left, Right],
+];
+
 @Options({
   components: {
     Bottom,
@@ -23,8 +28,7 @@ import Right from "./Text/Right.vue";
   },
 })
 export default class Text extends Vue {
-  layers = [Top, Bottom];
-  // layers = [Left, Right];
+  chosenLayers = Layers[0];
 }
 </script>
 
