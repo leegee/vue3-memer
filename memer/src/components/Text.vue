@@ -6,7 +6,7 @@
       color: $store.state.fontColor,
     }"
   >
-    <component v-for="layer in chosenLayers" :is="layer" :key="layer" />
+    <component v-for="layer in chosenLayout" :is="layer" :key="layer" />
   </div>
 </template>
 
@@ -41,7 +41,7 @@ const Layouts = [
   },
 })
 export default class Text extends Vue {
-  chosenLayers = Layouts[0];
+  chosenLayout = Layouts[0];
 }
 </script>
 
