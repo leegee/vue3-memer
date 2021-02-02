@@ -6,7 +6,7 @@
       color: $store.state.fontColor,
     }"
   >
-    <component v-for="layer in chosenLayout" :is="layer" :key="layer" />
+    <component v-for="layer in chosenLayoutComponents" :is="layer" :key="layer" />
   </div>
 </template>
 
@@ -22,11 +22,25 @@ import TopRight from "./Text/Quarter/TopRight.vue";
 import BottomLeft from "./Text/Quarter/BottomLeft.vue";
 import BottomRight from "./Text/Quarter/BottomRight.vue";
 
-const Layouts = [
-  [TopLeft, TopRight, BottomLeft, BottomRight],
-  [Left, Right],
-  [Top, Bottom],
-];
+interface LayoutOption {
+  components: any[];
+  label: string;
+}
+
+export const Layouts: { [key: string]: LayoutOption } = {
+  topBottom: {
+    label: "Top and Bottom",
+    components: [Top, Bottom],
+  },
+  quarters: {
+    label: "Four quarters",
+    components: [TopLeft, TopRight, BottomLeft, BottomRight],
+  },
+  leftRight: {
+    label: "Left and right",
+    components: [Left, Right],
+  },
+};
 
 @Options({
   components: {
@@ -41,7 +55,11 @@ const Layouts = [
   },
 })
 export default class Text extends Vue {
-  chosenLayout = Layouts[0];
+  chosenLayoutComponents = Layouts[Object.keys(Layouts)[0]].components;
+
+  created() {
+    this.chosenLayoutComponents = Layouts[this.$store.state.chosenLayout].components;
+  }
 }
 </script>
 

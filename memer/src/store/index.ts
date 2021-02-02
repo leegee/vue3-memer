@@ -14,11 +14,12 @@ export default createStore({
     width: 0,
     height: 0,
     text: {},
-    chosenLayout: ""
+    chosenLayout: "topBottom"
   },
   mutations: {
     setChosenLayout(state: State, chosenLayout) {
       state.chosenLayout = chosenLayout;
+      console.log('setChosenLayout = ', chosenLayout);
     },
 
     setDimensions(state: State, { width, height }) {
