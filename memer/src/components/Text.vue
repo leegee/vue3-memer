@@ -11,15 +11,15 @@
 import { Options, Vue } from "vue-class-component";
 import Bottom from "./Text/Bottom.vue";
 import Top from "./Text/Topp.vue";
-// import Left from "./Text/Left.vue";
-// import Right from "./Text/Right.vue";
+import Left from "./Text/Left.vue";
+import Right from "./Text/Right.vue";
 
 @Options({
   components: {
     Bottom,
     Top,
-    // Left,
-    // Right,
+    Left,
+    Right,
   },
 })
 export default class Text extends Vue {

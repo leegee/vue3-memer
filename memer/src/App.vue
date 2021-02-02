@@ -1,11 +1,11 @@
 <template>
-  <div ref="app">
-    <div id="nav">
+  <main ref="app">
+    <nav id="nav">
       <router-link to="/" v-show="$store.state.image">Edit</router-link> |
       <router-link to="/settings" v-show="$store.state.image">Customise</router-link>
-    </div>
+    </nav>
     <router-view />
-  </div>
+  </main>
 </template>
 
 <script lang="ts">
@@ -31,7 +31,6 @@ export default class App extends Vue {
 #app {
   --meme-width: 500px;
   --meme-height: 500px;
-
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

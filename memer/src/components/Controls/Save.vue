@@ -55,23 +55,15 @@ export default class Home extends Vue {
         [key: string]: number | null;
       } = {};
 
-      dims.left = this.$store.state.text[text].style.left;
-      dims.right = this.$store.state.text[text].style.right;
-      dims.top = this.$store.state.text[text].style.top;
-      dims.bottom = this.$store.state.text[text].style.bottom;
-      dims.width = this.$store.state.text[text].style.width;
-      dims.height = this.$store.state.text[text].style.height;
-
-      const width =
-        this.$store.state.text[text].style.width -
-        (this.$store.state.text[text].style.left || 0) -
-        (this.$store.state.text[text].style.right || 0);
-
-      const x = (this.$store.state.text[text].style.left || 0) + width / 2;
+      const x =
+        (this.$store.state.text[text].style.left || 0) +
+        this.$store.state.text[text].style.width / 2;
 
       let y =
         // eslint-disable-next-line
-        dims.top !== null ? dims.top : this.$store.state.height - dims.height!;
+        this.$store.state.text[text].style.top !== null
+          ? this.$store.state.text[text].style.top
+          : this.$store.state.height - this.$store.state.text[text].style.height!;
 
       if (text === "overlay_bottom") {
         y -= lineHeight;
