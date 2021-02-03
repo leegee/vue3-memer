@@ -19,18 +19,15 @@ export default createStore({
   mutations: {
     setChosenLayout(state: State, chosenLayout) {
       state.chosenLayout = chosenLayout;
-      console.log('setChosenLayout = ', chosenLayout);
     },
 
     setDimensions(state: State, { width, height }) {
-      console.log('setDimensions', width, height);
       state.width = width;
       state.height = height;
       state.minSize = width > height ? width : height;
     },
 
     changeText(state: State, { id, hidden, style, text }) {
-      // console.log('store.changeText', id, text, style);
       state.text[id] = state.text[id] || {};
       state.text[id].id = id;
       state.text[id].hidden = hidden;
@@ -53,11 +50,9 @@ export default createStore({
 
     setImageSaveSize(state: State, imageSaveSize: string) {
       state.imageSaveSize = imageSaveSize;
-      console.log('store.setImageSize', imageSaveSize);
     },
 
     setImage(state: State, { src, width, height }) {
-      console.log('setImage', width, height);
       state.image = src;
       state.imageOriginal = src;
       state.width = width;
