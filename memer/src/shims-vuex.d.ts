@@ -38,6 +38,7 @@ declare module '@vue/runtime-core' {
     fontColor: string;
     strokeColor: string;
     strokeWidth: string;
+    lineHeight: string;
     text: TextOverlays;
     width: number;
     height: number;

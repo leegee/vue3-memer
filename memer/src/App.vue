@@ -35,11 +35,14 @@ export default class App extends Vue {
 #app {
   --meme-width: 500px;
   --meme-height: 500px;
+  --app-fg: #2c3e50;
+  --app-bg: #fff;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: var(--app-fg);
+  background-color: var(--app-bg);
 }
 
 .courier {

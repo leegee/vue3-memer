@@ -11,7 +11,5 @@ export default class Top extends Base {
 #full_top {
   top: 1pt;
   left: 1pt;
-  min-height: 1em;
-  width: 100%;
 }
 </style>

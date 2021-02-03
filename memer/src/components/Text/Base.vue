@@ -38,11 +38,15 @@ export default class Base extends Vue {
 
 <style scoped lang="scss">
 .overlay {
-  border: 1px dotted red;
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  display: block;
+  text-align: center;
+  min-height: 1em;
+  max-width: var(--meme-width);
+  width: var(--meme-width);
+  border: 1px dotted red;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  // overflow-x: hidden;
 }
 </style>

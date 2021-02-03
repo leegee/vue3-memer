@@ -10,6 +10,7 @@ export default createStore({
     fontColor: "#000000",
     strokeColor: "#ffffff",
     strokeWidth: "1px",
+    lineHeight: "1",
     image: "",
     minSize: 0,
     imageOriginal: "",

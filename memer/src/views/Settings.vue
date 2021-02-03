@@ -28,7 +28,7 @@ import FontStroke from "../components/Controls/FontStroke.vue";
 export default class Settings extends Vue {}
 </script>
 
-<style scoped>
+<style>
 #settings {
   width: 100%;
 }
@@ -41,5 +41,12 @@ fieldset {
   padding: 1rem;
   color: black;
   margin: 1rem auto;
+  border-radius: 0.3rem;
+}
+fieldset legend {
+  font-size: 120%;
+  border-radius: 1rem;
+  border: 1pt solid black;
+  padding: 0.3rem 1rem;
 }
 </style>
