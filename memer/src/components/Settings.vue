@@ -41,11 +41,14 @@ fieldset {
   padding: 1rem;
   margin: 1rem auto;
   border-radius: 0.3rem;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 fieldset legend {
   font-size: 120%;
-  border-radius: 1rem;
-  border: 1pt solid var(--app-fg);
-  padding: 0.3rem 1rem;
+  border: none;
+  float: left;
 }
 </style>

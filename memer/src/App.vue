@@ -4,7 +4,6 @@
       <div v-show="$store.state.image">
         <router-link to="/">Edit</router-link> |
         <router-link to="/layouts">Layouts</router-link> |
-        <router-link to="/settings">Customise</router-link> |
         <router-link to="/save">Save</router-link>
       </div>
     </nav>

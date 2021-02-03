@@ -11,7 +11,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/save",
     name: "Save",
-    component: Save
+    component: Save,
   },
   {
     path: "/layouts",
@@ -21,11 +21,6 @@ const routes: Array<RouteRecordRaw> = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ "../views/LayoutChooser.vue")
   },
-  {
-    path: "/settings",
-    name: "Settings",
-    component: () => import(/* webpackChunkName: "about" */ "../views/Settings.vue")
-  }
 ];
 
 const router = createRouter({

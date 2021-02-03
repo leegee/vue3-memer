@@ -1,13 +1,19 @@
 <template>
   <fieldset id="fonts">
-    <div
-      v-for="fontClass in fontClasses"
-      :key="fontClass"
-      :class="fontClass + ' ' + (fontClass === $store.state.fontClass ? 'selected' : '')"
-      @click="click(fontClass)"
+    <select
+      id="font-size"
+      @change="change($event.target.value)"
+      :class="$store.state.fontClass"
     >
-      {{ fontClass }}
-    </div>
+      <option
+        v-for="fontClass in fontClasses"
+        :key="fontClass"
+        :class="'option-font-class ' + fontClass"
+        :selected="fontClass === $store.state.fontClass"
+      >
+        {{ fontClass }}
+      </option>
+    </select>
   </fieldset>
 </template>
 
@@ -17,7 +23,7 @@ import { Vue } from "vue-class-component";
 export default class FontSelect extends Vue {
   fontClasses = ["impact", "tf2", "times", "courier", "comic", "system"];
 
-  click(fontClass: string) {
+  change(fontClass: string) {
     this.$store.commit("setFont", fontClass);
   }
 }
@@ -25,14 +31,11 @@ export default class FontSelect extends Vue {
 
 <style scoped lang="scss">
 #fonts {
-  padding: 0 1rem;
   color: var(--app-fg);
-  font-size: 32pt;
 }
 
-#fonts div {
-  vertical-align: baseline;
-  margin: 0 0.5rem;
-  cursor: pointer;
+#font-size {
+  width: 100%;
+  font-size: 2rem;
 }
 </style>

@@ -36,12 +36,3 @@ export default class FontStroke extends Vue {
   }
 }
 </script>
-
-<style>
-#font-stroke {
-  display: block;
-}
-#stroke-color {
-  display: inline-block;
-}
-</style>
