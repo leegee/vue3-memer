@@ -26,13 +26,3 @@ export default class ImageSize extends Vue {
 }
 */
 </script>
-
-<style scoped>
-#image-size {
-  display: block;
-  padding: 0 1rem;
-  color: black;
-  font-size: 2rem;
-  margin: 1rem auto;
-}
-</style>

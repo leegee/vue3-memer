@@ -26,7 +26,7 @@ export default class FontSelect extends Vue {
 <style scoped lang="scss">
 #fonts {
   padding: 0 1rem;
-  color: black;
+  color: var(--app-fg);
   font-size: 32pt;
 }
 

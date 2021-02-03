@@ -37,6 +37,6 @@ export default class Home extends Vue {}
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 1pt solid black;
+  border: 1pt solid var(--app-fg);
 }
 </style>

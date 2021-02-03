@@ -1,11 +1,9 @@
 <template>
   <div id="save">
     <div>
-      <img id="export" ref="export" />
+      <img ref="export" @click="save()" />
     </div>
-    <div>
-      <button id="save-button" v-show="$store.state.image" @click="save()">Save</button>
-    </div>
+    <div>Click to save</div>
   </div>
 </template>
 
@@ -98,16 +96,16 @@ export default class Home extends Vue {
 
 <style scoped>
 #save {
+  width: auto;
+  margin: 0 auto;
+  max-width: var(--meme-width);
+  text-align: center;
+}
+img {
+  margin: 1rem auto;
+  border: 1px solid var(--app-fg);
+  object-fit: cover;
   width: 100%;
-  text-align: center;
-}
-#export {
-  margin: 1rem;
-}
-#save-button {
-  text-align: center;
-  cursor: pointer;
-  padding: 1rem;
-  font-size: 32pt;
+  height: auto;
 }
 </style>

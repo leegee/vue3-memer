@@ -39,14 +39,13 @@ export default class Settings extends Vue {}
 fieldset {
   display: block;
   padding: 1rem;
-  color: black;
   margin: 1rem auto;
   border-radius: 0.3rem;
 }
 fieldset legend {
   font-size: 120%;
   border-radius: 1rem;
-  border: 1pt solid black;
+  border: 1pt solid var(--app-fg);
   padding: 0.3rem 1rem;
 }
 </style>
