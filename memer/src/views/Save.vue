@@ -23,6 +23,7 @@ export default class Home extends Vue {
     a.download = "meme.png";
     document.body.appendChild(a);
     a.click();
+    // remove a
   }
 
   composedImage() {
@@ -58,21 +59,19 @@ export default class Home extends Vue {
         (this.$store.state.text[text].style.left || 0) +
         this.$store.state.text[text].style.width / 2;
 
-      console.log(text, this.$store.state.text[text].style.top);
+      let y: number;
 
-      let y =
-        // eslint-disable-next-line
-        this.$store.state.text[text].style.top !== null
-          ? this.$store.state.text[text].style.top || 1
-          : this.$store.state.height - this.$store.state.text[text].style.height;
-
-      if (text === "overlay_bottom") {
-        y -= lineHeight;
+      if (this.$store.state.text[text].style.top !== null) {
+        y =
+          (this.$store.state.text[text].style.top || 1) +
+          parseInt(this.$store.state.text[text].style.fontSize);
+      } else {
+        y = this.$store.state.height - this.$store.state.text[text].style.height;
       }
 
-      this.$store.state.text[text].text.split(/[\n\r]/).forEach((lineOfText) => {
-        y += lineHeight;
+      console.log(text, y);
 
+      this.$store.state.text[text].text.split(/[\n\r]/).forEach((lineOfText) => {
         ctx.fillText(lineOfText, Math.floor(x), Math.floor(y));
 
         if (this.$store.state.text[text].style.strokeWidth > 0) {
@@ -80,6 +79,8 @@ export default class Home extends Vue {
           ctx.lineWidth = this.$store.state.text[text].style.strokeWidth;
           ctx.strokeText(lineOfText, Math.floor(x), Math.floor(y));
         }
+
+        y += lineHeight;
       });
     });
 
