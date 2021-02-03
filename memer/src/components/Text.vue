@@ -21,6 +21,9 @@ import TopLeft from "./Text/Quarter/TopLeft.vue";
 import TopRight from "./Text/Quarter/TopRight.vue";
 import BottomLeft from "./Text/Quarter/BottomLeft.vue";
 import BottomRight from "./Text/Quarter/BottomRight.vue";
+import HorizontalThirdsTop from "./Text/HorizontalThirds/Top.vue";
+import HorizontalThirdsMiddle from "./Text/HorizontalThirds/Middle.vue";
+import HorizontalThirdsBottom from "./Text/HorizontalThirds/Bottom.vue";
 
 interface LayoutOption {
   components: any[];
@@ -44,6 +47,10 @@ export const Layouts: { [key: string]: LayoutOption } = {
     label: "Whole",
     components: [Whole],
   },
+  horizontalThirds: {
+    label: "Horizontal thirds",
+    components: [HorizontalThirdsTop, HorizontalThirdsMiddle, HorizontalThirdsBottom],
+  },
 };
 
 @Options({
@@ -57,6 +64,9 @@ export const Layouts: { [key: string]: LayoutOption } = {
     BottomLeft,
     BottomRight,
     Whole,
+    HorizontalThirdsTop,
+    HorizontalThirdsMiddle,
+    HorizontalThirdsBottom,
   },
 })
 export default class Text extends Vue {

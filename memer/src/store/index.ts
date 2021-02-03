@@ -30,7 +30,7 @@ export default createStore({
     },
 
     changeText(state: State, { id, hidden, style, text }) {
-      console.log('store.changeText', id, text, style);
+      // console.log('store.changeText', id, text, style);
       state.text[id] = state.text[id] || {};
       state.text[id].id = id;
       state.text[id].hidden = hidden;
