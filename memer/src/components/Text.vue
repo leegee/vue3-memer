@@ -4,6 +4,8 @@
     :class="$store.state.fontClass + ' ' + $store.state.fontSizeClass"
     :style="{
       color: $store.state.fontColor,
+      '-webkit-text-stroke-color': $store.state.strokeColor,
+      '-webkit-text-stroke-width': $store.state.strokeWidth,
     }"
   >
     <component v-for="layer in chosenLayoutComponents" :is="layer" :key="layer" />

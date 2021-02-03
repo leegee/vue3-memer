@@ -14,8 +14,6 @@ declare module '@vue/runtime-core' {
     right: number | null;
     width: number;
     height: number;
-    strokeColor: string;
-    strokeWidth: number;
   }
 
   interface TextOverlay {
@@ -38,6 +36,8 @@ declare module '@vue/runtime-core' {
     imageSaveSize: string;
     minSize: number;
     fontColor: string;
+    strokeColor: string;
+    strokeWidth: string;
     text: TextOverlays;
     width: number;
     height: number;

@@ -75,14 +75,15 @@ export default class Home extends Vue {
         y = this.$store.state.height - this.$store.state.text[text].style.height;
       }
 
-      console.log(text, y);
+      // TODO: Why this value?
+      y -= parseInt(this.$store.state.text[text].style.fontSize) / 3;
 
       this.$store.state.text[text].text.split(/[\n\r]/).forEach((lineOfText) => {
         ctx.fillText(lineOfText, Math.floor(x), Math.floor(y));
 
-        if (this.$store.state.text[text].style.strokeWidth > 0) {
-          ctx.strokeStyle = this.$store.state.text[text].style.strokeColor;
-          ctx.lineWidth = this.$store.state.text[text].style.strokeWidth;
+        if (this.$store.state.strokeWidth !== "0") {
+          ctx.strokeStyle = this.$store.state.strokeColor;
+          ctx.lineWidth = parseInt(this.$store.state.strokeWidth);
           ctx.strokeText(lineOfText, Math.floor(x), Math.floor(y));
         }
 

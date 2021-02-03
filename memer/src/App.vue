@@ -44,35 +44,23 @@ export default class App extends Vue {
 
 .courier {
   font-family: "Courier New", Courier, monospace;
-  -webkit-text-stroke-color: white;
-  -webkit-text-stroke-width: 1px;
 }
 .times {
   font-family: "Times New Roman", Times, serif;
-  -webkit-text-stroke-color: white;
-  -webkit-text-stroke-width: 1px;
 }
 .impact {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  -webkit-text-stroke-color: white;
-  -webkit-text-stroke-width: 3px;
 }
 .system {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
     Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  -webkit-text-stroke-color: white;
-  -webkit-text-stroke-width: 1px;
 }
 .comic {
   font-family: "Comic Sans MS", "Comic Sans MS", cursive;
-  -webkit-text-stroke-color: white;
-  -webkit-text-stroke-width: 1px;
 }
 
 .tf2 {
   font-family: TF2;
-  -webkit-text-stroke-color: white;
-  -webkit-text-stroke-width: 1px;
 }
 
 .smallest {

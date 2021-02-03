@@ -8,6 +8,8 @@ export default createStore({
     fontWeightClass: "bold-weight",
     imageSaveSize: "original",
     fontColor: "#000000",
+    strokeColor: "#ffffff",
+    strokeWidth: "1px",
     image: "",
     minSize: 0,
     imageOriginal: "",
@@ -37,8 +39,6 @@ export default createStore({
         textAlign: style.textAlign,
         fontFamily: style["font-family"],
         fontSize: style["font-size"],
-        strokeColor: style.webkitTextStrokeColor,
-        strokeWidth: parseInt(style.webkitTextStrokeWidth),
         left: parseInt(style.left) || null,
         right: parseInt(style.right) || null,
         top: parseInt(style.top) || null,
@@ -73,6 +73,16 @@ export default createStore({
 
     setFontColor(state: State, fontColor: string) {
       state.fontColor = fontColor;
+    },
+
+    setFontStrokeColor(state: State, strokeColor: string) {
+      console.log('change stroke color');
+      state.strokeColor = strokeColor;
+    },
+
+    setFontStrokeWidth(state: State, strokeWidth: string) {
+      console.log('change stroke width');
+      state.strokeWidth = "" + strokeWidth;
     },
 
   },

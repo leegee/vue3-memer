@@ -2,6 +2,7 @@
   <div id="settings">
     <FontSelect />
     <FontColor />
+    <FontStroke />
     <FontSize />
     <FontWeight />
   </div>
@@ -13,6 +14,7 @@ import FontSelect from "../components/Controls/FontSelect.vue";
 import FontSize from "../components/Controls/FontSize.vue";
 import FontColor from "../components/Controls/FontColor.vue";
 import FontWeight from "../components/Controls/FontWeight.vue";
+import FontStroke from "../components/Controls/FontStroke.vue";
 
 @Options({
   components: {
@@ -20,6 +22,7 @@ import FontWeight from "../components/Controls/FontWeight.vue";
     FontSize,
     FontWeight,
     FontColor,
+    FontStroke,
   },
 })
 export default class Settings extends Vue {}
