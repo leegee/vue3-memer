@@ -7,7 +7,7 @@
     @click="click($event)"
     @input="changeText($event.target.innerText)"
   >
-    {{ $store.state.text[id] ? $store.state.text[id].text : defaultText }}
+    {{ $store.state.text[id] ? $store.state.text[id].text : "" }}
   </div>
 </template>
 
@@ -44,7 +44,7 @@ export default class Base extends Vue {
   min-height: 1em;
   max-width: var(--meme-width);
   width: var(--meme-width);
-  border: 1px dotted red;
+  border: 3pt dotted red;
   word-wrap: break-word;
   overflow-wrap: break-word;
   // overflow-x: hidden;
