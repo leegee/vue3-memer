@@ -3,7 +3,6 @@
 ## TODO
 
 * Add vertical centering
-* Fix vetical offset in image render
 
 ## Project setup
 ```
