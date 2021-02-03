@@ -11,6 +11,7 @@
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
+import { Layouts } from "@/components/Text.vue";
 
 export default class Home extends Vue {
   async mounted() {
@@ -42,7 +43,12 @@ export default class Home extends Vue {
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
     Object.keys(this.$store.state.text).forEach((text) => {
-      if (this.$store.state.text[text].text === undefined) return;
+      if (
+        this.$store.state.text[text].text === undefined ||
+        this.$store.state.text[text].partOfLayout !== this.$store.state.chosenLayout
+      ) {
+        return;
+      }
 
       ctx.textBaseline = "middle";
       ctx.textAlign = "center";

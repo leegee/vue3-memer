@@ -2,11 +2,8 @@
 
 ## TODO
 
-* Resize editing image when settings change
-* Use relative font sizes
-* Fix centering in readiness for ....
-* Different Layouts
-* Move resize from Save to lib
+* Add vertical centering
+* Fix vetical offset in image render
 
 ## Project setup
 ```

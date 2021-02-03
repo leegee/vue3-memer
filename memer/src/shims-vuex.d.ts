@@ -20,8 +20,8 @@ declare module '@vue/runtime-core' {
 
   interface TextOverlay {
     id: string;
-    hidden: boolean;
     text: string;
+    partOfLayout: string;
     style: ComputedStyles;
   }
 

@@ -27,7 +27,6 @@ export default class Base extends Vue {
 
   // TODO debounce, but not really needed...
   changeText(text: string) {
-    // console.log("Base.changeText commit", this.id, text);
     this.$store.commit("changeText", {
       id: this.id,
       style: window.getComputedStyle(this.$refs[this.id] as HTMLElement),

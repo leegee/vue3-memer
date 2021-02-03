@@ -27,10 +27,10 @@ export default createStore({
       state.minSize = width > height ? width : height;
     },
 
-    changeText(state: State, { id, hidden, style, text }) {
+    changeText(state: State, { id, style, text }) {
       state.text[id] = state.text[id] || {};
+      state.text[id].partOfLayout = state.chosenLayout;
       state.text[id].id = id;
-      state.text[id].hidden = hidden;
       state.text[id].text = text;
       state.text[id].style = {
         color: style.color,
