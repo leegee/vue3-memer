@@ -1,5 +1,5 @@
 <template>
-  <div id="fonts">
+  <fieldset id="fonts">
     <div
       v-for="fontClass in fontClasses"
       :key="fontClass"
@@ -8,7 +8,7 @@
     >
       {{ fontClass }}
     </div>
-  </div>
+  </fieldset>
 </template>
 
 <script lang="ts">

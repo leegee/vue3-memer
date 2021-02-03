@@ -1,15 +1,17 @@
 <template>
-  <select id="font-size" @change="change($event.target.value)">
-    <optgroup label="Text size"></optgroup>
-    <option
-      v-for="fontSizeClass in fontSizeClasses"
-      :key="fontSizeClass"
-      :class="fontSizeClass"
-      :selected="fontSizeClass === $store.state.fontSizeClass"
-    >
-      {{ fontSizeClass }}
-    </option>
-  </select>
+  <fieldset>
+    <legend>Text Size</legend>
+    <select id="font-size" @change="change($event.target.value)">
+      <option
+        v-for="fontSizeClass in fontSizeClasses"
+        :key="fontSizeClass"
+        :class="fontSizeClass"
+        :selected="fontSizeClass === $store.state.fontSizeClass"
+      >
+        {{ fontSizeClass }}
+      </option>
+    </select>
+  </fieldset>
 </template>
 
 <script lang="ts">
@@ -23,13 +25,3 @@ export default class FontSize extends Vue {
   }
 }
 </script>
-
-<style scoped lang="scss">
-#font-size {
-  display: block;
-  padding: 0 1rem;
-  color: black;
-  font-size: 2rem;
-  margin: 1rem auto;
-}
-</style>

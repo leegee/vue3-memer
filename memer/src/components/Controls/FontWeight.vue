@@ -1,41 +1,30 @@
 <template>
-  <div id="font-weight">
-    <span
-      v-for="fontWeightClass in fontWeightClasses"
-      :key="fontWeightClass"
-      @click="click(fontWeightClass)"
-      :class="
-        fontWeightClass +
-        ' ' +
-        (fontWeightClass === $store.state.fontWeightClass ? 'selected' : '')
-      "
-    >
-      {{ fontWeightClass.replace(/-weight$/, "") }}
-    </span>
-  </div>
+  <fieldset id="font-weight">
+    <legend>Text Weight</legend>
+
+    <select id="font-size" @change="change($event.target.value)">
+      <option
+        v-for="fontWeightClass in fontWeightClasses"
+        :key="fontWeightClass"
+        :selected="fontWeightClass === $store.state.fontWeightClass"
+        :style="{
+          'font-weight': fontWeightClass.replace(/-weight$/, ''),
+        }"
+      >
+        {{ fontWeightClass.replace(/-weight$/, "") }}
+      </option>
+    </select>
+  </fieldset>
 </template>
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
 
 export default class FontWeight extends Vue {
-  fontWeightClasses = ["light-weight", "normal-weight", "bold-weight", "boldest-weight"];
+  fontWeightClasses = ["light-weight", "normal-weight", "bold-weight", "bolder-weight"];
 
-  click(fontWeightClass: string) {
+  change(fontWeightClass: string) {
     this.$store.commit("setFontWeightClass", fontWeightClass);
   }
 }
 </script>
-
-<style scoped lang="scss">
-#font-weight {
-  display: block;
-  padding: 0 1rem;
-  color: black;
-  font-size: 2rem;
-  margin: 1rem auto;
-}
-span {
-  margin: 0 0.5rem;
-}
-</style>

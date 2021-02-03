@@ -28,11 +28,18 @@ import FontStroke from "../components/Controls/FontStroke.vue";
 export default class Settings extends Vue {}
 </script>
 
-<style>
+<style scoped>
 #settings {
   width: 100%;
 }
 .selected {
   background-color: yellow;
+}
+
+fieldset {
+  display: block;
+  padding: 1rem;
+  color: black;
+  margin: 1rem auto;
 }
 </style>

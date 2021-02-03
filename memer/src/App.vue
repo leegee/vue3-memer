@@ -94,8 +94,8 @@ export default class App extends Vue {
 .bold-weight {
   font-weight: bold;
 }
-.boldest-weight {
-  font-weight: boldest;
+.bolder-weight {
+  font-weight: bolder;
 }
 
 #nav {
