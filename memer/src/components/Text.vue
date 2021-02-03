@@ -27,8 +27,14 @@ import HorizontalThirdsTop from "./Text/HorizontalThirds/Top.vue";
 import HorizontalThirdsMiddle from "./Text/HorizontalThirds/Middle.vue";
 import HorizontalThirdsBottom from "./Text/HorizontalThirds/Bottom.vue";
 
+import HorizontalQuarters1 from "./Text/HorizontalQuarters/1.vue";
+import HorizontalQuarters2 from "./Text/HorizontalQuarters/2.vue";
+import HorizontalQuarters3 from "./Text/HorizontalQuarters/3.vue";
+import HorizontalQuarters4 from "./Text/HorizontalQuarters/4.vue";
+
 interface LayoutOption {
-  components: any[];
+  // eslint-disable-next-line
+  components: any[]; // What type is a Vue component
   label: string;
 }
 
@@ -53,6 +59,15 @@ export const Layouts: { [key: string]: LayoutOption } = {
     label: "Horizontal thirds",
     components: [HorizontalThirdsTop, HorizontalThirdsMiddle, HorizontalThirdsBottom],
   },
+  horizontalQuarters: {
+    label: "Horizontal quarters",
+    components: [
+      HorizontalQuarters1,
+      HorizontalQuarters2,
+      HorizontalQuarters3,
+      HorizontalQuarters4,
+    ],
+  },
 };
 
 @Options({
@@ -69,6 +84,10 @@ export const Layouts: { [key: string]: LayoutOption } = {
     HorizontalThirdsTop,
     HorizontalThirdsMiddle,
     HorizontalThirdsBottom,
+    HorizontalQuarters1,
+    HorizontalQuarters2,
+    HorizontalQuarters3,
+    HorizontalQuarters4,
   },
 })
 export default class Text extends Vue {
