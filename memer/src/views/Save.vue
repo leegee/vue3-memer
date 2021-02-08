@@ -71,13 +71,12 @@ export default class Home extends Vue {
         " " +
         this.$store.state.text[text].style.fontFamily;
 
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
-
-      // TODO: Properly either set a value in the CSS and use here, or render to canvas a measure
+      const metricsForHeight = ctx.measureText("M");
       const lineHeight =
-        parseInt(this.$store.state.text[text].style.fontSize) * 1.2;
+        metricsForHeight.fontBoundingBoxAscent +
+        metricsForHeight.fontBoundingBoxDescent;
+
+      // const lineHeight = parseInt(this.$store.state.text[text].style.fontSize) * 1.2;
 
       const x = Math.abs(
         (this.$store.state.text[text].style.left || 0) +
@@ -89,7 +88,7 @@ export default class Home extends Vue {
         this.$store.state.text[text].style.height / 2;
 
       this.$store.state.text[text].text
-        .split(/[\n\r]/)
+        .split(/[\n\r\f]/)
         .forEach((lineOfText) => {
           let stroke = false;
 
@@ -102,18 +101,17 @@ export default class Home extends Vue {
           let lineReadButNotRendered = "";
 
           lineOfText.split(/\s+/g).forEach((word) => {
-            const metrics = ctx.measureText(lineReadButNotRendered);
-            if (
-              metrics.width <
-              this.$store.state.text[text].style.width / 1.67 // TODO Remove the magic number
-            ) {
+            const toMeasure = lineReadButNotRendered + " " + word;
+            const metrics = ctx.measureText(toMeasure);
+            if (metrics.width < this.$store.state.text[text].style.width) {
+              lineReadButNotRendered +=
+                (lineReadButNotRendered ? " " : "") + word;
               console.log(
-                "# this is %d of el width ",
+                "# Join word to make [%s] because %d < %d",
+                lineReadButNotRendered,
                 metrics.width,
                 this.$store.state.text[text].style.width
               );
-              lineReadButNotRendered +=
-                (lineReadButNotRendered ? " " : "") + word;
             } else {
               renderText(
                 ctx,
@@ -124,7 +122,7 @@ export default class Home extends Vue {
               );
               lineReadButNotRendered = word;
               y += lineHeight;
-              console.log("y inc by %d to", lineHeight, y);
+              console.log("Render, and y inc by %d to", lineHeight, y);
             }
           });
 
@@ -135,6 +133,7 @@ export default class Home extends Vue {
             Math.floor(x),
             Math.floor(y)
           );
+          console.log("Rendered [%s]");
           console.log("--------------");
           y += lineHeight;
         });
