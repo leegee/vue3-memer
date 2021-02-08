@@ -3,6 +3,7 @@
     id="home"
     :style="{
       'background-image': 'url(' + $store.state.image + ')',
+      'background-color': $store.state.bgColor,
       width: $store.state.width + 'px',
       height: $store.state.height + 'px',
     }"
