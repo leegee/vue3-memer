@@ -8,7 +8,7 @@ export default createStore({
     fontWeightClass: "bold-weight",
     imageSaveSize: "original",
     fontColor: "#000000",
-    bgColor: "#FFFFFF",
+    bgColor: "transparent",
     strokeColor: "#ffffff",
     strokeWidth: "1px",
     lineHeight: "1",

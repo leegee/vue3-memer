@@ -63,6 +63,7 @@ export default class App extends Vue {
   --meme-width: 500px;
   --meme-height: 500px;
   --app-bg: #2c3e50;
+  --app-bg: #000;
   --app-fg: #fff;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -118,6 +119,15 @@ export default class App extends Vue {
   border-radius: 50%;
   min-width: var(--size);
   min-height: var(--size);
+}
+
+@media (orientation: portrait) {
+  #close-modal {
+    right: 0;
+    top: unset;
+    bottom: calc(0.5 * var(--size));
+    position: fixed;
+  }
 }
 
 .modal-mask {
