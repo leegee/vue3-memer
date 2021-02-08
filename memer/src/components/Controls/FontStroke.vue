@@ -5,7 +5,7 @@
       id="stroke-color"
       type="color"
       @change="changeColor($event.target.value)"
-      value="$store.state.strokeColor"
+      :value="$store.state.strokeColor"
     />
 
     <select id="stroke-width" @change="changeWidth($event.target.value)">

@@ -4,7 +4,7 @@
     <input
       type="color"
       @change="change($event.target.value)"
-      value="$store.state.bgColor"
+      :value="$store.state.bgColor"
     />
   </fieldset>
 </template>

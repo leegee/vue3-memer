@@ -5,7 +5,7 @@
       id="font-color-input"
       type="color"
       @change="change($event.target.value)"
-      value="$store.state.fontColor"
+      :value="$store.state.fontColor"
     />
   </fieldset>
 </template>
