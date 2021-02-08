@@ -1,6 +1,6 @@
 <template>
   <div
-    id="drop-zone"
+    id="home"
     :style="{
       'background-image': 'url(' + $store.state.image + ')',
       width: $store.state.width + 'px',
@@ -11,7 +11,11 @@
     <Text v-show="$store.state.image" />
   </div>
 
-  <button id="show-modal" v-show="$store.state.image" @click="showModal = true">
+  <button
+    id="show-customize"
+    v-show="$store.state.image"
+    @click="showModal = true"
+  >
     Customise
   </button>
 
@@ -48,10 +52,9 @@ export default class Home extends Vue {
 </script>
 
 <style scoped>
-#drop-zone {
+#home {
   position: relative;
   left: 50%;
-  margin: 1rem;
   margin-left: calc(-0.5 * var(--meme-width));
   width: var(--meme-width);
   height: var(--meme-height);
@@ -106,5 +109,9 @@ export default class Home extends Vue {
 .modal-leave-active .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+#show-customize {
+  margin: 1rem;
 }
 </style>

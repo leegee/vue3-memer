@@ -8,6 +8,7 @@ export default createStore({
     fontWeightClass: "bold-weight",
     imageSaveSize: "original",
     fontColor: "#000000",
+    bgColor: "#FFFFFF",
     strokeColor: "#ffffff",
     strokeWidth: "1px",
     lineHeight: "1",
@@ -74,6 +75,10 @@ export default createStore({
 
     setFontColor(state: State, fontColor: string) {
       state.fontColor = fontColor;
+    },
+
+    setBgColor(state: State, bgColor: string) {
+      state.bgColor = bgColor;
     },
 
     setFontStrokeColor(state: State, strokeColor: string) {

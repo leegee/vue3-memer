@@ -36,6 +36,7 @@ declare module '@vue/runtime-core' {
     imageSaveSize: string;
     minSize: number;
     fontColor: string;
+    bgColor: string;
     strokeColor: string;
     strokeWidth: string;
     lineHeight: string;

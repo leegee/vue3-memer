@@ -56,8 +56,8 @@ export default class App extends Vue {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 .system {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 .comic {
   font-family: "Comic Sans MS", "Comic Sans MS", cursive;
@@ -104,10 +104,11 @@ export default class App extends Vue {
 
 #nav {
   background: var(--app-fg);
-  font-size: 200%;
+  font-size: 2rem;
   display: flex;
   justify-content: center;
   align-items: space-between;
+  margin-bottom: 1rem;
 }
 #nav a {
   text-decoration: none;
