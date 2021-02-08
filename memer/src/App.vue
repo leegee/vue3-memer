@@ -3,12 +3,13 @@
     <nav id="nav">
       <div v-show="$store.state.image">
         <router-link to="/" class="icon">🖉</router-link>
+
         <button
           id="show-customize"
           v-show="$store.state.image"
           @click="showModal = true"
         >
-          Customise
+          ⚙
         </button>
 
         <router-link to="/layouts" class="icon">⬓</router-link>
@@ -179,7 +180,10 @@ export default class App extends Vue {
 }
 
 #show-customize {
-  margin: 1rem;
+  margin: 0 1rem;
+  border: unset;
+  background: unset;
+  font-size: 100%;
 }
 
 .courier {

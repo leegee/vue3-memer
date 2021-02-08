@@ -1,15 +1,17 @@
 <template>
-  <div
-    id="home"
-    :style="{
-      'background-image': 'url(' + $store.state.image + ')',
-      'background-color': $store.state.bgColor,
-      width: $store.state.width + 'px',
-      height: $store.state.height + 'px',
-    }"
-  >
-    <DropZone msg="Drop an image here" v-show="!$store.state.image" />
-    <Text v-show="$store.state.image" />
+  <div id="trans-bg">
+    <div
+      id="home"
+      :style="{
+        'background-image': 'url(' + $store.state.image + ')',
+        'background-color': $store.state.bgColor,
+        width: $store.state.width + 'px',
+        height: $store.state.height + 'px',
+      }"
+    >
+      <DropZone msg="Drop an image here" v-show="!$store.state.image" />
+      <Text v-show="$store.state.image" />
+    </div>
   </div>
 </template>
 
@@ -30,6 +32,9 @@ export default class Home extends Vue {
 </script>
 
 <style scoped>
+#trans-bg {
+  background: url("../assets/trans.jpg") center repeat;
+}
 #home {
   position: relative;
   left: 50%;
