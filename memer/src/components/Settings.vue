@@ -35,9 +35,6 @@ export default class Settings extends Vue {}
 #settings {
   width: 100%;
 }
-.selected {
-  background-color: yellow;
-}
 
 fieldset {
   display: block;
