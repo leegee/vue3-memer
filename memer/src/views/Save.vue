@@ -43,6 +43,7 @@ export default class Home extends Vue {
     Object.keys(this.$store.state.text).forEach((text) => {
       if (
         this.$store.state.text[text].text === undefined ||
+        this.$store.state.text[text].text.match(/^\s*$/) ||
         this.$store.state.text[text].partOfLayout !== this.$store.state.chosenLayout
       ) {
         return;
@@ -56,25 +57,21 @@ export default class Home extends Vue {
         " " +
         this.$store.state.text[text].style.fontFamily;
 
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+
       // TODO: Properly either set a value in the CSS and use here, or render to canvas a measure
       const lineHeight = parseInt(this.$store.state.text[text].style.fontSize) * 1.2;
 
-      const x =
+      const x = Math.abs(
         (this.$store.state.text[text].style.left || 0) +
-        this.$store.state.text[text].style.width / 2;
+          this.$store.state.text[text].style.width / 2
+      );
 
-      let y: number;
-
-      if (this.$store.state.text[text].style.top !== null) {
-        y =
-          (this.$store.state.text[text].style.top || 1) +
-          parseInt(this.$store.state.text[text].style.fontSize);
-      } else {
-        y = this.$store.state.height - this.$store.state.text[text].style.height;
-      }
-
-      // TODO: Why this value?
-      y -= parseInt(this.$store.state.text[text].style.fontSize) / 3;
+      let y =
+        (this.$store.state.text[text].style.top || 0) +
+        this.$store.state.text[text].style.height / 2;
 
       this.$store.state.text[text].text.split(/[\n\r]/).forEach((lineOfText) => {
         ctx.fillText(lineOfText, Math.floor(x), Math.floor(y));

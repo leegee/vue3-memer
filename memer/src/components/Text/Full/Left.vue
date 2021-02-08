@@ -13,5 +13,9 @@ export default class Left extends Base {
   left: 1pt;
   height: 100%;
   width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 </style>

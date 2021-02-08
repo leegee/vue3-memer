@@ -4,10 +4,9 @@
     :id="id"
     :ref="id"
     contentEditable="true"
-    @click="click($event)"
-    @input="changeText($event.target.innerText)"
+    @click="selectText($event)"
   >
-    {{ $store.state.text[id] ? $store.state.text[id].text : "" }}
+    {{ text }}
   </div>
 </template>
 
@@ -17,16 +16,27 @@ import { Vue } from "vue-class-component";
 export default class Base extends Vue {
   id = "control_id";
   defaultText = "Default Text";
+  text = "";
 
-  click(e: Event) {
+  mounted() {
+    this.text = this.$store.state.text[this.id]
+      ? this.$store.state.text[this.id].text
+      : this.defaultText || "";
+  }
+
+  beforeUnmount() {
+    this.updateText();
+  }
+
+  selectText(e: Event) {
     const s = window.getSelection();
     if (s) {
       s.selectAllChildren(e.target as Node);
     }
   }
 
-  // TODO debounce, but not really needed...
-  changeText(text: string) {
+  updateText() {
+    const text = (this.$refs[this.id] as HTMLElement).innerText;
     this.$store.commit("changeText", {
       id: this.id,
       style: window.getComputedStyle(this.$refs[this.id] as HTMLElement),
@@ -45,8 +55,8 @@ export default class Base extends Vue {
   max-width: var(--meme-width);
   width: var(--meme-width);
   border: 3pt dotted red;
+  white-space: pre-wrap;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  // overflow-x: hidden;
 }
 </style>
