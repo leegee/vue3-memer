@@ -7,13 +7,13 @@
       id="transparent-bg"
       title="Transparent"
       @click="change('transparent')"
-      >Make Trans</span
+      >Make<br />Transparent</span
     >
 
     <span
       v-show="$store.state.bgColor === 'transparent'"
       id="transparent-bg-selected"
-      >Is Trans</span
+      >Is<br />Transparent</span
     >
 
     <input
@@ -40,6 +40,7 @@ export default class BgColor extends Vue {
   color: var(--app-bg);
 }
 #transparent-bg-selected {
+  font-size: 80%;
   text-transform: lowercase;
   font-variant: small-caps;
 }
