@@ -1,12 +1,13 @@
 <template>
   <main ref="app">
     <nav id="nav">
+      <h1 v-show="!$store.state.image">Load image</h1>
       <div v-show="$store.state.image">
         <router-link to="/" class="icon">🖉</router-link>
 
         <button
           id="show-customize"
-          v-show="$store.state.image"
+          class="icon"
           @click="$store.commit('showModal', true)"
         >
           ⚙
@@ -67,6 +68,7 @@ export default class App extends Vue {
   --app-bg: #2c3e50;
   --app-bg: #000;
   --app-fg: #fff;
+  --app-nav-height: 3rem;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -78,21 +80,21 @@ export default class App extends Vue {
 }
 
 #nav {
-  background: var(--app-fg);
+  min-height: var(--app-nav-height);
+  max-height: var(--app-nav-height);
+  background: var(--app-bg);
   font-size: 2rem;
+  margin-bottom: 1rem;
   display: flex;
   justify-content: center;
   align-items: space-between;
-  margin-bottom: 1rem;
 }
 #nav a {
   text-decoration: none;
-  color: var(--app-bg);
-  opacity: 0.4;
 }
 #nav a.router-link-exact-active {
   font-weight: bold;
-  opacity: 1;
+  opacity: 0.8;
 }
 #nav .icon {
   display: inline-block;
@@ -100,6 +102,8 @@ export default class App extends Vue {
   min-width: 1em;
   min-height: 1em;
   margin-right: 1rem;
+  color: var(--app-fg);
+  opacity: 0.6;
 }
 .icon.save {
   -webkit-transform: scale(2, 1);
@@ -110,24 +114,31 @@ export default class App extends Vue {
   margin-left: 1rem;
 }
 
+#nav h1 {
+  margin: 0;
+  padding: 0;
+  color: var(--app-fg);
+  font-weight: 100;
+}
+
 #close-modal {
   --size: 3rem;
-  position: absolute;
-  right: calc(-0.5 * var(--size));
-  top: calc(-0.5 * var(--size));
   background: black;
   color: white;
   border: 1pt solid white;
   border-radius: 50%;
   min-width: var(--size);
   min-height: var(--size);
+  z-index: 999;
 }
 
 @media (orientation: portrait) {
   #close-modal {
-    right: 0;
+    position: absolute;
     top: unset;
-    bottom: calc(0.5 * var(--size));
+    left: unset;
+    right: 0;
+    bottom: calc(1 * var(--size));
     position: fixed;
   }
 }
@@ -143,9 +154,16 @@ export default class App extends Vue {
   width: 100vw;
   height: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.9);
   display: table;
   transition: opacity 0.3s ease;
+}
+
+@media (orientation: portrait) {
+  .modal-mask {
+    top: var(--app-nav-height);
+    height: calc(100vh - var(--app-nav-height));
+  }
 }
 
 .modal-wrapper {
@@ -163,7 +181,15 @@ export default class App extends Vue {
   border-radius: 4pt;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
-  font-family: Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+@media (orientation: portrait) {
+  .modal-container {
+    height: auto;
+    max-height: 100%;
+  }
 }
 
 .modal-enter {

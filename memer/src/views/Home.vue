@@ -32,6 +32,9 @@ export default class Home extends Vue {}
 <style scoped>
 #trans-bg {
   background: url("../assets/trans.jpg") center repeat;
+  width: var(--meme-width);
+  position: relative;
+  left: calc(50% - var(--meme-width) / 2);
 }
 #home {
   position: relative;

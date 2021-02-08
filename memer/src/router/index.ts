@@ -41,4 +41,6 @@ const router = createRouter({
   routes
 });
 
+router.afterEach(() => store.commit("showModal", false));
+
 export default router;

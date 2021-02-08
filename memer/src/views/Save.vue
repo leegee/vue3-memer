@@ -152,6 +152,7 @@ export default class Home extends Vue {
   text-align: center;
 }
 img {
+  background: url("../assets/trans.jpg") center repeat;
   margin: 1rem auto;
   border: 1px solid var(--app-fg);
   object-fit: cover;
