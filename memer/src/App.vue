@@ -7,7 +7,7 @@
         <button
           id="show-customize"
           v-show="$store.state.image"
-          @click="showModal = true"
+          @click="$store.commit('showModal', true)"
         >
           ⚙
         </button>
@@ -19,13 +19,15 @@
     <router-view />
   </main>
 
-  <aside v-show="$store.state.image && showModal">
+  <aside v-show="$store.state.image && $store.state.showModal">
     <transition name="modal">
       <div class="modal-mask">
         <div class="modal-wrapper">
           <div class="modal-container">
             <Settings />
-            <button id="close-modal" @click="showModal = false">OK</button>
+            <button id="close-modal" @click="$store.commit('showModal', false)">
+              OK
+            </button>
           </div>
         </div>
       </div>
@@ -43,7 +45,6 @@ import Settings from "@/components/Settings.vue";
   },
 })
 export default class App extends Vue {
-  showModal = false;
   mounted() {
     const computed = window.getComputedStyle(this.$refs.app as Element);
     this.$store.commit("setDimensions", {

@@ -18,9 +18,14 @@ export default createStore({
     width: 0,
     height: 0,
     text: {},
-    chosenLayout: "topBottom"
+    chosenLayout: "topBottom",
+    showModal: false,
   },
   mutations: {
+    showModal(state: State, show: boolean) {
+      state.showModal = show;
+    },
+
     setChosenLayout(state: State, chosenLayout) {
       state.chosenLayout = chosenLayout;
     },

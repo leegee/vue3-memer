@@ -44,6 +44,7 @@ declare module '@vue/runtime-core' {
     width: number;
     height: number;
     chosenLayout: string;
+    showModal: boolean;
   }
 
   interface ComponentCustomProperties {

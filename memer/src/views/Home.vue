@@ -26,9 +26,7 @@ import Text from "@/components/Text.vue";
     Text,
   },
 })
-export default class Home extends Vue {
-  showModal = false;
-}
+export default class Home extends Vue {}
 </script>
 
 <style scoped>
