@@ -31,6 +31,7 @@ export default createStore({
     },
 
     changeText(state: State, { id, style, text }) {
+      console.log('STORE [%s]', text);
       state.text[id] = state.text[id] || {};
       state.text[id].partOfLayout = state.chosenLayout;
       state.text[id].id = id;

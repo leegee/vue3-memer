@@ -9,16 +9,29 @@
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
-import { Layouts } from "@/components/Text.vue";
+
+function renderText(
+  ctx: CanvasRenderingContext2D,
+  stroke: boolean,
+  text: string,
+  x: number,
+  y: number
+) {
+  console.log("renderText ", x, y, text);
+  ctx.fillText(text, x, y);
+  if (stroke) {
+    ctx.strokeText(text, x, y);
+  }
+}
 
 export default class Home extends Vue {
   async mounted() {
-    (this.$refs.export as HTMLImageElement).src = await this.composedImage();
+    (this.$refs.export as HTMLImageElement).src = this.composedImage();
   }
 
   async save() {
     const a = document.createElement("a");
-    a.href = await this.composedImage();
+    a.href = this.composedImage();
     a.download = "meme.png";
     document.body.appendChild(a);
     a.click();
@@ -44,7 +57,8 @@ export default class Home extends Vue {
       if (
         this.$store.state.text[text].text === undefined ||
         this.$store.state.text[text].text.match(/^\s*$/) ||
-        this.$store.state.text[text].partOfLayout !== this.$store.state.chosenLayout
+        this.$store.state.text[text].partOfLayout !==
+          this.$store.state.chosenLayout
       ) {
         return;
       }
@@ -62,7 +76,8 @@ export default class Home extends Vue {
       // align-items: center;
 
       // TODO: Properly either set a value in the CSS and use here, or render to canvas a measure
-      const lineHeight = parseInt(this.$store.state.text[text].style.fontSize) * 1.2;
+      const lineHeight =
+        parseInt(this.$store.state.text[text].style.fontSize) * 1.2;
 
       const x = Math.abs(
         (this.$store.state.text[text].style.left || 0) +
@@ -73,17 +88,56 @@ export default class Home extends Vue {
         (this.$store.state.text[text].style.top || 0) +
         this.$store.state.text[text].style.height / 2;
 
-      this.$store.state.text[text].text.split(/[\n\r]/).forEach((lineOfText) => {
-        ctx.fillText(lineOfText, Math.floor(x), Math.floor(y));
+      this.$store.state.text[text].text
+        .split(/[\n\r]/)
+        .forEach((lineOfText) => {
+          let stroke = false;
 
-        if (this.$store.state.strokeWidth !== "0") {
-          ctx.strokeStyle = this.$store.state.strokeColor;
-          ctx.lineWidth = parseInt(this.$store.state.strokeWidth);
-          ctx.strokeText(lineOfText, Math.floor(x), Math.floor(y));
-        }
+          if (this.$store.state.strokeWidth !== "0") {
+            ctx.strokeStyle = this.$store.state.strokeColor;
+            ctx.lineWidth = parseInt(this.$store.state.strokeWidth);
+            stroke = true;
+          }
 
-        y += lineHeight;
-      });
+          let lineReadButNotRendered = "";
+
+          lineOfText.split(/\s+/g).forEach((word) => {
+            const metrics = ctx.measureText(lineReadButNotRendered);
+            if (
+              metrics.width <
+              this.$store.state.text[text].style.width / 1.67 // TODO Remove the magic number
+            ) {
+              console.log(
+                "# this is %d of el width ",
+                metrics.width,
+                this.$store.state.text[text].style.width
+              );
+              lineReadButNotRendered +=
+                (lineReadButNotRendered ? " " : "") + word;
+            } else {
+              renderText(
+                ctx,
+                stroke,
+                lineReadButNotRendered,
+                Math.floor(x),
+                Math.floor(y)
+              );
+              lineReadButNotRendered = word;
+              y += lineHeight;
+              console.log("y inc by %d to", lineHeight, y);
+            }
+          });
+
+          renderText(
+            ctx,
+            stroke,
+            lineReadButNotRendered,
+            Math.floor(x),
+            Math.floor(y)
+          );
+          console.log("--------------");
+          y += lineHeight;
+        });
     });
 
     return canvas.toDataURL("image/png");
