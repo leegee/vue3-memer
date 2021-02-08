@@ -4,6 +4,7 @@
     :id="id"
     :ref="id"
     contentEditable="true"
+    @focus="selectText($event)"
     @click="selectText($event)"
   >
     {{ text }}
@@ -54,9 +55,12 @@ export default class Base extends Vue {
   min-height: 1em;
   max-width: var(--meme-width);
   width: var(--meme-width);
-  border: 3pt dotted red;
+  border: 1pt dotted red;
   white-space: pre-wrap;
   word-wrap: break-word;
   overflow-wrap: break-word;
+}
+.overlay:focus {
+  outline: 1pt solid red;
 }
 </style>

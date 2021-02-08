@@ -31,7 +31,6 @@ export default createStore({
     },
 
     changeText(state: State, { id, style, text }) {
-      console.log('STORE [%s]', text);
       state.text[id] = state.text[id] || {};
       state.text[id].partOfLayout = state.chosenLayout;
       state.text[id].id = id;
@@ -78,12 +77,10 @@ export default createStore({
     },
 
     setFontStrokeColor(state: State, strokeColor: string) {
-      console.log('change stroke color');
       state.strokeColor = strokeColor;
     },
 
     setFontStrokeWidth(state: State, strokeWidth: string) {
-      console.log('change stroke width');
       state.strokeWidth = "" + strokeWidth;
     },
 
