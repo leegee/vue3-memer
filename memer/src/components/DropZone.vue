@@ -6,8 +6,8 @@
     @dragleave.prevent="onDragLeave"
     @drop.prevent="onDrop($event)"
   >
+    <h1 id="msg">{{ msg }}</h1>
     <h1>
-      {{ msg }}
       <input type="file" id="file" @change="onFileChosen($event)" />
     </h1>
   </div>
@@ -63,7 +63,8 @@ export default class DropZone extends Vue {
     img.src = src;
     img.onload = () => {
       const ratio =
-        img.width / this.$store.state.minSize > img.height / this.$store.state.minSize
+        img.width / this.$store.state.minSize >
+        img.height / this.$store.state.minSize
           ? img.width / this.$store.state.minSize
           : img.height / this.$store.state.minSize;
 
@@ -82,13 +83,18 @@ export default class DropZone extends Vue {
 
 <style scoped lang="scss">
 #dropzone {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24pt;
   width: 100%;
   height: 100%;
+  top: 0;
+  position: absolute;
   background-color: grey;
+  font-size: 24pt;
+}
+
+@media (orientation: portrait) {
+  #msg {
+    display: none;
+  }
 }
 
 #dropzone.over {

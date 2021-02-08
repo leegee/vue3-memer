@@ -2,9 +2,9 @@
   <main ref="app">
     <nav id="nav">
       <div v-show="$store.state.image">
-        <router-link to="/">Edit</router-link> |
-        <router-link to="/layouts">Layouts</router-link> |
-        <router-link to="/save">Save</router-link>
+        <router-link to="/" class="icon">🖉</router-link>
+        <router-link to="/layouts" class="icon">⬓</router-link>
+        <router-link to="/save" class="save icon">⭳</router-link>
       </div>
     </nav>
     <router-view />
@@ -34,14 +34,16 @@ export default class App extends Vue {
 #app {
   --meme-width: 500px;
   --meme-height: 500px;
-  --app-fg: #2c3e50;
-  --app-bg: #fff;
+  --app-bg: #2c3e50;
+  --app-fg: #fff;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: var(--app-fg);
   background-color: var(--app-bg);
+  width: 100%;
+  height: 100%;
 }
 
 .courier {
@@ -54,8 +56,8 @@ export default class App extends Vue {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 .system {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
-    Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 .comic {
   font-family: "Comic Sans MS", "Comic Sans MS", cursive;
@@ -101,14 +103,31 @@ export default class App extends Vue {
 }
 
 #nav {
-  padding: 30px;
+  background: var(--app-fg);
+  font-size: 200%;
+  display: flex;
+  justify-content: center;
+  align-items: space-between;
 }
 #nav a {
   text-decoration: none;
-  color: navy;
+  color: var(--app-bg);
+  opacity: 0.4;
+  min-width: 4rem;
 }
 #nav a.router-link-exact-active {
   font-weight: bold;
-  color: blue;
+  opacity: 1;
+}
+#nav .icon {
+  display: inline-block;
+  font-weight: bolder;
+}
+.icon.save {
+  -webkit-transform: scale(3, 1);
+  -moz-transform: scale(3, 1);
+  -ms-transform: scale(3, 1);
+  -o-transform: scale(3, 1);
+  transform: scale(3, 1);
 }
 </style>

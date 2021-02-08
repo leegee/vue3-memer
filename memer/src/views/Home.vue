@@ -7,7 +7,7 @@
       height: $store.state.height + 'px',
     }"
   >
-    <DropZone msg="Drop here" v-show="!$store.state.image" />
+    <DropZone msg="Drop an image here" v-show="!$store.state.image" />
     <Text v-show="$store.state.image" />
   </div>
 
@@ -66,8 +66,12 @@ export default class Home extends Vue {
   z-index: 9998;
   top: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
   width: 100%;
+  width: 100vw;
   height: 100%;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   display: table;
   transition: opacity 0.3s ease;
