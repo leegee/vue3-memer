@@ -113,7 +113,6 @@ export default class App extends Vue {
   text-decoration: none;
   color: var(--app-bg);
   opacity: 0.4;
-  min-width: 4rem;
 }
 #nav a.router-link-exact-active {
   font-weight: bold;
@@ -122,12 +121,16 @@ export default class App extends Vue {
 #nav .icon {
   display: inline-block;
   font-weight: bolder;
+  min-width: 1em;
+  min-height: 1em;
+  margin-right: 1rem;
 }
 .icon.save {
-  -webkit-transform: scale(3, 1);
-  -moz-transform: scale(3, 1);
-  -ms-transform: scale(3, 1);
-  -o-transform: scale(3, 1);
-  transform: scale(3, 1);
+  -webkit-transform: scale(2, 1);
+  -moz-transform: scale(2, 1);
+  -ms-transform: scale(2, 1);
+  -o-transform: scale(2, 1);
+  transform: scale(2, 1);
+  margin-left: 1rem;
 }
 </style>

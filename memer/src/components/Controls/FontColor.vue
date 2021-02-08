@@ -19,8 +19,3 @@ export default class FontColor extends Vue {
   }
 }
 </script>
-
-<style scoped>
-#font-color {
-}
-</style>
