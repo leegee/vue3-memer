@@ -3,7 +3,7 @@
     <div>
       <img ref="export" @click="save()" />
     </div>
-    <div>Click to save</div>
+    <div @click="save()">Click to save</div>
   </div>
 </template>
 
@@ -155,7 +155,7 @@ img {
   margin: 1rem auto;
   border: 1px solid var(--app-fg);
   object-fit: cover;
-  width: 100%;
-  height: auto;
+  max-width: 99%;
+  max-height: 90%;
 }
 </style>
