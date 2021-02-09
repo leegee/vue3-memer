@@ -13,7 +13,7 @@ export default createStore({
     strokeWidth: "1px",
     lineHeight: "1",
     image: "",
-    minSize: 0,
+    largestSize: 500,
     imageOriginal: "",
     width: 0,
     height: 0,
@@ -33,7 +33,7 @@ export default createStore({
     setDimensions(state: State, { width, height }) {
       state.width = width;
       state.height = height;
-      state.minSize = width > height ? width : height;
+      state.largestSize = width > height ? width : height;
     },
 
     changeText(state: State, { id, style, text }) {

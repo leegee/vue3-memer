@@ -1,5 +1,12 @@
 <template>
-  <div id="trans-bg">
+  <div
+    id="trans-bg"
+    :style="{
+      width: $store.state.width + 'px',
+      height: $store.state.height + 'px',
+      left: (-1 * $store.state.width) / 2 + 'px',
+    }"
+  >
     <div
       id="home"
       :style="{
@@ -32,16 +39,13 @@ export default class Home extends Vue {}
 <style scoped>
 #trans-bg {
   background: url("../assets/trans.jpg") center repeat;
-  width: var(--meme-width);
   position: relative;
-  left: calc(50% - var(--meme-width) / 2);
+  margin-left: 50%;
 }
 #home {
   position: relative;
-  left: 50%;
-  margin-left: calc(-0.5 * var(--meme-width));
-  width: var(--meme-width);
-  height: var(--meme-height);
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

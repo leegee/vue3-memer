@@ -82,10 +82,10 @@ export default class DropZone extends Vue {
     img.src = src;
     img.onload = () => {
       const ratio =
-        img.width / this.$store.state.minSize >
-        img.height / this.$store.state.minSize
-          ? img.width / this.$store.state.minSize
-          : img.height / this.$store.state.minSize;
+        img.width / this.$store.state.largestSize >
+        img.height / this.$store.state.largestSize
+          ? img.width / this.$store.state.largestSize
+          : img.height / this.$store.state.largestSize;
 
       img.width = img.width / ratio;
       img.height = img.height / ratio;

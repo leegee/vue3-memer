@@ -53,8 +53,8 @@ export default class Base extends Vue {
   display: block;
   text-align: center;
   min-height: 1em;
-  max-width: var(--meme-width);
-  width: var(--meme-width);
+  max-width: 100%;
+  width: 100%;
   border: 1pt dotted red;
   white-space: pre-wrap;
   word-wrap: break-word;
