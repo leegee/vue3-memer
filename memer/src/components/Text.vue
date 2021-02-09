@@ -117,7 +117,7 @@ export default class Text extends Vue {
   left: 0;
   width: 100%;
   width: var(--meme-width);
-  width: var(--meme-height);
+  height: var(--meme-height);
   background-position: center;
 }
 </style>
