@@ -9,7 +9,11 @@
       'line-height': $store.state.lineHeight,
     }"
   >
-    <component v-for="layer in chosenLayoutComponents" :is="layer" :key="layer" />
+    <component
+      v-for="layer in chosenLayoutComponents"
+      :is="layer"
+      :key="layer"
+    />
   </div>
 </template>
 
@@ -58,7 +62,11 @@ export const Layouts: { [key: string]: LayoutOption } = {
   },
   horizontalThirds: {
     label: "Horizontal thirds",
-    components: [HorizontalThirdsTop, HorizontalThirdsMiddle, HorizontalThirdsBottom],
+    components: [
+      HorizontalThirdsTop,
+      HorizontalThirdsMiddle,
+      HorizontalThirdsBottom,
+    ],
   },
   horizontalQuarters: {
     label: "Horizontal quarters",
@@ -95,7 +103,8 @@ export default class Text extends Vue {
   chosenLayoutComponents = Layouts[Object.keys(Layouts)[0]].components;
 
   created() {
-    this.chosenLayoutComponents = Layouts[this.$store.state.chosenLayout].components;
+    this.chosenLayoutComponents =
+      Layouts[this.$store.state.chosenLayout].components;
   }
 }
 </script>
@@ -103,10 +112,12 @@ export default class Text extends Vue {
 <style scoped lang="scss">
 #text-layers {
   position: absolute;
+  display: table;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  display: table;
+  width: var(--meme-width);
+  width: var(--meme-height);
+  background-position: center;
 }
 </style>
