@@ -1,6 +1,11 @@
 <template>
   <ul>
-    <li v-for="(item, key) in layouts" :key="key" @click="click(key)">
+    <li
+      v-for="(item, key) in layouts"
+      :key="key"
+      class="layout-choice"
+      @click="click(key)"
+    >
       {{ item.label }}
     </li>
   </ul>
@@ -29,9 +34,26 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  margin-top: 4rem;
   font-size: 2rem;
+  display: flex;
+  flex-direction: column;
 }
+
 li {
-  padding: 1rem;
+  opacity: 0.28;
+  padding: 0.5rem;
+  transition-property: opacity;
+  transition-delay: 0s;
+  transition-duration: 1s;
+}
+
+li:hover {
+  transition: opacity 1s;
+  opacity: 1;
+}
+
+.layout-choice {
+  cursor: pointer;
 }
 </style>
