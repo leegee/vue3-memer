@@ -76,7 +76,8 @@ export default class Home extends Vue {
       const metricsForHeight = ctx.measureText("M");
       const lineHeight =
         metricsForHeight.fontBoundingBoxAscent +
-        metricsForHeight.fontBoundingBoxDescent;
+        metricsForHeight.fontBoundingBoxDescent -
+        10;
 
       // const lineHeight = parseInt(this.$store.state.text[text].style.fontSize) * 1.2;
 
@@ -85,9 +86,8 @@ export default class Home extends Vue {
           this.$store.state.text[text].style.width / 2
       );
 
-      let y =
-        (this.$store.state.text[text].style.top || 0) +
-        this.$store.state.text[text].style.height / 2;
+      let y = this.$store.state.text[text].style.top || 0;
+      y += lineHeight / 2;
 
       this.$store.state.text[text].text
         .split(/[\n\r\f]/)
@@ -108,12 +108,6 @@ export default class Home extends Vue {
             if (metrics.width < this.$store.state.text[text].style.width) {
               lineReadButNotRendered +=
                 (lineReadButNotRendered ? " " : "") + word;
-              console.log(
-                "# Join word to make [%s] because %d < %d",
-                lineReadButNotRendered,
-                metrics.width,
-                this.$store.state.text[text].style.width
-              );
             } else {
               renderText(
                 ctx,
