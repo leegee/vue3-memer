@@ -32,6 +32,25 @@ export default class DropZone extends Vue {
     };
   }
 
+  created() {
+    window.addEventListener("paste", (e: Event) => {
+      this.retrieveImageFromClipboardAsBlob(e as ClipboardEvent);
+    });
+  }
+
+  retrieveImageFromClipboardAsBlob(pasteEvent: ClipboardEvent) {
+    if ((pasteEvent as ClipboardEvent).clipboardData !== null) {
+      const items = pasteEvent.clipboardData!.items;
+
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf("image") === -1) continue;
+        const file = items[i].getAsFile();
+        this.reader.readAsDataURL(file as Blob);
+        break;
+      }
+    }
+  }
+
   onDragOver() {
     (this.$refs.dropzone as HTMLElement).classList.add("over");
   }

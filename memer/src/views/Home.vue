@@ -5,8 +5,8 @@
       :style="{
         'background-image': 'url(' + $store.state.image + ')',
         'background-color': $store.state.bgColor,
-        width: $store.state.width + 'px',
-        height: $store.state.height + 'px',
+        'background-size':
+          $store.state.width + 'px ' + $store.state.height + 'px',
       }"
     >
       <DropZone msg="Drop an image here" v-show="!$store.state.image" />
