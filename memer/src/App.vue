@@ -154,7 +154,7 @@ export default class App extends Vue {
   width: 100vw;
   height: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.05);
   display: table;
   transition: opacity 0.3s ease;
 }
