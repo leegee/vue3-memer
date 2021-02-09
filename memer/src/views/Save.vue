@@ -67,6 +67,8 @@ export default class Home extends Vue {
       ctx.textAlign = "center";
       ctx.fillStyle = this.$store.state.fontColor; // text[text].style.color;
       ctx.font =
+        this.$store.state.fontWeight +
+        " " +
         this.$store.state.text[text].style.fontSize +
         " " +
         this.$store.state.text[text].style.fontFamily;

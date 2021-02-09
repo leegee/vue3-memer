@@ -4,14 +4,14 @@
 
     <select id="font-size" @change="change($event.target.value)">
       <option
-        v-for="fontWeightClass in fontWeightClasses"
-        :key="fontWeightClass"
-        :selected="fontWeightClass === $store.state.fontWeightClass"
+        v-for="fontWeight in fontWeights"
+        :key="fontWeight"
+        :selected="fontWeight === $store.state.fontWeight"
         :style="{
-          'font-weight': fontWeightClass.replace(/-weight$/, ''),
+          'font-weight': fontWeight,
         }"
       >
-        {{ fontWeightClass.replace(/-weight$/, "") }}
+        {{ fontWeight }}
       </option>
     </select>
   </fieldset>
@@ -21,10 +21,10 @@
 import { Vue } from "vue-class-component";
 
 export default class FontWeight extends Vue {
-  fontWeightClasses = ["light-weight", "normal-weight", "bold-weight", "bolder-weight"];
+  fontWeights = ["light", "normal", "bold", "bolder"];
 
-  change(fontWeightClass: string) {
-    this.$store.commit("setFontWeightClass", fontWeightClass);
+  change(fontWeight: string) {
+    this.$store.commit("setfontWeight", fontWeight);
   }
 }
 </script>

@@ -5,7 +5,7 @@ export default createStore({
   state: {
     fontClass: "impact",
     fontSizeClass: "large",
-    fontWeightClass: "bold-weight",
+    fontWeight: "bold",
     imageSaveSize: "original",
     fontColor: "#000000",
     bgColor: "transparent",
@@ -74,8 +74,8 @@ export default createStore({
       state.fontSizeClass = fontSizeClass;
     },
 
-    setFontWeightClass(state: State, fontWeightClass: string) {
-      state.fontWeightClass = fontWeightClass;
+    setfontWeight(state: State, fontWeight: string) {
+      state.fontWeight = fontWeight;
     },
 
     setFontColor(state: State, fontColor: string) {

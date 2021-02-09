@@ -1,7 +1,14 @@
 <template>
   <div
     id="text-layers"
-    :class="$store.state.fontClass + ' ' + $store.state.fontSizeClass"
+    :class="
+      $store.state.fontClass +
+      ' ' +
+      $store.state.fontSizeClass +
+      ' ' +
+      $store.state.fontWeight +
+      '-weight'
+    "
     :style="{
       color: $store.state.fontColor,
       '-webkit-text-stroke-color': $store.state.strokeColor,
@@ -117,8 +124,6 @@ export default class Text extends Vue {
   left: 0;
   width: 100%;
   height: 100%;
-  // width: var(--meme-width);
-  // height: var(--meme-height);
   background-position: center;
 }
 </style>

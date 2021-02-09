@@ -32,7 +32,7 @@ declare module '@vue/runtime-core' {
     imageOriginal: string;
     fontClass: string;
     fontSizeClass: string;
-    fontWeightClass: string;
+    fontWeight: string;
     imageSaveSize: string;
     largestSize: number;
     fontColor: string;
