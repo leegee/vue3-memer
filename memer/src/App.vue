@@ -84,7 +84,7 @@ export default class App extends Vue {
   max-height: var(--app-nav-height);
   background: var(--app-bg);
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   display: flex;
   justify-content: center;
   align-items: space-between;
@@ -122,6 +122,7 @@ export default class App extends Vue {
 }
 
 #close-modal {
+  cursor: pointer;
   --size: 3rem;
   background: black;
   color: white;
@@ -207,6 +208,7 @@ export default class App extends Vue {
 }
 
 #show-customize {
+  cursor: pointer;
   margin: 0 1rem;
   border: unset;
   background: unset;
