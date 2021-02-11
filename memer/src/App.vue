@@ -1,39 +1,45 @@
 <template>
-  <main ref="app">
-    <header>
-      <h1 v-show="!$store.state.image">meme memer meme</h1>
-    </header>
-    <nav id="nav">
-      <div v-show="$store.state.image">
-        <a
-          class="icon"
-          v-show="$route.matched.some(({ name }) => name === 'Home')"
-          @click="$store.commit('showModal', true)"
-          >⚙</a
-        >
-        <router-link to="/" class="icon">🖉</router-link>
-        <router-link to="/layouts" class="icon">⬓</router-link>
-        <router-link to="/new" class="new icon">🔄</router-link>
-        <router-link to="/save" class="save icon">⭳</router-link>
-      </div>
-    </nav>
-    <router-view />
-  </main>
+  <div>
+    <main ref="app" v-show="loaded">
+      <header>
+        <h1 v-show="!$store.state.image">meme memer meme</h1>
+        <nav id="nav">
+          <div v-show="$store.state.image">
+            <a
+              class="icon"
+              v-show="$route.matched.some(({ name }) => name === 'Home')"
+              @click="$store.commit('showModal', true)"
+              >⚙</a
+            >
+            <router-link to="/" class="icon">🖉</router-link>
+            <router-link to="/layouts" class="icon">⬓</router-link>
+            <router-link to="/new" class="new icon">🔄</router-link>
+            <router-link to="/save" class="save icon">⭳</router-link>
+          </div>
+        </nav>
+      </header>
 
-  <aside v-show="$store.state.image && $store.state.showModal">
-    <transition name="modal">
-      <div class="modal-mask">
-        <div class="modal-wrapper">
-          <div class="modal-container">
-            <Settings />
-            <button id="close-modal" @click="$store.commit('showModal', false)">
-              OK
-            </button>
+      <router-view />
+    </main>
+
+    <aside v-show="$store.state.image && $store.state.showModal">
+      <transition name="modal">
+        <div class="modal-mask">
+          <div class="modal-wrapper">
+            <div class="modal-container">
+              <Settings />
+              <button
+                id="close-modal"
+                @click="$store.commit('showModal', false)"
+              >
+                OK
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </transition>
-  </aside>
+      </transition>
+    </aside>
+  </div>
 </template>
 
 <script lang="ts">
@@ -46,12 +52,15 @@ import Settings from "@/components/Settings.vue";
   },
 })
 export default class App extends Vue {
+  loaded = false;
+
   mounted() {
     const computed = window.getComputedStyle(this.$refs.app as Element);
     this.$store.commit("setDimensions", {
       width: parseInt(computed.getPropertyValue("--meme-width")),
       height: parseInt(computed.getPropertyValue("--meme-height")),
     });
+    this.loaded = true;
   }
 }
 </script>
