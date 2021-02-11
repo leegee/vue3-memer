@@ -29,6 +29,7 @@ const routes: Array<RouteRecordRaw> = [
     beforeEnter(to, from, next) {
       store.commit('unsetImage');
       next({ name: "Home" });
+      window.location.reload();
     }
   },
   {

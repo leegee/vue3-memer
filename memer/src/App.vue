@@ -1,7 +1,9 @@
 <template>
   <main ref="app">
-    <nav id="nav">
+    <header>
       <h1 v-show="!$store.state.image">meme memer meme</h1>
+    </header>
+    <nav id="nav">
       <div v-show="$store.state.image">
         <a
           class="icon"
@@ -82,7 +84,7 @@ export default class App extends Vue {
   max-height: var(--app-nav-height);
   background: var(--app-bg);
   font-size: 2rem;
-  margin-bottom: 3rem;
+  margin: 1.3rem 0;
   display: flex;
   justify-content: center;
   align-items: space-between;
@@ -121,7 +123,7 @@ export default class App extends Vue {
   transform: scale(2, 1);
 }
 
-#nav h1 {
+#app header h1 {
   margin: 0;
   padding: 0;
   color: var(--app-fg);

@@ -8,7 +8,7 @@
   >
     <h1 id="msg">{{ msg }}</h1>
     <h1>
-      <input type="file" id="file" @change="onFileChosen($event)" />
+      <input type="file" ref="file" id="file" @change="onFileChosen($event)" />
     </h1>
   </div>
 </template>
