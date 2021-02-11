@@ -59,6 +59,7 @@ export default class Base extends Vue {
   white-space: pre-wrap;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  line-height: 1;
 }
 .overlay:focus {
   outline: 1pt solid red;

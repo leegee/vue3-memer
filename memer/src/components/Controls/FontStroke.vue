@@ -25,7 +25,7 @@
 import { Vue } from "vue-class-component";
 
 export default class FontStroke extends Vue {
-  strokeWidths = ["0", "1px", "2px", "3px", "4px", "5px", "6px"];
+  strokeWidths = [0, 1, 2, 3, 4, 5, 6];
 
   changeColor(strokeColor: string) {
     this.$store.commit("setFontStrokeColor", strokeColor);

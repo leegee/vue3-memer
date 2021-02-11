@@ -7,7 +7,6 @@ declare module '@vue/runtime-core' {
     fontSize: number;
     fontFamily: string;
     textAlign: string;
-    lineHeight: number;
     color: string;
     top: number | null;
     bottom: number | null;
@@ -37,12 +36,12 @@ declare module '@vue/runtime-core' {
     fontSizeClass: string;
     fontWeight: string;
     imageSaveSize: string;
-    largestSize: number;
+    largestSide: number;
     fontColor: string;
+    lineHeight: number;
     bgColor: string;
     strokeColor: string;
-    strokeWidth: string;
-    lineHeight: string;
+    strokeWidth: number;
     text: TextOverlays;
     chosenLayout: string;
     showModal: boolean;

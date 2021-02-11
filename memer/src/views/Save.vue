@@ -69,6 +69,8 @@ export default class Home extends Vue {
     //   metricsForHeight.actualBoundingBoxAscent +
     //   metricsForHeight.actualBoundingBoxDescent;
 
+    const lineHeight = this.$store.state.lineHeight;
+
     Object.keys(this.$store.state.text).forEach((text) => {
       if (
         this.$store.state.text[text].text === undefined ||
@@ -78,8 +80,6 @@ export default class Home extends Vue {
       ) {
         return;
       }
-
-      const lineHeight = this.$store.state.text[text].style.lineHeight;
 
       ctx.font =
         this.$store.state.fontWeight +
@@ -93,17 +93,16 @@ export default class Home extends Vue {
           this.$store.state.text[text].style.width / 2
       );
 
-      let y = this.$store.state.text[text].style.top || 0;
-      y += lineHeight / 2;
+      let y = lineHeight / 2 + (this.$store.state.text[text].style.top || 0);
 
       this.$store.state.text[text].text
         .split(/[\n\r\f]/)
         .forEach((lineOfText) => {
           let stroke = false;
 
-          if (this.$store.state.strokeWidth !== "0") {
+          if (this.$store.state.strokeWidth !== 0) {
             ctx.strokeStyle = this.$store.state.strokeColor;
-            ctx.lineWidth = parseInt(this.$store.state.strokeWidth);
+            ctx.lineWidth = this.$store.state.strokeWidth;
             stroke = true;
           }
 

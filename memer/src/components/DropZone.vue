@@ -37,7 +37,8 @@ export default class DropZone extends Vue {
 
   retrieveImageFromClipboardAsBlob(pasteEvent: ClipboardEvent) {
     if ((pasteEvent as ClipboardEvent).clipboardData !== null) {
-      const items = pasteEvent.clipboardData!.items;
+      const items =
+        (pasteEvent.clipboardData && pasteEvent.clipboardData.items) || [];
 
       for (let i = 0; i < items.length; i++) {
         if (items[i].type.indexOf("image") === -1) continue;
@@ -53,10 +54,10 @@ export default class DropZone extends Vue {
     img.src = src;
     img.onload = () => {
       const ratio =
-        img.width / this.$store.state.largestSize >
-        img.height / this.$store.state.largestSize
-          ? img.width / this.$store.state.largestSize
-          : img.height / this.$store.state.largestSize;
+        img.width / this.$store.state.largestSide >
+        img.height / this.$store.state.largestSide
+          ? img.width / this.$store.state.largestSide
+          : img.height / this.$store.state.largestSide;
 
       img.width = img.width / ratio;
       img.height = img.height / ratio;
@@ -104,10 +105,10 @@ export default class DropZone extends Vue {
   border: 1px solid transparent;
   background-color: grey;
   font-size: 24pt;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-items: center;
-  cursor: pointer;
 }
 
 @media (orientation: portrait) {

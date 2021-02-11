@@ -10,10 +10,10 @@ export default createStore({
     fontColor: "#000000",
     bgColor: "transparent",
     strokeColor: "#ffffff",
-    strokeWidth: "1px",
-    lineHeight: "1",
+    strokeWidth: 1,
+    lineHeight: 32,
     image: "",
-    largestSize: 500,
+    largestSide: 500,
     imageOriginal: "",
     width: 0,
     height: 0,
@@ -33,7 +33,7 @@ export default createStore({
     setDimensions(state: State, { width, height }) {
       state.width = width;
       state.height = height;
-      state.largestSize = width > height ? width : height;
+      state.largestSide = width > height ? width : height;
     },
 
     changeText(state: State, { id, style, text }) {
@@ -41,6 +41,7 @@ export default createStore({
       state.text[id].partOfLayout = state.chosenLayout;
       state.text[id].id = id;
       state.text[id].text = text;
+      state.lineHeight = parseInt(style.lineHeight);
 
       console.log(style.lineHeight, style.fontFamily, style.fontSize);
 
@@ -49,7 +50,6 @@ export default createStore({
         textAlign: style.textAlign,
         fontFamily: style.fontFamily,
         fontSize: parseInt(style.fontSize),
-        lineHeight: parseInt(style.lineHeight),
         left: parseInt(style.left) || null,
         right: parseInt(style.right) || null,
         top: parseInt(style.top) || null,
@@ -102,7 +102,7 @@ export default createStore({
     },
 
     setFontStrokeWidth(state: State, strokeWidth: string) {
-      state.strokeWidth = "" + strokeWidth;
+      state.strokeWidth = parseInt(strokeWidth);
     },
 
   },

@@ -12,8 +12,8 @@
     :style="{
       color: $store.state.fontColor,
       '-webkit-text-stroke-color': $store.state.strokeColor,
-      '-webkit-text-stroke-width': $store.state.strokeWidth,
-      'line-height': $store.state.lineHeight,
+      '-webkit-text-stroke-width': $store.state.strokeWidth + 'px',
+      'line-height': $store.state.lineHeight + 'px',
     }"
   >
     <component
