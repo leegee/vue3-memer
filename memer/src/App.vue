@@ -3,19 +3,17 @@
     <main ref="app" v-show="loaded">
       <header>
         <h1 v-show="!$store.state.image">meme memer meme</h1>
-        <nav id="nav">
-          <div v-show="$store.state.image">
-            <a
-              class="icon"
-              v-show="$route.matched.some(({ name }) => name === 'Home')"
-              @click="$store.commit('showModal', true)"
-              >⚙</a
-            >
-            <router-link to="/" class="icon">🖉</router-link>
-            <router-link to="/layouts" class="icon">⬓</router-link>
-            <router-link to="/new" class="new icon">🔄</router-link>
-            <router-link to="/save" class="save icon">⭳</router-link>
-          </div>
+        <nav id="nav" v-show="$store.state.image">
+          <a
+            class="icon"
+            v-show="$route.matched.some(({ name }) => name === 'Home')"
+            @click="$store.commit('showModal', true)"
+            >⚙</a
+          >
+          <router-link to="/" class="icon">🖉</router-link>
+          <router-link to="/layouts" class="icon">⬓</router-link>
+          <router-link to="/new" class="new icon">🔄</router-link>
+          <router-link to="/save" class="save icon">⭳</router-link>
         </nav>
       </header>
 
@@ -72,6 +70,7 @@ export default class App extends Vue {
 }
 
 #app {
+  overflow: auto;
   --meme-width: 500px;
   --meme-height: 500px;
   --app-bg: #2c3e50;
@@ -133,12 +132,11 @@ export default class App extends Vue {
 }
 
 #app header h1 {
-  margin: 0;
   padding: 0;
   color: var(--app-fg);
   font-weight: 100;
   font-size: 12pt;
-  margin-top: 2em;
+  margin: 2em 0;
   letter-spacing: 1ch;
   text-transform: lowercase;
   font-variant: small-caps;
