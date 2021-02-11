@@ -4,9 +4,10 @@ import { Store } from 'vuex'
 declare module '@vue/runtime-core' {
 
   interface ComputedStyles {
-    fontSize: string;
+    fontSize: number;
     fontFamily: string;
     textAlign: string;
+    lineHeight: number;
     color: string;
     top: number | null;
     bottom: number | null;

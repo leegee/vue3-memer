@@ -65,13 +65,9 @@ export default class Home extends Vue {
     ctx.textAlign = "center";
     ctx.fillStyle = this.$store.state.fontColor;
 
-    const metricsForHeight = ctx.measureText("M");
-    const lineHeight =
-      metricsForHeight.fontBoundingBoxAscent +
-      metricsForHeight.fontBoundingBoxDescent -
-      10;
-
-    // const lineHeight = parseInt(this.$store.state.text[text].style.fontSize) * 1.2;
+    // const metricsForHeight = ctx.measureText("M");
+    //   metricsForHeight.actualBoundingBoxAscent +
+    //   metricsForHeight.actualBoundingBoxDescent;
 
     Object.keys(this.$store.state.text).forEach((text) => {
       if (
@@ -83,11 +79,13 @@ export default class Home extends Vue {
         return;
       }
 
+      const lineHeight = this.$store.state.text[text].style.lineHeight;
+
       ctx.font =
         this.$store.state.fontWeight +
         " " +
         this.$store.state.text[text].style.fontSize +
-        " " +
+        "px " +
         this.$store.state.text[text].style.fontFamily;
 
       const x = Math.abs(
@@ -138,8 +136,6 @@ export default class Home extends Vue {
             Math.floor(x),
             Math.floor(y)
           );
-          console.log("Rendered [%s]");
-          console.log("--------------");
           y += lineHeight;
         });
     });

@@ -41,11 +41,15 @@ export default createStore({
       state.text[id].partOfLayout = state.chosenLayout;
       state.text[id].id = id;
       state.text[id].text = text;
+
+      console.log(style.lineHeight, style.fontFamily, style.fontSize);
+
       state.text[id].style = {
         color: style.color,
         textAlign: style.textAlign,
-        fontFamily: style["font-family"],
-        fontSize: style["font-size"],
+        fontFamily: style.fontFamily,
+        fontSize: parseInt(style.fontSize),
+        lineHeight: parseInt(style.lineHeight),
         left: parseInt(style.left) || null,
         right: parseInt(style.right) || null,
         top: parseInt(style.top) || null,
