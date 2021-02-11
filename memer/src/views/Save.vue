@@ -65,12 +65,6 @@ export default class Home extends Vue {
     ctx.textAlign = "center";
     ctx.fillStyle = this.$store.state.fontColor;
 
-    // const metricsForHeight = ctx.measureText("M");
-    //   metricsForHeight.actualBoundingBoxAscent +
-    //   metricsForHeight.actualBoundingBoxDescent;
-
-    const lineHeight = this.$store.state.lineHeight;
-
     Object.keys(this.$store.state.text).forEach((text) => {
       if (
         this.$store.state.text[text].text === undefined ||
@@ -88,24 +82,25 @@ export default class Home extends Vue {
         "px " +
         this.$store.state.text[text].style.fontFamily;
 
+      const stroke = this.$store.state.strokeWidth !== 0;
+
+      if (stroke) {
+        ctx.strokeStyle = this.$store.state.strokeColor;
+        ctx.lineWidth = this.$store.state.strokeWidth;
+      }
+
       const x = Math.abs(
         (this.$store.state.text[text].style.left || 0) +
           this.$store.state.text[text].style.width / 2
       );
 
-      let y = lineHeight / 2 + (this.$store.state.text[text].style.top || 0);
+      let y =
+        this.$store.state.lineHeight / 2 +
+        (this.$store.state.text[text].style.top || 0);
 
       this.$store.state.text[text].text
         .split(/[\n\r\f]/)
         .forEach((lineOfText) => {
-          let stroke = false;
-
-          if (this.$store.state.strokeWidth !== 0) {
-            ctx.strokeStyle = this.$store.state.strokeColor;
-            ctx.lineWidth = this.$store.state.strokeWidth;
-            stroke = true;
-          }
-
           let lineReadButNotRendered = "";
 
           lineOfText.split(/\s+/g).forEach((word) => {
@@ -123,8 +118,7 @@ export default class Home extends Vue {
                 Math.floor(y)
               );
               lineReadButNotRendered = word;
-              y += lineHeight;
-              console.log("Render, and y inc by %d to", lineHeight, y);
+              y += this.$store.state.lineHeight;
             }
           });
 
@@ -135,7 +129,7 @@ export default class Home extends Vue {
             Math.floor(x),
             Math.floor(y)
           );
-          y += lineHeight;
+          y += this.$store.state.lineHeight;
         });
     });
 
