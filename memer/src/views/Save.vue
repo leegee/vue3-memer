@@ -17,7 +17,7 @@ function renderText(
   x: number,
   y: number
 ) {
-  console.log("renderText ", x, y, text);
+  console.debug("renderText ", x, y, text);
   ctx.fillText(text, x, y);
   if (stroke) {
     ctx.strokeText(text, x, y);
@@ -90,47 +90,61 @@ export default class Home extends Vue {
       }
 
       const x = Math.abs(
-        (this.$store.state.text[text].style.left || 0) +
+        (this.$store.state.text[text].style.left || 1) +
           this.$store.state.text[text].style.width / 2
       );
 
       let y =
-        this.$store.state.lineHeight / 2 +
-        (this.$store.state.text[text].style.top || 0);
+        (this.$store.state.text[text].style.top || 1) +
+        this.$store.state.text[text].style.height / 2;
+
+      const linesOfOutput: any[] = [];
+
+      console.debug("INPUT ALL [%s]", this.$store.state.text[text].text);
 
       this.$store.state.text[text].text
         .split(/[\n\r\f]/)
-        .forEach((lineOfText) => {
+        .forEach((lineOfInput) => {
           let lineReadButNotRendered = "";
 
-          lineOfText.split(/\s+/g).forEach((word) => {
+          console.debug("INPUT LINE [%s]", lineOfInput);
+
+          lineOfInput.split(/\s+/g).forEach((word) => {
             const toMeasure = lineReadButNotRendered + " " + word;
             const metrics = ctx.measureText(toMeasure);
+
             if (metrics.width < this.$store.state.text[text].style.width) {
               lineReadButNotRendered +=
                 (lineReadButNotRendered ? " " : "") + word;
             } else {
-              renderText(
-                ctx,
-                stroke,
+              linesOfOutput.push({
+                text: lineReadButNotRendered,
+                x: Math.floor(x),
+                y: Math.floor(y),
+              });
+              console.debug(
+                "wrapped [%s] leaving [%s]",
                 lineReadButNotRendered,
-                Math.floor(x),
-                Math.floor(y)
+                word,
+                y
               );
-              lineReadButNotRendered = word;
               y += this.$store.state.lineHeight;
+              lineReadButNotRendered = word;
             }
           });
 
-          renderText(
-            ctx,
-            stroke,
-            lineReadButNotRendered,
-            Math.floor(x),
-            Math.floor(y)
-          );
+          linesOfOutput.push({
+            text: lineReadButNotRendered,
+            x: Math.floor(x),
+            y: Math.floor(y),
+          });
+
           y += this.$store.state.lineHeight;
         });
+
+      linesOfOutput.forEach((lineOfText) => {
+        renderText(ctx, stroke, lineOfText.text, lineOfText.x, lineOfText.y);
+      });
     });
 
     return canvas.toDataURL("image/png");

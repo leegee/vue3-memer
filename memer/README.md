@@ -2,8 +2,8 @@
 
 ## TODO
 
-* Update styles when changing Settings
-* Implement vertical centering
+*
+* Implement vertical centering in 3/3 view
 
 Thanks to [this](https://medium.com/js-dojo/how-to-solve-vue-js-prod-build-assets-relative-path-problem-71f91138dd79)
 

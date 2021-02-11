@@ -14,6 +14,7 @@ declare module '@vue/runtime-core' {
     right: number | null;
     width: number;
     height: number;
+    displayFlex: boolean;
   }
 
   interface TextOverlay {

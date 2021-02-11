@@ -56,12 +56,18 @@ export default class Base extends Vue {
   max-width: 100%;
   width: 100%;
   border: 1pt dotted red;
-  white-space: pre-wrap;
+  outline: 1pt solid transparent;
+  white-space: pre-line;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1;
+  display: block;
+  flex-direction: column;
 }
 .overlay:focus {
   outline: 1pt solid red;
+}
+.overlay div {
+  display: block;
 }
 </style>

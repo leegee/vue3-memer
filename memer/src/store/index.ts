@@ -37,13 +37,12 @@ export default createStore({
     },
 
     changeText(state: State, { id, style, text }) {
+      console.log('changeText("%s")', text);
       state.text[id] = state.text[id] || {};
       state.text[id].partOfLayout = state.chosenLayout;
       state.text[id].id = id;
       state.text[id].text = text;
       state.lineHeight = parseInt(style.lineHeight);
-
-      console.log(style.lineHeight, style.fontFamily, style.fontSize);
 
       state.text[id].style = {
         color: style.color,
@@ -56,6 +55,7 @@ export default createStore({
         bottom: parseInt(style.bottom) || null,
         width: parseInt(style.width),
         height: parseInt(style.height),
+        displayFlex: style.display && style.display === "flex",
       };
     },
 
