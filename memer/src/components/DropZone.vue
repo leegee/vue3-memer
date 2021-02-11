@@ -7,9 +7,7 @@
     @drop.prevent="onDrop($event)"
   >
     <h1 id="msg">{{ msg }}</h1>
-    <h1>
-      <input type="file" ref="file" id="file" @change="onFileChosen($event)" />
-    </h1>
+    <input type="file" ref="file" id="file" @change="onFileChosen($event)" />
   </div>
 </template>
 
@@ -23,7 +21,6 @@ import { Options, Vue } from "vue-class-component";
 })
 export default class DropZone extends Vue {
   msg!: string;
-
   reader = new FileReader();
 
   mounted() {
@@ -51,6 +48,27 @@ export default class DropZone extends Vue {
     }
   }
 
+  setImage(src: string) {
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
+      const ratio =
+        img.width / this.$store.state.largestSize >
+        img.height / this.$store.state.largestSize
+          ? img.width / this.$store.state.largestSize
+          : img.height / this.$store.state.largestSize;
+
+      img.width = img.width / ratio;
+      img.height = img.height / ratio;
+
+      this.$store.commit("setImage", {
+        src,
+        width: img.width,
+        height: img.height,
+      });
+    };
+  }
+
   onDragOver() {
     (this.$refs.dropzone as HTMLElement).classList.add("over");
   }
@@ -76,27 +94,6 @@ export default class DropZone extends Vue {
       this.reader.readAsDataURL(file);
     }
   }
-
-  setImage(src: string) {
-    const img = new Image();
-    img.src = src;
-    img.onload = () => {
-      const ratio =
-        img.width / this.$store.state.largestSize >
-        img.height / this.$store.state.largestSize
-          ? img.width / this.$store.state.largestSize
-          : img.height / this.$store.state.largestSize;
-
-      img.width = img.width / ratio;
-      img.height = img.height / ratio;
-
-      this.$store.commit("setImage", {
-        src,
-        width: img.width,
-        height: img.height,
-      });
-    };
-  }
 }
 </script>
 
@@ -107,6 +104,10 @@ export default class DropZone extends Vue {
   border: 1px solid transparent;
   background-color: grey;
   font-size: 24pt;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  cursor: pointer;
 }
 
 @media (orientation: portrait) {
@@ -120,11 +121,14 @@ export default class DropZone extends Vue {
 }
 
 #file {
-  font-size: 24pt;
-  text-align: center;
-  display: inline-block;
-  background: silver;
-  margin: 3rem;
-  width: calc(100% - 6rem);
+  font-size: calc(var(--meme-height));
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  border: none;
+  cursor: pointer;
 }
 </style>

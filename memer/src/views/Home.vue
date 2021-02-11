@@ -17,7 +17,7 @@
       }"
     >
       <DropZone
-        msg="Drop or paste an image here"
+        msg="Drop, paste,or choose an image here"
         v-show="!$store.state.image"
       />
       <Text v-show="$store.state.image" />

@@ -3,8 +3,9 @@ import Home from "@/views/Home.vue";
 import Save from "@/views/Save.vue";
 import LayoutChooser from "@/views/LayoutChooser.vue";
 import store from "@/store";
+import { Store } from "vuex";
 
-const requireImage = (store: any, next: Function) => {
+const requireImage = (store: Store<any>, next: Function) => {
   !store.state.image ? next({ name: "Home" }) : next();
 };
 
@@ -27,7 +28,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "New",
     component: Home,
     beforeEnter(to, from, next) {
-      store.commit('unsetImage');
+      store.commit("unsetImage");
       next({ name: "Home" });
       window.location.reload();
     }
