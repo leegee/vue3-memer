@@ -16,7 +16,10 @@
           $store.state.width + 'px ' + $store.state.height + 'px',
       }"
     >
-      <DropZone msg="Drop an image here" v-show="!$store.state.image" />
+      <DropZone
+        msg="Drop or paste an image here"
+        v-show="!$store.state.image"
+      />
       <Text v-show="$store.state.image" />
     </div>
   </div>

@@ -28,8 +28,10 @@ declare module '@vue/runtime-core' {
   }
 
   interface State {
-    image: string;
-    imageOriginal: string;
+    image?: string;
+    imageOriginal?: string;
+    width?: number;
+    height?: number;
     fontClass: string;
     fontSizeClass: string;
     fontWeight: string;
@@ -41,8 +43,6 @@ declare module '@vue/runtime-core' {
     strokeWidth: string;
     lineHeight: string;
     text: TextOverlays;
-    width: number;
-    height: number;
     chosenLayout: string;
     showModal: boolean;
   }

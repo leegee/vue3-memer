@@ -39,6 +39,14 @@ export default class Home extends Vue {
   }
 
   composedImage() {
+    if (
+      !this.$store.state.image ||
+      !this.$store.state.width ||
+      !this.$store.state.height
+    ) {
+      throw new Error("composedImage state error");
+    }
+
     const img = new Image();
     img.src = this.$store.state.image;
 
@@ -46,12 +54,24 @@ export default class Home extends Vue {
     const ctx = canvas.getContext("2d");
 
     if (ctx === null) {
-      throw new Error("Well, holy moly");
+      throw new Error("Well, holy moly, no 2D canvas rendering context");
     }
 
     canvas.width = this.$store.state.width;
     canvas.height = this.$store.state.height;
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "center";
+    ctx.fillStyle = this.$store.state.fontColor;
+
+    const metricsForHeight = ctx.measureText("M");
+    const lineHeight =
+      metricsForHeight.fontBoundingBoxAscent +
+      metricsForHeight.fontBoundingBoxDescent -
+      10;
+
+    // const lineHeight = parseInt(this.$store.state.text[text].style.fontSize) * 1.2;
 
     Object.keys(this.$store.state.text).forEach((text) => {
       if (
@@ -63,23 +83,12 @@ export default class Home extends Vue {
         return;
       }
 
-      ctx.textBaseline = "middle";
-      ctx.textAlign = "center";
-      ctx.fillStyle = this.$store.state.fontColor; // text[text].style.color;
       ctx.font =
         this.$store.state.fontWeight +
         " " +
         this.$store.state.text[text].style.fontSize +
         " " +
         this.$store.state.text[text].style.fontFamily;
-
-      const metricsForHeight = ctx.measureText("M");
-      const lineHeight =
-        metricsForHeight.fontBoundingBoxAscent +
-        metricsForHeight.fontBoundingBoxDescent -
-        10;
-
-      // const lineHeight = parseInt(this.$store.state.text[text].style.fontSize) * 1.2;
 
       const x = Math.abs(
         (this.$store.state.text[text].style.left || 0) +

@@ -1,19 +1,17 @@
 <template>
   <main ref="app">
     <nav id="nav">
-      <h1 v-show="!$store.state.image">Load image</h1>
+      <h1 v-show="!$store.state.image">meme memer meme</h1>
       <div v-show="$store.state.image">
-        <router-link to="/" class="icon">🖉</router-link>
-
-        <button
-          id="show-customize"
+        <a
           class="icon"
+          v-show="$route.matched.some(({ name }) => name === 'Home')"
           @click="$store.commit('showModal', true)"
+          >⚙</a
         >
-          ⚙
-        </button>
-
+        <router-link to="/" class="icon">🖉</router-link>
         <router-link to="/layouts" class="icon">⬓</router-link>
+        <router-link to="/new" class="new icon">🔄</router-link>
         <router-link to="/save" class="save icon">⭳</router-link>
       </div>
     </nav>
@@ -91,19 +89,29 @@ export default class App extends Vue {
 }
 #nav a {
   text-decoration: none;
+  display: inline-block;
+  position: relative;
 }
 #nav a.router-link-exact-active {
   font-weight: bold;
   opacity: 0.8;
 }
-#nav .icon {
+
+.icon {
+  cursor: pointer;
   display: inline-block;
   font-weight: bolder;
-  min-width: 1em;
+  min-width: 1.2em;
   min-height: 1em;
   margin-right: 1rem;
   color: var(--app-fg);
   opacity: 0.6;
+}
+.icon:hover {
+  opacity: 1;
+}
+.icon.new {
+  filter: grayscale(100%);
 }
 .icon.save {
   -webkit-transform: scale(2, 1);
@@ -111,7 +119,6 @@ export default class App extends Vue {
   -ms-transform: scale(2, 1);
   -o-transform: scale(2, 1);
   transform: scale(2, 1);
-  margin-left: 1rem;
 }
 
 #nav h1 {
@@ -119,6 +126,11 @@ export default class App extends Vue {
   padding: 0;
   color: var(--app-fg);
   font-weight: 100;
+  font-size: 12pt;
+  margin-top: 2em;
+  letter-spacing: 1ch;
+  text-transform: lowercase;
+  font-variant: small-caps;
 }
 
 #close-modal {
@@ -205,14 +217,6 @@ export default class App extends Vue {
 .modal-leave-active .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
-}
-
-#show-customize {
-  cursor: pointer;
-  margin: 0 1rem;
-  border: unset;
-  background: unset;
-  font-size: 100%;
 }
 
 .courier {

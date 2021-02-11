@@ -59,6 +59,13 @@ export default createStore({
       state.imageSaveSize = imageSaveSize;
     },
 
+    unsetImage(state: State) {
+      delete state.image;
+      delete state.imageOriginal;
+      delete state.width;
+      delete state.height;
+    },
+
     setImage(state: State, { src, width, height }) {
       state.image = src;
       state.imageOriginal = src;

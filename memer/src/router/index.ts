@@ -23,6 +23,15 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
+    path: "/new",
+    name: "New",
+    component: Home,
+    beforeEnter(to, from, next) {
+      store.commit('unsetImage');
+      next({ name: "Home" });
+    }
+  },
+  {
     path: "/layouts",
     name: "Layouts",
     component: LayoutChooser,

@@ -118,4 +118,13 @@ export default class DropZone extends Vue {
 #dropzone.over {
   background: green;
 }
+
+#file {
+  font-size: 24pt;
+  text-align: center;
+  display: inline-block;
+  background: silver;
+  margin: 3rem;
+  width: calc(100% - 6rem);
+}
 </style>
