@@ -41,7 +41,7 @@ ul {
 }
 
 li {
-  opacity: 0.28;
+  opacity: 0.68;
   padding: 0.5rem;
   transition-property: opacity;
   transition-delay: 0s;
