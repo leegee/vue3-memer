@@ -28,9 +28,12 @@ const routes: Array<RouteRecordRaw> = [
     name: "New",
     component: Home,
     beforeEnter(to, from, next) {
-      store.commit("unsetImage");
-      next({ name: "Home" });
-      window.location.replace(process.env.BASE_URL as string);
+      if (confirm("Scrap this and start again?")) {
+        store.commit("unsetImage");
+        window.location.replace(process.env.BASE_URL as string);
+      } else {
+        next({ name: "Home" });
+      }
     }
   },
   {
