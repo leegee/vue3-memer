@@ -2,18 +2,18 @@
   <div>
     <main ref="app" v-show="loaded">
       <header>
-        <h1 v-show="!$store.state.image">meme memer meme</h1>
+        <h1 v-show="!$store.state.image">memification</h1>
         <nav id="nav" v-show="$store.state.image">
           <a
-            class="icon"
+            class="icon options"
             v-show="$route.matched.some(({ name }) => name === 'Home')"
             @click="$store.commit('showModal', true)"
             >⚙</a
           >
-          <router-link to="/" class="icon">🖉</router-link>
-          <router-link to="/layouts" class="icon">⬓</router-link>
-          <router-link to="/new" class="new icon">🔄</router-link>
-          <router-link to="/save" class="save icon">⭳</router-link>
+          <router-link to="/" class="icon edit">🖉</router-link>
+          <router-link to="/layouts" class="icon layouts">⬓</router-link>
+          <router-link to="/new" class="icon new"></router-link>
+          <router-link to="/save" class="icon save">⭳</router-link>
         </nav>
       </header>
 
@@ -102,9 +102,10 @@ export default class App extends Vue {
   display: inline-block;
   position: relative;
 }
-#nav a.router-link-exact-active {
+#nav a.router-link-exact-active,
+#nav a.router-link-active {
   font-weight: bold;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .icon {
@@ -115,20 +116,30 @@ export default class App extends Vue {
   min-height: 1em;
   margin-right: 1rem;
   color: var(--app-fg);
+  background-color: var(--app-fg);
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
   opacity: 0.6;
 }
-.icon:hover {
+.icon:hover,
+.icon:active {
   opacity: 1;
 }
 .icon.new {
-  filter: grayscale(100%);
+  mask-image: url("./assets/icons/new.svg");
 }
 .icon.save {
-  -webkit-transform: scale(2, 1);
-  -moz-transform: scale(2, 1);
-  -ms-transform: scale(2, 1);
-  -o-transform: scale(2, 1);
-  transform: scale(2, 1);
+  mask-image: url("./assets/icons/save.svg");
+}
+.icon.options {
+  mask-image: url("./assets/icons/options.svg");
+}
+.icon.layouts {
+  mask-image: url("./assets/icons/layouts.svg");
+}
+.icon.edit {
+  mask-image: url("./assets/icons/edit.svg");
 }
 
 #app header h1 {

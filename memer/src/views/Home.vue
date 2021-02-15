@@ -36,7 +36,20 @@ import Text from "@/components/Text.vue";
     Text,
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  mounted() {
+    const ratio =
+      window.screen.availWidth / this.$store.state.largestSide >
+      window.screen.availHeight / this.$store.state.largestSide
+        ? window.screen.availWidth / this.$store.state.largestSide
+        : window.screen.availHeight / this.$store.state.largestSide;
+
+    this.$store.commit("setDimensions", {
+      width: window.screen.availWidth / ratio,
+      height: window.screen.availHeight / ratio,
+    });
+  }
+}
 </script>
 
 <style scoped>
@@ -52,6 +65,12 @@ export default class Home extends Vue {}
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 1pt solid var(--app-fg);
+  border: none;
+}
+
+@media (orientation: portrait) and (max-width: 500px) {
+  #home {
+    max-width: 100%;
+  }
 }
 </style>

@@ -113,7 +113,7 @@ export default class DropZone extends Vue {
 
 @media (orientation: portrait) {
   #msg {
-    display: none;
+    font-size: 18pt;
   }
 }
 
