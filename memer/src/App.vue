@@ -282,8 +282,8 @@ export default class App extends Vue {
   font-size: 64pt;
 }
 
-.light-weight {
-  font-weight: light;
+.lighter-weight {
+  font-weight: lighter;
 }
 .normal-weight {
   font-weight: normal;

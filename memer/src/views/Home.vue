@@ -38,16 +38,17 @@ import Text from "@/components/Text.vue";
 })
 export default class Home extends Vue {
   mounted() {
-    const ratio =
-      window.screen.availWidth / this.$store.state.largestSide >
-      window.screen.availHeight / this.$store.state.largestSide
-        ? window.screen.availWidth / this.$store.state.largestSide
-        : window.screen.availHeight / this.$store.state.largestSide;
+    let width;
+    let height;
 
-    this.$store.commit("setDimensions", {
-      width: window.screen.availWidth / ratio,
-      height: window.screen.availHeight / ratio,
-    });
+    if (window.screen.availWidth < 500 || window.screen.availHeight < 500) {
+      if (window.screen.availWidth < window.screen.availHeight) {
+        width = height = window.screen.availWidth;
+      } else {
+        height = width = window.screen.availHeight;
+      }
+      this.$store.commit("setDimensions", { width, height });
+    }
   }
 }
 </script>

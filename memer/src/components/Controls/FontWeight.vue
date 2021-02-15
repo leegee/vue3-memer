@@ -21,7 +21,7 @@
 import { Vue } from "vue-class-component";
 
 export default class FontWeight extends Vue {
-  fontWeights = ["light", "normal", "bold", "bolder"];
+  fontWeights = ["lighter", "normal", "bold", "bolder"];
 
   change(fontWeight: string) {
     this.$store.commit("setfontWeight", fontWeight);
