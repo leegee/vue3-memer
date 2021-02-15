@@ -1,9 +1,8 @@
 # memer
 
-## TODO
+A small app to test Vue 3.0.
 
-*
-* Implement vertical centering in 3/3 view
+## TODO
 
 Thanks to [this](https://medium.com/js-dojo/how-to-solve-vue-js-prod-build-assets-relative-path-problem-71f91138dd79)
 
