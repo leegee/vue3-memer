@@ -30,7 +30,7 @@ const routes: Array<RouteRecordRaw> = [
     beforeEnter(to, from, next) {
       store.commit("unsetImage");
       next({ name: "Home" });
-      window.location.reload();
+      window.location.replace(process.env.BASE_URL as string);
     }
   },
   {
