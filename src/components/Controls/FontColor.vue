@@ -13,7 +13,7 @@
       min="0"
       max="100"
       @change="changeOpacity($event.target.value)"
-      :value="$store.state.bgOpacity"
+      :value="$store.state.fontOpacity"
     />
   </fieldset>
 </template>

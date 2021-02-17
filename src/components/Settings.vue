@@ -48,9 +48,9 @@ fieldset {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 90%;
 }
 fieldset legend {
-  font-size: 120%;
   border: none;
   float: left;
 }

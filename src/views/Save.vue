@@ -10,12 +10,14 @@
 <script lang="ts">
 import { Vue } from "vue-class-component";
 
-function opaqueColor(color: string, opacity: number): string {
-  let o = opacity.toString(16);
+function opaqueColor(color: string, opacity: number | string): string {
+  let o = parseInt("" + opacity).toString(16);
   if (o.length === 1) {
     o = "0" + o;
   }
-  return color + o;
+  const rv = color + o;
+  console.log("set colour from ", color, opacity, "to ", rv);
+  return rv;
 }
 
 function renderText(
@@ -149,8 +151,10 @@ export default class Home extends Vue {
         (this.$store.state.text[text].style.top || 0) +
           (this.$store.state.text[text].style.height || 0)
       );
-      ctx.stroke();
+
       ctx.fillStyle = textFgColor;
+
+      console.log({ textBgColor, textFgColor });
 
       linesOfOutput.forEach((lineOfText) => {
         renderText(ctx, stroke, lineOfText, x, y);

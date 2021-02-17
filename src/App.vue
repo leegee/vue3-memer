@@ -156,24 +156,13 @@ export default class App extends Vue {
 #close-modal {
   cursor: pointer;
   --size: 3rem;
-  background: black;
-  color: white;
-  border: 1pt solid white;
-  border-radius: 50%;
   min-width: var(--size);
   min-height: var(--size);
-  z-index: 999;
-}
-
-@media (orientation: portrait) {
-  #close-modal {
-    position: absolute;
-    top: unset;
-    left: unset;
-    right: 0;
-    bottom: calc(1 * var(--size));
-    position: fixed;
-  }
+  background: var(--app-bg);
+  color: var(--app-fg);
+  border: 1pt solid var(--app-fg);
+  border-radius: 50%;
+  z-index: 9999;
 }
 
 .modal-mask {
@@ -188,31 +177,39 @@ export default class App extends Vue {
   height: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.05);
-  display: table;
+  background-color: transparent;
   transition: opacity 0.3s ease;
+  /* display: table; */
 }
 
 @media (orientation: portrait) {
   .modal-mask {
-    top: var(--app-nav-height);
-    height: calc(100vh - var(--app-nav-height));
+    /* top: var(--app-nav-height); */
+    /* height: calc(100vh - var(--app-nav-height)); */
   }
 }
 
 .modal-wrapper {
-  display: table-cell;
-  vertical-align: middle;
+  bottom: 0;
+  position: fixed;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 1rem;
+  justify-items: center;
+  height: 100%;
+  width: 100%;
 }
 
 .modal-container {
-  position: relative;
+  min-height: 300px;
+  max-height: 300px;
   width: 300px;
-  margin: 0px auto;
-  padding: 20px 30px;
+  margin: 0 auto;
+  padding: 1rem;
   background-color: var(--app-fg);
   color: var(--app-bg);
   border-radius: 4pt;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
   overflow-x: hidden;
   overflow-y: auto;
@@ -220,8 +217,8 @@ export default class App extends Vue {
 
 @media (orientation: portrait) {
   .modal-container {
-    height: auto;
-    max-height: 100%;
+    /* height: auto;
+    max-height: 100%; */
   }
 }
 

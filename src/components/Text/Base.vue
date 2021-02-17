@@ -6,6 +6,9 @@
     contentEditable="true"
     @focus="selectText($event)"
     @click="selectText($event)"
+    :style="{
+      'background-opacity': $store.state.bgOpacity / 100,
+    }"
   >
     {{ text }}
   </div>
