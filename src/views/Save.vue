@@ -10,6 +10,14 @@
 <script lang="ts">
 import { Vue } from "vue-class-component";
 
+function opaqueColor(color: string, opacity: number): string {
+  let o = opacity.toString(16);
+  if (o.length === 1) {
+    o = "0" + o;
+  }
+  return color + o;
+}
+
 function renderText(
   ctx: CanvasRenderingContext2D,
   stroke: boolean,
@@ -63,7 +71,16 @@ export default class Home extends Vue {
 
     ctx.textBaseline = "top";
     ctx.textAlign = "center";
-    ctx.fillStyle = this.$store.state.fontColor;
+
+    const textBgColor = opaqueColor(
+      this.$store.state.bgColor,
+      this.$store.state.bgOpacity
+    );
+
+    const textFgColor = opaqueColor(
+      this.$store.state.fontColor,
+      this.$store.state.fontOpacity
+    );
 
     Object.keys(this.$store.state.text).forEach((text: string) => {
       if (
@@ -124,15 +141,16 @@ export default class Home extends Vue {
         this.$store.state.text[text].style.height / 2 -
         (this.$store.state.lineHeight / 2) * linesOfOutput.length;
 
-      // ctx.fillStyle = "blue";
-      // ctx.fillRect(
-      //   this.$store.state.text[text].style.left || 0,
-      //   this.$store.state.text[text].style.top || 0,
-      //   (this.$store.state.text[text].style.width || 0) + x,
-      //   (this.$store.state.text[text].style.top || 0) +
-      //     (this.$store.state.text[text].style.height || 0)
-      // );
-      // ctx.stroke();
+      ctx.fillStyle = textBgColor;
+      ctx.fillRect(
+        this.$store.state.text[text].style.left || 0,
+        this.$store.state.text[text].style.top || 0,
+        (this.$store.state.text[text].style.width || 0) + x,
+        (this.$store.state.text[text].style.top || 0) +
+          (this.$store.state.text[text].style.height || 0)
+      );
+      ctx.stroke();
+      ctx.fillStyle = textFgColor;
 
       linesOfOutput.forEach((lineOfText) => {
         renderText(ctx, stroke, lineOfText, x, y);
@@ -154,7 +172,7 @@ export default class Home extends Vue {
 }
 img {
   background: url("../assets/trans.jpg") center repeat;
-  border: 1px solid var(--app-fg);
+  border: 1px solid transparent;
   object-fit: cover;
   max-width: 99%;
   max-height: 90%;

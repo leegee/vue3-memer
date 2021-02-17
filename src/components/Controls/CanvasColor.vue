@@ -1,6 +1,6 @@
 <template>
   <fieldset>
-    <legend>Background</legend>
+    <legend>Image Background</legend>
 
     <span
       v-show="$store.state.canvasColor !== 'transparent'"

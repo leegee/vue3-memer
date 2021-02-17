@@ -38,10 +38,14 @@ declare module '@vue/runtime-core' {
     fontWeight: string;
     imageSaveSize: string;
     largestSide: number;
-    fontColor: string;
     lineHeight: number;
+    fontColor: string;
+    fontOpacity: number;
     canvasColor: string;
+    bgColor: string;
+    bgOpacity: number;
     strokeColor: string;
+    strokeOpacity: number;
     strokeWidth: number;
     text: TextOverlays;
     chosenLayout: string;

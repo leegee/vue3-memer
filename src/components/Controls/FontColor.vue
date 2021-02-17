@@ -4,8 +4,16 @@
     <input
       id="font-color-input"
       type="color"
-      @change="change($event.target.value)"
+      @change="changeColor($event.target.value)"
       :value="$store.state.fontColor"
+    />
+
+    <input
+      type="range"
+      min="0"
+      max="100"
+      @change="changeOpacity($event.target.value)"
+      :value="$store.state.bgOpacity"
     />
   </fieldset>
 </template>
@@ -14,8 +22,12 @@
 import { Vue } from "vue-class-component";
 
 export default class FontColor extends Vue {
-  change(fontColor: string) {
+  changeColor(fontColor: string) {
     this.$store.commit("setFontColor", fontColor);
+  }
+
+  changeOpacity(percentage: number) {
+    this.$store.commit("setFontOpacity", percentage);
   }
 }
 </script>

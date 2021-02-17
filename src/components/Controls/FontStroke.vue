@@ -1,12 +1,6 @@
 <template>
   <fieldset id="font-stroke">
     <legend>Text Outline</legend>
-    <input
-      id="stroke-color"
-      type="color"
-      @change="changeColor($event.target.value)"
-      :value="$store.state.strokeColor"
-    />
 
     <select id="stroke-width" @change="changeWidth($event.target.value)">
       <option
@@ -18,6 +12,13 @@
         {{ strokeWidth }}
       </option>
     </select>
+
+    <input
+      id="stroke-color"
+      type="color"
+      @change="changeColor($event.target.value)"
+      :value="$store.state.strokeColor"
+    />
   </fieldset>
 </template>
 

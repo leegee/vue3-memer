@@ -11,6 +11,7 @@
     "
     :style="{
       color: $store.state.fontColor,
+      opacity: $store.state.fontOpacity / 100,
       '-webkit-text-stroke-color': $store.state.strokeColor,
       '-webkit-text-stroke-width': $store.state.strokeWidth + 'px',
       'line-height': $store.state.lineHeight + 'px',

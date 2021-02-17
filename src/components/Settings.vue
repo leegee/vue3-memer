@@ -5,6 +5,7 @@
     <FontColor />
     <FontStroke />
     <FontSize />
+    <BgColor />
     <FontWeight />
   </div>
 </template>
@@ -12,6 +13,7 @@
 <script lang="ts">
 import { Vue, Options } from "vue-class-component";
 import CanvasColor from "../components/Controls/CanvasColor.vue";
+import BgColor from "../components/Controls/BgColor.vue";
 import FontColor from "../components/Controls/FontColor.vue";
 import FontSelect from "../components/Controls/FontSelect.vue";
 import FontSize from "../components/Controls/FontSize.vue";
@@ -21,6 +23,7 @@ import FontStroke from "../components/Controls/FontStroke.vue";
 @Options({
   components: {
     CanvasColor,
+    BgColor,
     FontSelect,
     FontSize,
     FontWeight,
