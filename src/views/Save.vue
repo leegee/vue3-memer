@@ -61,11 +61,11 @@ export default class Home extends Vue {
     canvas.height = this.$store.state.height;
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-    ctx.textBaseline = "middle";
+    ctx.textBaseline = "top";
     ctx.textAlign = "center";
     ctx.fillStyle = this.$store.state.fontColor;
 
-    Object.keys(this.$store.state.text).forEach((text) => {
+    Object.keys(this.$store.state.text).forEach((text: string) => {
       if (
         this.$store.state.text[text].text === undefined ||
         this.$store.state.text[text].text.match(/^\s*$/) ||
@@ -89,6 +89,8 @@ export default class Home extends Vue {
         ctx.lineWidth = this.$store.state.strokeWidth;
       }
 
+      const linesOfOutput: { [key: string]: any }[] = [];
+
       const x = Math.abs(
         (this.$store.state.text[text].style.left || 1) +
           this.$store.state.text[text].style.width / 2
@@ -98,7 +100,24 @@ export default class Home extends Vue {
         (this.$store.state.text[text].style.top || 1) +
         this.$store.state.text[text].style.height / 2;
 
-      const linesOfOutput: any[] = [];
+      // let y = this.$store.state.text[text].style.top || 1;
+
+      console.log(
+        "Top, height/2, y",
+        this.$store.state.text[text].style.top,
+        this.$store.state.text[text].style.height / 2,
+        y
+      );
+
+      ctx.rect(
+        this.$store.state.text[text].style.left || 0,
+        this.$store.state.text[text].style.top || 0,
+
+        (this.$store.state.text[text].style.width || 0) + x,
+        (this.$store.state.text[text].style.top || 0) +
+          (this.$store.state.text[text].style.height || 0)
+      );
+      ctx.stroke();
 
       console.debug("INPUT ALL [%s]", this.$store.state.text[text].text);
 
