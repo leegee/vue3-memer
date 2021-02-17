@@ -3,9 +3,9 @@
     <CanvasColor />
     <FontSelect />
     <FontColor />
+    <BgColor />
     <FontStroke />
     <FontSize />
-    <BgColor />
     <FontWeight />
   </div>
 </template>
