@@ -66,8 +66,8 @@ export default class Home extends Vue {
     ctx.textAlign = "center";
 
     const textBgColor = opaqueColor(
-      this.$store.state.bgColor,
-      this.$store.state.bgOpacity
+      this.$store.state.fontBgColor,
+      this.$store.state.fontBgOpacity
     );
     const textFgColor = opaqueColor(
       this.$store.state.fontColor,

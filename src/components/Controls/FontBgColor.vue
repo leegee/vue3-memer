@@ -13,7 +13,7 @@
       min="0"
       max="100"
       @change="changeOpacity($event.target.value)"
-      :value="$store.state.bgOpacity"
+      :value="$store.state.fontBgOpacity"
     />
   </fieldset>
 </template>
@@ -21,13 +21,13 @@
 <script lang="ts">
 import { Vue } from "vue-class-component";
 
-export default class BgColor extends Vue {
+export default class FontBgColor extends Vue {
   changeColor(color: string) {
-    this.$store.commit("setBgColor", color);
+    this.$store.commit("setFontBgColor", color);
   }
 
   changeOpacity(percentage: number) {
-    this.$store.commit("setBgOpacity", percentage);
+    this.$store.commit("setFontBgOpacity", percentage);
   }
 }
 </script>

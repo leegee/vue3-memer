@@ -42,8 +42,8 @@ declare module '@vue/runtime-core' {
     fontColor: string;
     fontOpacity: number;
     canvasColor: string;
-    bgColor: string;
-    bgOpacity: number;
+    fontBgColor: string;
+    fontBgOpacity: number;
     strokeColor: string;
     strokeOpacity: number;
     strokeWidth: number;

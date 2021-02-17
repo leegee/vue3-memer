@@ -8,8 +8,8 @@
     @click="selectText($event)"
     :style="{
       'background-color': opaqueColor(
-        $store.state.bgColor,
-        $store.state.bgOpacity
+        $store.state.fontBgColor,
+        $store.state.fontBgOpacity
       ),
     }"
   >

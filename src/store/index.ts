@@ -10,8 +10,8 @@ export default createStore({
     fontColor: "#000000",
     fontOpacity: 100,
     canvasColor: "transparent",
-    bgColor: "#ffffff",
-    bgOpacity: 0,
+    fontBgColor: "#ffffff",
+    fontBgOpacity: 0,
     strokeColor: "#ffffff",
     strokeOpacity: 100,
     strokeWidth: 1,
@@ -108,12 +108,12 @@ export default createStore({
       state.canvasColor = color;
     },
 
-    setBgColor(state: State, color: string) {
-      state.bgColor = color;
+    setFontBgColor(state: State, color: string) {
+      state.fontBgColor = color;
     },
 
-    setBgOpacity(state: State, percentage: number) {
-      state.bgOpacity = percentage;
+    setFontBgOpacity(state: State, percentage: number) {
+      state.fontBgOpacity = percentage;
     },
 
     setFontStrokeColor(state: State, strokeColor: string) {
