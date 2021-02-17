@@ -11,7 +11,7 @@
       id="home"
       :style="{
         'background-image': 'url(' + $store.state.image + ')',
-        'background-color': $store.state.bgColor,
+        'background-color': $store.state.canvasColor,
         'background-size':
           $store.state.width + 'px ' + $store.state.height + 'px',
       }"

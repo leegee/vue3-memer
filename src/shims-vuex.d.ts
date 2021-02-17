@@ -40,7 +40,7 @@ declare module '@vue/runtime-core' {
     largestSide: number;
     fontColor: string;
     lineHeight: number;
-    bgColor: string;
+    canvasColor: string;
     strokeColor: string;
     strokeWidth: number;
     text: TextOverlays;

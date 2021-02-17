@@ -8,7 +8,7 @@ export default createStore({
     fontWeight: "bold",
     imageSaveSize: "original",
     fontColor: "#000000",
-    bgColor: "transparent",
+    canvasColor: "transparent",
     strokeColor: "#ffffff",
     strokeWidth: 1,
     lineHeight: 32,
@@ -92,8 +92,8 @@ export default createStore({
       state.fontColor = fontColor;
     },
 
-    setBgColor(state: State, bgColor: string) {
-      state.bgColor = bgColor;
+    setCanvasColor(state: State, canvasColor: string) {
+      state.canvasColor = canvasColor;
     },
 
     setFontStrokeColor(state: State, strokeColor: string) {

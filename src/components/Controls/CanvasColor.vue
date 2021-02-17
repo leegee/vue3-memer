@@ -3,7 +3,7 @@
     <legend>Background</legend>
 
     <span
-      v-show="$store.state.bgColor !== 'transparent'"
+      v-show="$store.state.canvasColor !== 'transparent'"
       id="transparent-bg"
       title="Transparent"
       @click="change('transparent')"
@@ -11,7 +11,7 @@
     >
 
     <span
-      v-show="$store.state.bgColor === 'transparent'"
+      v-show="$store.state.canvasColor === 'transparent'"
       id="transparent-bg-selected"
       >Is<br />Transparent</span
     >
@@ -19,7 +19,7 @@
     <input
       type="color"
       @change="change($event.target.value)"
-      :value="$store.state.bgColor"
+      :value="$store.state.canvasColor"
     />
   </fieldset>
 </template>
@@ -27,9 +27,9 @@
 <script lang="ts">
 import { Vue } from "vue-class-component";
 
-export default class BgColor extends Vue {
+export default class CanvasColor extends Vue {
   change(fontColor: string) {
-    this.$store.commit("setBgColor", fontColor);
+    this.$store.commit("setCanvasColor", fontColor);
   }
 }
 </script>
