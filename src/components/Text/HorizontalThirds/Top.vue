@@ -9,8 +9,8 @@ export default class HorizontalThirdsTop extends Base {
 
 <style>
 #hor_3_top {
-  top: 1px;
-  left: 1px;
+  top: 0;
+  left: 0;
   width: 100%;
   height: calc(100% / 3);
   display: flex;

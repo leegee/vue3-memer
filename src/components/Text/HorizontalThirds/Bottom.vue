@@ -9,8 +9,8 @@ export default class HorizontalThirdsBottom extends Base {
 
 <style>
 #hor_3_bottom {
-  bottom: 1px;
-  left: 1px;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: calc(100% / 3);
   display: flex;

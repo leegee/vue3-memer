@@ -9,8 +9,8 @@ export default class Right extends Base {
 
 <style>
 #full_right {
-  top: 1pt;
-  right: 1pt;
+  top: 0;
+  right: 0;
   height: 100%;
   width: 33%;
   display: flex;

@@ -9,8 +9,8 @@ export default class TopLeft extends Base {
 
 <style>
 #top_left {
-  top: 1px;
-  left: 1px;
+  top: 0;
+  left: 0;
   width: 50%;
   height: 50%;
   display: flex;

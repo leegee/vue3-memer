@@ -124,22 +124,23 @@ export default class Home extends Vue {
         });
 
       const x = Math.abs(
-        (this.$store.state.text[text].style.left || 1) +
+        (this.$store.state.text[text].style.left || 0) +
           this.$store.state.text[text].style.width / 2
       );
 
       let y =
-        (this.$store.state.text[text].style.top || 1) +
+        (this.$store.state.text[text].style.top || 0) +
         this.$store.state.text[text].style.height / 2 -
         (this.$store.state.lineHeight / 2) * linesOfOutput.length;
 
       ctx.fillStyle = textBgColor;
       ctx.fillRect(
-        this.$store.state.text[text].style.left || 0,
-        this.$store.state.text[text].style.top || 0,
-        (this.$store.state.text[text].style.width || 0) + x,
+        this.$store.state.text[text].style.left || 0 - 1,
+        this.$store.state.text[text].style.top || 0 - 1,
+        (this.$store.state.text[text].style.width || 0) + x + 1,
         (this.$store.state.text[text].style.top || 0) +
-          (this.$store.state.text[text].style.height || 0)
+          (this.$store.state.text[text].style.height || 0) +
+          1
       );
 
       ctx.fillStyle = textFgColor;
@@ -166,7 +167,7 @@ export default class Home extends Vue {
 }
 img {
   background: url("../assets/trans.jpg") center repeat;
-  border: 1px solid transparent;
+  border: none;
   object-fit: cover;
   max-width: 99%;
   max-height: 90%;

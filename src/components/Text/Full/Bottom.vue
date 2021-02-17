@@ -10,7 +10,7 @@ export default class Bottom extends Base {
 <style>
 #full_bottom {
   bottom: 0;
-  left: 1pt;
+  left: 0;
   min-height: 1em;
   width: 100%;
 }

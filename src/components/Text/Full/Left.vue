@@ -9,8 +9,8 @@ export default class Left extends Base {
 
 <style>
 #full_left {
-  top: 1pt;
-  left: 1pt;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 33%;
   display: flex;

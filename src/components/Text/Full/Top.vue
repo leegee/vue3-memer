@@ -9,7 +9,7 @@ export default class Top extends Base {
 
 <style>
 #full_top {
-  top: 1pt;
-  left: 1pt;
+  top: 0;
+  left: 0;
 }
 </style>

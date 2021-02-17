@@ -10,7 +10,7 @@ export default class HorizontalQuarters3 extends Base {
 <style>
 #horquarters_3 {
   top: 50%;
-  left: 1px;
+  left: 0;
   width: 100%;
   height: 25%;
   display: flex;

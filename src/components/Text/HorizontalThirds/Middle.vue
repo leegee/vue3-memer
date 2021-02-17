@@ -10,7 +10,7 @@ export default class HorizontalThirdsMiddle extends Base {
 <style>
 #hor_3_mid {
   top: calc(100% / 3);
-  left: 1px;
+  left: 0;
   width: 100%;
   height: calc(100% / 3);
   display: flex;

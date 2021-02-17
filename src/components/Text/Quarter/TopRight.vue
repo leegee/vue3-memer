@@ -9,7 +9,7 @@ export default class TopRight extends Base {
 
 <style>
 #top_right {
-  top: 1px;
+  top: 0;
   left: 50%;
   width: 50%;
   height: 50%;
