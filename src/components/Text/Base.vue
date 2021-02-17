@@ -7,7 +7,10 @@
     @focus="selectText($event)"
     @click="selectText($event)"
     :style="{
-      'background-opacity': $store.state.bgOpacity / 100,
+      'background-color': opaqueColor(
+        $store.state.bgColor,
+        $store.state.bgOpacity
+      ),
     }"
   >
     {{ text }}
@@ -16,6 +19,8 @@
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
+
+import opaqueColor from "@/opaqueColor";
 
 export default class Base extends Vue {
   id = "control_id";
@@ -30,6 +35,10 @@ export default class Base extends Vue {
 
   beforeUnmount() {
     this.updateText();
+  }
+
+  opaqueColor(fg: string, bg: string): string {
+    return opaqueColor(fg, bg);
   }
 
   selectText(e: Event) {
@@ -71,6 +80,7 @@ export default class Base extends Vue {
   outline: 1pt solid red;
 }
 .overlay div {
+  /* For editable */
   display: block;
 }
 </style>

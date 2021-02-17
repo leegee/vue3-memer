@@ -9,16 +9,7 @@
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
-
-function opaqueColor(color: string, opacity: number | string): string {
-  let o = parseInt("" + opacity).toString(16);
-  if (o.length === 1) {
-    o = "0" + o;
-  }
-  const rv = color + o;
-  console.log("set colour from ", color, opacity, "to ", rv);
-  return rv;
-}
+import opaqueColor from "@/opaqueColor";
 
 function renderText(
   ctx: CanvasRenderingContext2D,
@@ -78,7 +69,6 @@ export default class Home extends Vue {
       this.$store.state.bgColor,
       this.$store.state.bgOpacity
     );
-
     const textFgColor = opaqueColor(
       this.$store.state.fontColor,
       this.$store.state.fontOpacity
