@@ -30,6 +30,10 @@ export default createStore({
       state.showModal = show;
     },
 
+    toggleModal(state: State) {
+      state.showModal = !state.showModal;
+    },
+
     setChosenLayout(state: State, chosenLayout) {
       state.chosenLayout = chosenLayout;
     },

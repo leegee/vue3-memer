@@ -7,7 +7,7 @@
           <a
             class="icon options"
             v-show="$route.matched.some(({ name }) => name === 'Home')"
-            @click="$store.commit('showModal', true)"
+            @click="$store.commit('toggleModal')"
             >⚙</a
           >
           <router-link to="/" class="icon edit">🖉</router-link>
@@ -20,23 +20,7 @@
       <router-view />
     </main>
 
-    <aside v-show="$store.state.image && $store.state.showModal">
-      <transition name="modal">
-        <div class="modal-mask">
-          <div class="modal-wrapper">
-            <div class="modal-container">
-              <Settings />
-              <button
-                id="close-modal"
-                @click="$store.commit('showModal', false)"
-              >
-                OK
-              </button>
-            </div>
-          </div>
-        </div>
-      </transition>
-    </aside>
+    <Settings />
   </div>
 </template>
 
@@ -151,89 +135,6 @@ export default class App extends Vue {
   letter-spacing: 1ch;
   text-transform: lowercase;
   font-variant: small-caps;
-}
-
-#close-modal {
-  cursor: pointer;
-  --size: 3rem;
-  min-width: var(--size);
-  min-height: var(--size);
-  background: var(--app-bg);
-  color: var(--app-fg);
-  border: 1pt solid var(--app-fg);
-  border-radius: 50%;
-  z-index: 9999;
-}
-
-.modal-mask {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  width: 100vw;
-  height: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.05);
-  background-color: transparent;
-  transition: opacity 0.3s ease;
-  /* display: table; */
-}
-
-@media (orientation: portrait) {
-  .modal-mask {
-    /* top: var(--app-nav-height); */
-    /* height: calc(100vh - var(--app-nav-height)); */
-  }
-}
-
-.modal-wrapper {
-  bottom: 0;
-  position: fixed;
-  display: flex;
-  align-items: flex-end;
-  padding-bottom: 1rem;
-  justify-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-.modal-container {
-  min-height: 300px;
-  max-height: 300px;
-  width: 300px;
-  margin: 0 auto;
-  padding: 1rem;
-  background-color: var(--app-fg);
-  color: var(--app-bg);
-  border-radius: 4pt;
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-@media (orientation: portrait) {
-  .modal-container {
-    /* height: auto;
-    max-height: 100%; */
-  }
-}
-
-.modal-enter {
-  opacity: 0;
-}
-
-.modal-leave-active {
-  opacity: 0;
-}
-
-.modal-enter .modal-container,
-.modal-leave-active .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
 }
 
 .courier {
