@@ -89,44 +89,14 @@ export default class Home extends Vue {
         ctx.lineWidth = this.$store.state.strokeWidth;
       }
 
-      const linesOfOutput: { [key: string]: any }[] = [];
-
-      const x = Math.abs(
-        (this.$store.state.text[text].style.left || 1) +
-          this.$store.state.text[text].style.width / 2
-      );
-
-      let y =
-        (this.$store.state.text[text].style.top || 1) +
-        this.$store.state.text[text].style.height / 2;
-
-      // let y = this.$store.state.text[text].style.top || 1;
-
-      console.log(
-        "Top, height/2, y",
-        this.$store.state.text[text].style.top,
-        this.$store.state.text[text].style.height / 2,
-        y
-      );
-
-      ctx.rect(
-        this.$store.state.text[text].style.left || 0,
-        this.$store.state.text[text].style.top || 0,
-
-        (this.$store.state.text[text].style.width || 0) + x,
-        (this.$store.state.text[text].style.top || 0) +
-          (this.$store.state.text[text].style.height || 0)
-      );
-      ctx.stroke();
-
       console.debug("INPUT ALL [%s]", this.$store.state.text[text].text);
+
+      const linesOfOutput: string[] = [];
 
       this.$store.state.text[text].text
         .split(/[\n\r\f]/)
         .forEach((lineOfInput) => {
           let lineReadButNotRendered = "";
-
-          console.debug("INPUT LINE [%s]", lineOfInput);
 
           lineOfInput.split(/\s+/g).forEach((word) => {
             const toMeasure = lineReadButNotRendered + " " + word;
@@ -136,33 +106,37 @@ export default class Home extends Vue {
               lineReadButNotRendered +=
                 (lineReadButNotRendered ? " " : "") + word;
             } else {
-              linesOfOutput.push({
-                text: lineReadButNotRendered,
-                x: Math.floor(x),
-                y: Math.floor(y),
-              });
-              console.debug(
-                "wrapped [%s] leaving [%s]",
-                lineReadButNotRendered,
-                word,
-                y
-              );
-              y += this.$store.state.lineHeight;
+              linesOfOutput.push(lineReadButNotRendered);
               lineReadButNotRendered = word;
             }
           });
 
-          linesOfOutput.push({
-            text: lineReadButNotRendered,
-            x: Math.floor(x),
-            y: Math.floor(y),
-          });
-
-          y += this.$store.state.lineHeight;
+          linesOfOutput.push(lineReadButNotRendered);
         });
 
+      const x = Math.abs(
+        (this.$store.state.text[text].style.left || 1) +
+          this.$store.state.text[text].style.width / 2
+      );
+
+      let y =
+        (this.$store.state.text[text].style.top || 1) +
+        this.$store.state.text[text].style.height / 2 -
+        (this.$store.state.lineHeight / 2) * linesOfOutput.length;
+
+      // ctx.fillStyle = "blue";
+      // ctx.fillRect(
+      //   this.$store.state.text[text].style.left || 0,
+      //   this.$store.state.text[text].style.top || 0,
+      //   (this.$store.state.text[text].style.width || 0) + x,
+      //   (this.$store.state.text[text].style.top || 0) +
+      //     (this.$store.state.text[text].style.height || 0)
+      // );
+      // ctx.stroke();
+
       linesOfOutput.forEach((lineOfText) => {
-        renderText(ctx, stroke, lineOfText.text, lineOfText.x, lineOfText.y);
+        renderText(ctx, stroke, lineOfText, x, y);
+        y += this.$store.state.lineHeight;
       });
     });
 
