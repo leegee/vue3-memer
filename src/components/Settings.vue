@@ -1,18 +1,18 @@
   <template>
   <aside v-show="$store.state.image && $store.state.showModal">
     <transition name="modal">
-      <div class="inline-settings-container">
+      <div id="inline-settings-container">
         <!-- <div class="modal-mask">
           <div class="modal-wrapper">
             <div class="modal-container"> -->
         <div id="settings">
-          <CanvasColor />
           <FontSelect />
           <FontColor />
           <BgColor />
           <FontStroke />
           <FontSize />
           <FontWeight />
+          <CanvasColor />
         </div>
 
         <button id="close-modal" @click="$store.commit('toggleModal', false)">
@@ -69,6 +69,12 @@ fieldset {
 fieldset legend {
   border: none;
   float: left;
+}
+
+#inline-settings-container {
+  width: 90%;
+  max-width: var(--meme-width);
+  margin: 0 auto;
 }
 
 #close-modal {
