@@ -60,6 +60,13 @@ export default class Home extends Vue {
 
     canvas.width = this.$store.state.width;
     canvas.height = this.$store.state.height;
+
+    console.log("this.$store.state.canvasColor", this.$store.state.canvasColor);
+    if (this.$store.state.canvasColor !== "transparent") {
+      ctx.fillStyle = this.$store.state.canvasColor;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
     ctx.textBaseline = "top";
